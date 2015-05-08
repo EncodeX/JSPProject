@@ -7,7 +7,7 @@
 
 IntelliJ 13 以上
 
-Spring MVC 使用？
+使用 Spring MVC
 
 使用 coding.net 作为git远程代码托管库
 
