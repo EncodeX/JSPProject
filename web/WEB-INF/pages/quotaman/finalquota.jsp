@@ -16,7 +16,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html class="no-js">
+
 <head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>辽宁省优秀科技工作者评选系统</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  <link rel="stylesheet" href="<%=basePath%>assets/css/admin.css">
+  <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.css"/>
+  <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.datetimepicker.css">
+  <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.flat.css"/>
+  <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.flat.min.css"/>
+  <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="<%=basePath%>assets/css/app.css"/>
+</head><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>辽宁省优秀科技工作者评选系统</title>
