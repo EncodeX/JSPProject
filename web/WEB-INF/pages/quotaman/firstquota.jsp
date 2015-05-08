@@ -1,6 +1,6 @@
 <%--
-  Created by JK.
-  User: Jacob
+  Created by IntelliJ IDEA.
+  User: zz
   Date: 2015/4/28
   Time: 16:50
   To change this template use File | Settings | File Templates.
@@ -16,9 +16,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html class="no-js">
-
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>辽宁省优秀科技工作者评选系统</title>
@@ -64,7 +62,7 @@
 </header>
 
 <div class="am-cf admin-main">
-  <!-- sidebar start -->
+  <!-- sidebar start -->    <!-- sidebar start -->
   <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
@@ -120,29 +118,39 @@
     </div>
   </div>
   <!-- sidebar end -->
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
 
 
-</div>
 
-<a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
-<footer>
-  <hr>
-  <p class="am-padding-left">© 2015 --辽宁省科学技术协会--.</p>
-</footer>
+    <!-- content end -->
 
-<!--[if lt IE 9]>
-<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="assets/js/polyfill/rem.min.js"></script>
-<script src="assets/js/polyfill/respond.min.js"></script>
-<script src="assets/js/amazeui.legacy.js"></script>
-<![endif]-->
+  </div>
 
-<!--[if (gte IE 9)|!(IE)]><!-->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/amazeui.min.js"></script>
-<!--<![endif]-->
-<script src="assets/js/app.js"></script>
+  <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+  <footer>
+    <hr>
+    <p class="am-padding-left">© 2015 --辽宁省科学技术协会--.</p>
+  </footer>
+
+  <!--[if lt IE 9]>
+  <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+  <script src="<%=basePath%>assets/js/polyfill/rem.min.js"></script>
+  <script src="<%=basePath%>assets/js/polyfill/respond.min.js"></script>
+  <script src="<%=basePath%>assets/js/amazeui.legacy.js"></script>
+  <![endif]-->
+
+  <!--[if (gte IE 9)|!(IE)]><!-->
+  <script src="<%=basePath%>assets/js/jquery.min.js"></script>
+  <script src="<%=basePath%>assets/js/amazeui.min.js"></script>
+  <!--<![endif]-->
+  <script src="<%=basePath%>assets/js/app.js"></script>
+  <script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
+
 </body>
 </html>
