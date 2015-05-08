@@ -24,13 +24,9 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-  <link rel="stylesheet" href="<%=basePath%>assets/css/admin.css">
-  <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.css"/>
-  <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.datetimepicker.css">
-  <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.flat.css"/>
-  <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.flat.min.css"/>
   <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.min.css"/>
-  <link rel="stylesheet" href="<%=basePath%>assets/css/app.css"/>
+  <link rel="stylesheet" href="<%=basePath%>assets/css/admin.css">
+  <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.datetimepicker.css">
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -62,7 +58,7 @@
 </header>
 
 <div class="am-cf admin-main">
-  <!-- sidebar start -->    <!-- sidebar start -->
+  <!-- sidebar start -->
   <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
@@ -72,17 +68,17 @@
         <li><a href="<%=basePath%>sbjman/main"><span class="am-icon-pencil-square-o"></span> 学科管理</a></li>
 
         <li class="admin-parent">
-          <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-male"></span> 候选人管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-file"></span> 候选人管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
             <li><a href="<%=basePath%>candman/sbjman" class="am-cf"><span class="am-icon-cogs"></span> 候选人学科管理</a></li>
             <li><a href="<%=basePath%>candman/firstresult"><span class="am-icon-cube"></span> 候选人初评结果管理</a></li>
-            <li><a href="<%=basePath%>candman/sbjman"><span class="am-icon-cubes"></span> 候选人终评结果管理</a></li>
+            <li><a href="<%=basePath%>candman/finalresult"><span class="am-icon-cubes"></span> 候选人终评结果管理</a></li>
           </ul>
         </li>
 
         <li class="admin-parent">
           <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span> 名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-          <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav2">
             <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span> 推荐单位提交名额管理</a></li>
             <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span> 初评名额管理</a></li>
             <li><a href="<%=basePath%>quotaman/finalquota"><span class="am-icon-file"></span> 终评名额管理</a></li>
@@ -118,17 +114,11 @@
     </div>
   </div>
   <!-- sidebar end -->
-  <!-- sidebar end -->
 
   <!-- content start -->
-  <div class="admin-content">
 
+  <!-- content end -->
 
-
-
-    <!-- content end -->
-
-  </div>
 
   <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 

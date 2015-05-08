@@ -58,6 +58,7 @@
 </header>
 
 <div class="am-cf admin-main">
+
     <!-- sidebar start -->
     <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
         <div class="am-offcanvas-bar admin-offcanvas-bar">
@@ -72,7 +73,7 @@
                     <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
                         <li><a href="<%=basePath%>candman/sbjman" class="am-cf"><span class="am-icon-cogs"></span> 候选人学科管理</a></li>
                         <li><a href="<%=basePath%>candman/firstresult"><span class="am-icon-cube"></span> 候选人初评结果管理</a></li>
-                        <li><a href="<%=basePath%>candman/sbjman"><span class="am-icon-cubes"></span> 候选人终评结果管理</a></li>
+                        <li><a href="<%=basePath%>candman/finalresult"><span class="am-icon-cubes"></span> 候选人终评结果管理</a></li>
                     </ul>
                 </li>
 
@@ -114,7 +115,6 @@
         </div>
     </div>
     <!-- sidebar end -->
-
     <!-- content start -->
     <div class="admin-content">
 
