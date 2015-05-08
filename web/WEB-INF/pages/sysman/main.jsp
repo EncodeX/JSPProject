@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="<%=basePath%>assets/css/admin.css">
     <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.datetimepicker.css">
 </head>
-<body>
+<body onload="showTip()">
 <!--[if lte IE 9]>
 <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
     以获得更好的体验！</p>
@@ -56,6 +56,30 @@
         </ul>
     </div>
 </header>
+
+
+<%--更新状态提示框|||在主页时不显示 仅在更新提交后变化--%>
+<c:if test="${ischange==true}">
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">${messageTitle}</div>
+            <div class="am-modal-bd">
+                ${messageEntity}
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function showTip(){
+            var $modal = $('#my-alert');
+            $modal.modal('open');
+        }
+    </script>
+</c:if>
+
+
 
 <div class="am-cf admin-main">
     <!-- sidebar start -->
@@ -135,17 +159,17 @@
                     <tbody>
 
                     <tr>
-                        <form action=""   >
+                        <form action="<%=basePath%>sysman/settime/proposer" method="post">
                             <td>申报者</td><td>
 
                             <div class="am-form-group am-form-icon">
                                 <i class="am-icon-calendar"></i>
-                                <input type="text" class="am-form-field" placeholder="日期">
+                                <input type="text" class="am-form-field" placeholder="日期" value="${proposerOpenTime.year+1900}-${proposerOpenTime.month+1}-${proposerOpenTime.date}" name="startdate">
                             </div>
 
                             <div class="am-form-group am-form-icon">
                                 <i class="am-icon-clock-o"></i>
-                                <input type="text" class="am-form-field" placeholder="时间">
+                                <input type="text" class="am-form-field" placeholder="时间" value="${proposerOpenTime.hours}:${proposerOpenTime.minutes}:${proposerOpenTime.seconds}" name="starttime">
                             </div>
 
 
@@ -153,19 +177,19 @@
                             <td>
                                 <div class="am-form-group am-form-icon">
                                     <i class="am-icon-calendar"></i>
-                                    <input type="text" class="am-form-field" placeholder="日期">
+                                    <input type="text" class="am-form-field" placeholder="日期" value="${proposerEndTime.year+1900}-${proposerEndTime.month+1}-${proposerEndTime.date}" name="enddate">
                                 </div>
 
                                 <div class="am-form-group am-form-icon">
                                     <i class="am-icon-clock-o"></i>
-                                    <input type="text" class="am-form-field" placeholder="时间">
+                                    <input type="text" class="am-form-field" placeholder="时间" value="${proposerEndTime.hours}:${proposerEndTime.minutes}:${proposerEndTime.seconds}" name="endtime">
                                 </div>
                             </td>
                             <td>
                                 <div class="am-dropdown" data-am-dropdown>
                                     <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
                                     <ul class="am-dropdown-content">
-                                        <li><a href="#">确定</a></li>
+                                        <li><a href="#"><input type="submit" value="确定"></a></li>
                                         <li><a href="#">取消</a></li>
                                     </ul>
                                 </div>
@@ -174,17 +198,17 @@
                     </form>
 
                     <tr>
-                        <form action=""   >
+                        <form action="<%=basePath%>sysman/settime/recunits" method="post">
                             <td>推荐单位</td><td>
 
                             <div class="am-form-group am-form-icon">
                                 <i class="am-icon-calendar"></i>
-                                <input type="text" class="am-form-field" placeholder="日期">
+                                <input type="text" class="am-form-field" placeholder="日期"  value="${recunitsOpenTime.year+1900}-${recunitsOpenTime.month+1}-${recunitsOpenTime.date}"  name="startdate">
                             </div>
 
                             <div class="am-form-group am-form-icon">
                                 <i class="am-icon-clock-o"></i>
-                                <input type="text" class="am-form-field" placeholder="时间">
+                                <input type="text" class="am-form-field" placeholder="时间"  value="${recunitsOpenTime.hours}:${recunitsOpenTime.minutes}:${recunitsOpenTime.seconds}"  name="starttime">
                             </div>
 
 
@@ -192,19 +216,19 @@
                             <td>
                                 <div class="am-form-group am-form-icon">
                                     <i class="am-icon-calendar"></i>
-                                    <input type="text" class="am-form-field" placeholder="日期">
+                                    <input type="text" class="am-form-field" placeholder="日期"  value="${recunitsEndTime.year+1900}-${recunitsEndTime.month+1}-${recunitsEndTime.date}" name="enddate">
                                 </div>
 
                                 <div class="am-form-group am-form-icon">
                                     <i class="am-icon-clock-o"></i>
-                                    <input type="text" class="am-form-field" placeholder="时间">
+                                    <input type="text" class="am-form-field" placeholder="时间"  value="${recunitsEndTime.hours}:${recunitsEndTime.minutes}:${recunitsEndTime.seconds}" name="endtime">
                                 </div>
                             </td>
                             <td>
                                 <div class="am-dropdown" data-am-dropdown>
                                     <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
                                     <ul class="am-dropdown-content">
-                                        <li><a href="#">确定</a></li>
+                                        <li><a href="#"><input type="submit" value="确定"></a></li>
                                         <li><a href="#">取消</a></li>
                                     </ul>
                                 </div>
@@ -213,17 +237,17 @@
                     </form>
 
                     <tr>
-                        <form action=""   >
+                        <form action="<%=basePath%>sysman/settime/expert" method="post">
                             <td>评审专家</td><td>
 
                             <div class="am-form-group am-form-icon">
                                 <i class="am-icon-calendar"></i>
-                                <input type="text" class="am-form-field" placeholder="日期">
+                                <input type="text" class="am-form-field" placeholder="日期"  value="${expertOpenTime.year+1900}-${expertOpenTime.month+1}-${expertOpenTime.date}" name="startdate">
                             </div>
 
                             <div class="am-form-group am-form-icon">
                                 <i class="am-icon-clock-o"></i>
-                                <input type="text" class="am-form-field" placeholder="时间">
+                                <input type="text" class="am-form-field" placeholder="时间"  value="${expertOpenTime.hours}:${expertOpenTime.minutes}:${expertOpenTime.seconds}" name="starttime">
                             </div>
 
 
@@ -231,19 +255,19 @@
                             <td>
                                 <div class="am-form-group am-form-icon">
                                     <i class="am-icon-calendar"></i>
-                                    <input type="text" class="am-form-field" placeholder="日期">
+                                    <input type="text" class="am-form-field" placeholder="日期"  value="${expertEndTime.year+1900}-${expertEndTime.month+1}-${expertEndTime.date}" name="enddate">
                                 </div>
 
                                 <div class="am-form-group am-form-icon">
                                     <i class="am-icon-clock-o"></i>
-                                    <input type="text" class="am-form-field" placeholder="时间">
+                                    <input type="text" class="am-form-field" placeholder="时间"  value="${expertEndTime.hours}:${expertEndTime.minutes}:${expertEndTime.seconds}" name="endtime">
                                 </div>
                             </td>
                             <td>
                                 <div class="am-dropdown" data-am-dropdown>
                                     <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
                                     <ul class="am-dropdown-content">
-                                        <li><a href="#">确定</a></li>
+                                        <li><a href="#"><input type="submit" value="确定"></a></li>
                                         <li><a href="#">取消</a></li>
                                     </ul>
                                 </div>
