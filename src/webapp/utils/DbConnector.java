@@ -11,9 +11,9 @@ import java.sql.DriverManager;
 public class DbConnector {
 
     private static String dburl="localhost";
-    private static String dbname= "webapp";
+    private static String dbname= "project_db";
     private static String dbusername="root";
-    private static String dbpassword="root";
+    private static String dbpassword="1234";
 
     private static Connection connection=null;
 
@@ -28,7 +28,7 @@ public class DbConnector {
                         DriverManager.getConnection("jdbc:mysql://"+dburl+"/"+dbname+"?" +
                                 "user="+dbusername+"&password="+dbpassword);
             } catch (Exception ex) {
-                System.err.println("[ERROR]Create database connection error.");
+                System.err.println("数据库连接失败。");
                 return null;
             }
             return connection;
