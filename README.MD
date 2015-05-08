@@ -90,7 +90,6 @@ Spring MVC 使用？
     <tr>
         <td>用户类型</td>
         <td>开放时间</td>
-        <td>关闭时间</td>
     </tr>
 </table>
 

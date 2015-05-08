@@ -16,4 +16,16 @@ public class VoteManagement {
     public ModelAndView getPage(ModelAndView modelAndView){
         return modelAndView;
     }
+
+    @RequestMapping(value = "/provote")
+    public ModelAndView provote (ModelAndView modelAndView){
+        modelAndView.setViewName("/voteman/provote");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/councilvote")
+    public ModelAndView councilvote (ModelAndView modelAndView){
+        modelAndView.setViewName("/voteman/councilvote");
+        return modelAndView;
+    }
 }
