@@ -1,7 +1,7 @@
 package webapp.dao.impl;
 
 import webapp.dao.OpenTimeDao;
-import webapp.util.DbConnection;
+import webapp.utils.DbConnector;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ import java.sql.Timestamp;
  */
 public class OpenTimeDaoImpl implements OpenTimeDao {
 
-    Connection connection= DbConnection.getConnection();
+    Connection connection= DbConnector.getConnection();
 
     @Override
     public Timestamp getOpenTimeByType(String type) {
