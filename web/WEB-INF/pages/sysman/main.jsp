@@ -140,12 +140,7 @@
 
                             <div class="am-form-group am-form-icon">
                                 <i class="am-icon-calendar"></i>
-                                <input type="text" class="am-form-field" placeholder="日期">
-                            </div>
-
-                            <div class="am-form-group am-form-icon">
-                                <i class="am-icon-clock-o"></i>
-                                <input type="text" class="am-form-field" placeholder="时间">
+                                <input type="text" class="am-form-field" placeholder="日期与时间" id="proposerOpenTime">
                             </div>
 
 
@@ -153,12 +148,7 @@
                             <td>
                                 <div class="am-form-group am-form-icon">
                                     <i class="am-icon-calendar"></i>
-                                    <input type="text" class="am-form-field" placeholder="日期">
-                                </div>
-
-                                <div class="am-form-group am-form-icon">
-                                    <i class="am-icon-clock-o"></i>
-                                    <input type="text" class="am-form-field" placeholder="时间">
+                                    <input type="text" class="am-form-field" placeholder="日期与时间" id="proposerCloseTime">
                                 </div>
                             </td>
                             <td>
@@ -179,12 +169,7 @@
 
                             <div class="am-form-group am-form-icon">
                                 <i class="am-icon-calendar"></i>
-                                <input type="text" class="am-form-field" placeholder="日期">
-                            </div>
-
-                            <div class="am-form-group am-form-icon">
-                                <i class="am-icon-clock-o"></i>
-                                <input type="text" class="am-form-field" placeholder="时间">
+                                <input type="text" class="am-form-field" placeholder="日期与时间" id="resUnitsOpenTime">
                             </div>
 
 
@@ -192,12 +177,7 @@
                             <td>
                                 <div class="am-form-group am-form-icon">
                                     <i class="am-icon-calendar"></i>
-                                    <input type="text" class="am-form-field" placeholder="日期">
-                                </div>
-
-                                <div class="am-form-group am-form-icon">
-                                    <i class="am-icon-clock-o"></i>
-                                    <input type="text" class="am-form-field" placeholder="时间">
+                                    <input type="text" class="am-form-field" placeholder="日期与时间" id="resUnitsCloseTime">
                                 </div>
                             </td>
                             <td>
@@ -218,12 +198,7 @@
 
                             <div class="am-form-group am-form-icon">
                                 <i class="am-icon-calendar"></i>
-                                <input type="text" class="am-form-field" placeholder="日期">
-                            </div>
-
-                            <div class="am-form-group am-form-icon">
-                                <i class="am-icon-clock-o"></i>
-                                <input type="text" class="am-form-field" placeholder="时间">
+                                <input type="text" class="am-form-field" placeholder="日期与时间" id="expertOpenTime">
                             </div>
 
 
@@ -231,12 +206,7 @@
                             <td>
                                 <div class="am-form-group am-form-icon">
                                     <i class="am-icon-calendar"></i>
-                                    <input type="text" class="am-form-field" placeholder="日期">
-                                </div>
-
-                                <div class="am-form-group am-form-icon">
-                                    <i class="am-icon-clock-o"></i>
-                                    <input type="text" class="am-form-field" placeholder="时间">
+                                    <input type="text" class="am-form-field" placeholder="日期与时间" id="expertCloseTime">
                                 </div>
                             </td>
                             <td>
@@ -257,6 +227,7 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
 
 
@@ -287,5 +258,55 @@
     <script src="<%=basePath%>assets/js/app.js"></script>
     <script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
 
+    <script>
+        $('#proposerOpenTime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        }).on('changeDate', function(ev){
+            // 使用 getTime() 函数来获取更改后的时间（格式为时间戳数）
+            console.log(ev.date.getTime());
+        });
+
+        $('#proposerCloseTime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        }).on('changeDate', function(ev){
+            console.log(ev.date.getTime());
+        });
+
+        $('#resUnitsOpenTime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        }).on('changeDate', function(ev){
+            console.log(ev.date.getTime());
+        });
+
+        $('#resUnitsCloseTime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        }).on('changeDate', function(ev){
+            console.log(ev.date.getTime());
+        });
+
+        $('#expertOpenTime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        }).on('changeDate', function(ev){
+            console.log(ev.date.getTime());
+        });
+
+        $('#expertCloseTime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        }).on('changeDate', function(ev){
+            console.log(ev.date.getTime());
+        });
+    </script>
 </body>
 </html>
