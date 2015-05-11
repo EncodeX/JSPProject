@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="<%=basePath%>assets/css/admin.css">
     <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.datetimepicker.css">
 </head>
-<body>
+<body onload="showTip()">
 <!--[if lte IE 9]>
 <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
     以获得更好的体验！</p>
@@ -56,6 +56,30 @@
         </ul>
     </div>
 </header>
+
+
+<%--更新状态提示框|||在主页时不显示 仅在更新提交后变化--%>
+<c:if test="${ischange==true}">
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">${messageTitle}</div>
+            <div class="am-modal-bd">
+                ${messageEntity}
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function showTip(){
+            var $modal = $('#my-alert');
+            $modal.modal('open');
+        }
+    </script>
+</c:if>
+
+
 
 <div class="am-cf admin-main">
 
@@ -227,7 +251,6 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
 
 

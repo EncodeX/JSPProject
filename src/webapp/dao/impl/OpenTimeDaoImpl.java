@@ -37,13 +37,14 @@ public class OpenTimeDaoImpl implements OpenTimeDao {
         PreparedStatement ps=null;
         ResultSet rs = null;
         try {
-            ps=connection.prepareStatement("select * from endtime where type=?");
+            ps=connection.prepareStatement("select * from opentime where type=?");
             ps.setString(1,type);
             rs = ps.executeQuery();
             rs.next();
             return rs.getTimestamp("endtime");
         }
         catch (Exception ex){
+            ex.printStackTrace();
             System.err.println("[DB ERROR]Timestamp getEndTimeByType ERROR.");
             return null;
         }
@@ -56,9 +57,9 @@ public class OpenTimeDaoImpl implements OpenTimeDao {
             ps=connection.prepareStatement("update opentime set opentime=?,endtime=? where type=?");
             ps.setTimestamp(1,openTime);
             ps.setTimestamp(2,endTime);
-            ps.setString(3,type);
-
-            return ps.execute();
+            ps.setString(3, type);
+            ps.execute();
+            return true;
         }
         catch (Exception ex){
             System.err.println("[DB ERROR]boolean setOpenAndEndTime ERROR.");
