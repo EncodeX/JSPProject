@@ -13,7 +13,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -52,7 +54,7 @@
         <ul class="am-nav am-nav-pills am-topbar-nav">
             <li><a href="#">首页</a></li>
         </ul>
-
+     </div>
 </header>
 
 

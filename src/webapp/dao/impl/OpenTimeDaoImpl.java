@@ -57,7 +57,7 @@ public class OpenTimeDaoImpl implements OpenTimeDao {
             ps=connection.prepareStatement("update opentime set opentime=?,endtime=? where type=?");
             ps.setTimestamp(1,openTime);
             ps.setTimestamp(2,endTime);
-            ps.setString(3,type);
+            ps.setString(3, type);
             ps.execute();
             return true;
         }

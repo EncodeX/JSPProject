@@ -194,8 +194,9 @@
                                     </ul>
                                 </div>
                             </td>
+                        </form>
                     </tr>
-                    </form>
+
 
                     <tr>
                         <form action="<%=basePath%>sysman/settime/recunits" method="post">
