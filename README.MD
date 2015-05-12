@@ -24,47 +24,47 @@ Spring MVC 使用？
 * 组员（包括组长）投票结束后由组长决定最终要投票通过的限额内的申报者*
 * 评审委员会对所有学科组的投票结果进行筛选决定优秀科技工作者人选*
 
-## 3 数据库设计 (数据库名：project_db)
+## 3 数据库设计
 
-### 3.1 申报者 (表名：Proposer)
+### 3.1 申报者
 
 <table>
     <tr>
-        <td>ID</td>  userID (int)
-        <td>用户名</td> userName (varchar16)
-        <td>密码</td>   userPwd (varchar16)
-        <td>姓名</td>   name(varchar10)
-        <td>学科类别</td>  subClass(varchar16)
-        <td>学科组ID</td>  subID(int)
-        <td>推荐单位ID</td>  recID(int)
-        <td>推荐结果</td>    recResult(int 0为同意，1为不同意)
-        <td>初评票数</td>    firCount(int)
-        <td>初评结果</td>    firResult(int 0为成功，1为不成功)
-        <td>终评结果</td>    lasResult(int 0为成功，1为不成功)
+        <td>ID</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>姓名</td>
+        <td>学科类别</td>
+        <td>学科组ID</td>
+        <td>推荐单位ID</td>
+        <td>推荐结果</td>
+        <td>初评票数</td>
+        <td>初评结果</td>
+        <td>终评结果</td>
     </tr>
 </table>
 
 > 暂时仅设计这几个属性
 
-### 3.2 推荐单位 (表名：Rec_units)
+### 3.2 推荐单位
 
 <table>
     <tr>
-        <td>ID</td>  unitsID(int)
-        <td>用户名</td>  unitsName(varchar16)
-        <td>密码</td>   unitsPwd(varchar16)
-        <td>推荐名额</td> recTotal(int)
+        <td>ID</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>推荐名额</td>
     </tr>
 </table>
 
-### 3.3 评审专家(表名：Expert)
+### 3.3 评审专家
 
 <table>
     <tr>
-        <td>用户名</td>  expName(varchar16)
-        <td>密码</td>   expPwd(varchar16)
-        <td>身份</td>  expID(varchar16)
-        <td>学科组ID</td>  groupID(int)
+        <td>用户名</td>
+        <td>密码</td>
+        <td>身份</td>
+        <td>学科组ID</td>
     </tr>
 </table>
 
@@ -72,26 +72,25 @@ Spring MVC 使用？
 > * 评审专家组成员包括组员与组长
 > * 刘洪娟老师所分出的副组长与主任、副主任意义未知
 
-### 3.4 学科组(表名：Group)
+### 3.4 学科组
 
 <table>
     <tr>
-        <td>ID</td> groID(int)
-        <td>名称</td> groName(varchar16)
-        <td>提交名额</td> subNum(int)
+        <td>ID</td>
+        <td>名称</td>
+        <td>提交名额</td>
     </tr>
 </table>
 
 > * 最终优秀科技工作者评选名额也作为一类学科组存入，将其ID设为0或-1等特定值并在编辑学科组时不给予显示或无法删除
 
-### 3.5 开放时间(表名：openTime)
+### 3.5 开放时间
 
 <table>
     <tr>
 <<<<<<< Temporary merge branch 1
         <td>用户类型</td>
         <td>开放时间</td>
-        <td>关闭时间</td>
 =======
         <td>用户类型</td> type(varchar20)
         <td>开放时间</td> openTime(DateTime)
@@ -137,7 +136,7 @@ Spring MVC 使用？
 
 #### 4.6.2 候选人初评结果管理页面
 
-> 暂时对下面两个页面存在疑问(超级管理员是否可以增加或删除候选人)
+> 暂时对下面两个页面存在疑问
 
 ##### 4.6.2 - α 增加候选人窗口
 
@@ -163,7 +162,7 @@ Spring MVC 使用？
 
 #### 4.8.2 评审委员会投票管理页面
 
-> 暂时对下面两个页面存在疑问(超级管理员是否在投票后可以增加或删除候选人)
+> 暂时对下面两个页面存在疑问
 
 ##### 4.8.2 - α 增加候选人窗口
 
