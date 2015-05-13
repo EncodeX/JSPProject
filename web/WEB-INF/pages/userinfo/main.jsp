@@ -190,24 +190,37 @@
                                     <td>12</td>
                                     <td>1</td>
                                     <td>
-                                        <button class="am-btn am-btn-success" id="doc-prompt-toggle">Prompt</button>
+                                        <button class="am-btn am-btn-secondary" id="doc-prompt-toggle">修改</button>
 
                                         <div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
                                             <div class="am-modal-dialog">
-                                                <div class="am-modal-hd">Amaze UI</div>
+                                                <div class="am-modal-hd">修改密码</div>
                                                 <div class="am-modal-bd">
-                                                    来来来，吐槽点啥吧
+                                                    当前用户密码是：1234<br>
+                                                    <label>请输入新密码</label>
                                                     <input type="text" class="am-modal-prompt-input">
                                                 </div>
                                                 <div class="am-modal-footer">
                                                     <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                                                    <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+                                                    <span class="am-modal-btn" data-am-modal-confirm>修改</span>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
-                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
+                                        <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-confirm'}">删除</button>
+
+                                        <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+                                            <div class="am-modal-dialog">
+                                                <div class="am-modal-hd">提示</div>
+                                                <div class="am-modal-bd">
+                                                    你确定要删除该账户吗？
+                                                </div>
+                                                <div class="am-modal-footer">
+                                                    <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                                                    <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -400,10 +413,7 @@
                 $('#my-prompt').modal({
                     relatedTarget: this,
                     onConfirm: function(e) {
-                        alert('你输入的是：' + e.data || '')
-                    },
-                    onCancel: function(e) {
-                        alert('不想说!');
+                        alert('该用户的新密码是：' + e.data || '')
                     }
                 });
             });
