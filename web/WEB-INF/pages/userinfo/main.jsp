@@ -5,10 +5,10 @@
   Time: 16:50
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -22,7 +22,7 @@
     <title>辽宁省优秀科技工作者评选系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
     <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.min.css"/>
     <link rel="stylesheet" href="<%=basePath%>assets/css/admin.css">
@@ -36,10 +36,13 @@
 
 <header class="am-topbar admin-header">
     <div class="am-topbar-brand">
-        <strong>辽宁省优秀科技工作者评选系统</strong> <small>后台管理中心</small>
+        <strong>辽宁省优秀科技工作者评选系统</strong>
+        <small>后台管理中心</small>
     </div>
 
-    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+            data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
+            class="am-icon-bars"></span></button>
 
     <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
@@ -52,7 +55,8 @@
                     <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
                 </ul>
             </li>
-            <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+            <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span
+                    class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
         </ul>
     </div>
 </header>
@@ -69,40 +73,57 @@
                 <li><a href="<%=basePath%>sbjman/main"><span class="am-icon-pencil-square-o"></span> 学科管理</a></li>
 
                 <li class="admin-parent">
-                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-male"></span> 候选人管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-male"></span>
+                        候选人管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
-                        <li><a href="<%=basePath%>candman/sbjman" class="am-cf"><span class="am-icon-cogs"></span> 候选人学科管理</a></li>
-                        <li><a href="<%=basePath%>candman/firstresult"><span class="am-icon-cube"></span> 候选人初评结果管理</a></li>
-                        <li><a href="<%=basePath%>candman/finalresult"><span class="am-icon-cubes"></span> 候选人终评结果管理</a></li>
+                        <li><a href="<%=basePath%>candman/sbjman" class="am-cf"><span class="am-icon-cogs"></span>
+                            候选人学科管理</a></li>
+                        <li><a href="<%=basePath%>candman/firstresult"><span class="am-icon-cube"></span> 候选人初评结果管理</a>
+                        </li>
+                        <li><a href="<%=basePath%>candman/finalresult"><span class="am-icon-cubes"></span> 候选人终评结果管理</a>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="admin-parent">
-                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span> 名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span>
+                        名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
-                        <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span> 推荐单位提交名额管理</a></li>
-                        <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span> 初评名额管理</a></li>
-                        <li><a href="<%=basePath%>quotaman/finalquota"><span class="am-icon-file"></span> 终评名额管理</a></li>
+                        <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span
+                                class="am-icon-file-o"></span> 推荐单位提交名额管理</a></li>
+                        <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span>
+                            初评名额管理</a></li>
+                        <li><a href="<%=basePath%>quotaman/finalquota"><span class="am-icon-file"></span> 终评名额管理</a>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="admin-parent">
-                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-bar-chart"></span> 投票管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span
+                            class="am-icon-bar-chart"></span> 投票管理 <span
+                            class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
-                        <li><a href="<%=basePath%>voteman/provote" class="am-cf"><span class="am-icon-check"></span> 专家组投票管理</a></li>
-                        <li><a href="<%=basePath%>voteman/councilvote"><span class="am-icon-circle"></span> 评审委员会投票管理</a></li>
+                        <li><a href="<%=basePath%>voteman/provote" class="am-cf"><span class="am-icon-check"></span>
+                            专家组投票管理</a></li>
+                        <li><a href="<%=basePath%>voteman/councilvote"><span class="am-icon-circle"></span>
+                            评审委员会投票管理</a></li>
                     </ul>
                 </li>
 
                 <li class="admin-parent">
-                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-building"></span> 推荐单位管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span
+                            class="am-icon-building"></span> 推荐单位管理 <span
+                            class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
-                        <li><a href="<%=basePath%>departman/citysciassoc" class="am-cf"><span class="am-icon-bank"></span> 市科协</a></li>
+                        <li><a href="<%=basePath%>departman/citysciassoc" class="am-cf"><span
+                                class="am-icon-bank"></span> 市科协</a></li>
                         <li><a href="<%=basePath%>departman/sciassoc"><span class="am-icon-circle"></span> 理科学会</a></li>
                         <li><a href="<%=basePath%>departman/engassoc"><span class="am-icon-magnet"></span> 工科学会</a></li>
                         <li><a href="<%=basePath%>departman/agriassoc"><span class="am-icon-tree"></span> 农林学会</a></li>
-                        <li><a href="<%=basePath%>departman/mediassoc"><span class="am-icon-plus-circle"></span> 医药学会</a></li>
-                        <li><a href="<%=basePath%>departman/crossassoc"><span class="am-icon-random"></span> 交叉学科学会</a></li>
+                        <li><a href="<%=basePath%>departman/mediassoc"><span class="am-icon-plus-circle"></span>
+                            医药学会</a></li>
+                        <li><a href="<%=basePath%>departman/crossassoc"><span class="am-icon-random"></span> 交叉学科学会</a>
+                        </li>
                     </ul>
                 </li>
 
@@ -120,107 +141,239 @@
     <div class="admin-content">
 
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong> / <small>管理推荐单位、评审专家、申报者账号</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong> /
+                <small>管理推荐单位、评审专家、申报者账号</small>
+            </div>
         </div>
 
         <div class="am-cf am-padding">
-            <a class="am-btn am-btn am-btn-primary"><i class="am-icon-plus"></i>增加推荐单位账号</a>
-            <a class="am-btn am-btn am-btn-success"><i class="am-icon-plus"></i>增加评审专家账号</a>
+            <form action="">
+                <a class="am-btn am-btn am-btn-primary"><i class="am-icon-plus"></i>增加推荐单位账号</a>
+                <a class="am-btn am-btn am-btn-success"><i class="am-icon-plus"></i>增加评审专家账号</a>
+            </form>
         </div>
 
         <div class="am-cf am-padding">
-            <table class="am-table">
-                <thead>
-                <tr>
-                    <th>序号</th>
-                    <th>真实姓名</th>
-                    <th>身份</th>
-                    <th>用户名</th>
-                    <th>最后登录ip</th>
-                    <th>最后登录时间</th>
-                    <th>登录次数</th>
-                    <th>管理员级别</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>天天</td>
-                    <td>评审专家</td>
-                    <td>Test1</td>
-                    <td>112.211.114.114</td>
-                    <td>2011-11-11 11:11</td>
-                    <td>12</td>
-                    <td>1</td>
-                    <td>修改 删除</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>天天</td>
-                    <td>评审专家</td>
-                    <td>Test1</td>
-                    <td>112.211.114.114</td>
-                    <td>2011-11-11 11:11</td>
-                    <td>12</td>
-                    <td>1</td>
-                    <td>修改 删除</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>天天</td>
-                    <td>评审专家</td>
-                    <td>Test1</td>
-                    <td>112.211.114.114</td>
-                    <td>2011-11-11 11:11</td>
-                    <td>12</td>
-                    <td>1</td>
-                    <td>修改 删除</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>天天</td>
-                    <td>评审专家</td>
-                    <td>Test1</td>
-                    <td>112.211.114.114</td>
-                    <td>2011-11-11 11:11</td>
-                    <td>12</td>
-                    <td>1</td>
-                    <td>修改 删除</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>天天</td>
-                    <td>评审专家</td>
-                    <td>Test1</td>
-                    <td>112.211.114.114</td>
-                    <td>2011-11-11 11:11</td>
-                    <td>12</td>
-                    <td>1</td>
-                    <td>修改 删除</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>天天</td>
-                    <td>评审专家</td>
-                    <td>Test1</td>
-                    <td>112.211.114.114</td>
-                    <td>2011-11-11 11:11</td>
-                    <td>12</td>
-                    <td>1</td>
-                    <td>修改 删除</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+            <div class="am-panel-group" id="accordion">
 
+                <!--推荐单位折叠面板-->
+                <div class="am-panel am-panel-secondary">
+                    <div class="am-panel-hd">
+                        <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
+                            推荐单位信息管理
+                        </h4>
+                    </div>
+                    <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">
+                        <div class="am-panel-bd">
+                            <table class="am-table">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>真实姓名</th>
+                                    <th>身份</th>
+                                    <th>用户名</th>
+                                    <th>最后登录ip</th>
+                                    <th>最后登录时间</th>
+                                    <th>登录次数</th>
+                                    <th>管理员级别</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>天天</td>
+                                    <td>推荐单位</td>
+                                    <td>Test1</td>
+                                    <td>112.211.114.114</td>
+                                    <td>2011-11-11 11:11</td>
+                                    <td>12</td>
+                                    <td>1</td>
+                                    <td>
+                                        <button class="am-btn am-btn-success" id="doc-prompt-toggle">Prompt</button>
+
+                                        <div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+                                            <div class="am-modal-dialog">
+                                                <div class="am-modal-hd">Amaze UI</div>
+                                                <div class="am-modal-bd">
+                                                    来来来，吐槽点啥吧
+                                                    <input type="text" class="am-modal-prompt-input">
+                                                </div>
+                                                <div class="am-modal-footer">
+                                                    <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                                                    <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
+                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>天天</td>
+                                    <td>推荐单位</td>
+                                    <td>Test1</td>
+                                    <td>112.211.114.114</td>
+                                    <td>2011-11-11 11:11</td>
+                                    <td>12</td>
+                                    <td>1</td>
+                                    <td>
+                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
+                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>天天</td>
+                                    <td>推荐单位</td>
+                                    <td>Test1</td>
+                                    <td>112.211.114.114</td>
+                                    <td>2011-11-11 11:11</td>
+                                    <td>12</td>
+                                    <td>1</td>
+                                    <td>
+                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
+                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--评审专家折叠面板-->
+                <div class="am-panel am-panel-secondary">
+                    <div class="am-panel-hd">
+                        <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
+                            评审专家信息管理
+                        </h4>
+                    </div>
+                    <div id="do-not-say-2" class="am-panel-collapse am-collapse">
+                        <div class="am-panel-bd">
+                            <table class="am-table">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>真实姓名</th>
+                                    <th>身份</th>
+                                    <th>用户名</th>
+                                    <th>最后登录ip</th>
+                                    <th>最后登录时间</th>
+                                    <th>登录次数</th>
+                                    <th>管理员级别</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>天天</td>
+                                    <td>评审专家</td>
+                                    <td>Test1</td>
+                                    <td>112.211.114.114</td>
+                                    <td>2011-11-11 11:11</td>
+                                    <td>12</td>
+                                    <td>1</td>
+                                    <td>
+                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
+                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>天天</td>
+                                    <td>评审专家</td>
+                                    <td>Test1</td>
+                                    <td>112.211.114.114</td>
+                                    <td>2011-11-11 11:11</td>
+                                    <td>12</td>
+                                    <td>1</td>
+                                    <td>
+                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
+                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>天天</td>
+                                    <td>评审专家</td>
+                                    <td>Test1</td>
+                                    <td>112.211.114.114</td>
+                                    <td>2011-11-11 11:11</td>
+                                    <td>12</td>
+                                    <td>1</td>
+                                    <td>
+                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
+                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!--申请者折叠面板-->
+                <div class="am-panel am-panel-secondary">
+                    <div class="am-panel-hd">
+                        <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
+                            申请者信息管理
+                        </h4>
+                    </div>
+                    <div id="do-not-say-3" class="am-panel-collapse am-collapse">
+                        <div class="am-panel-bd">
+                            <table class="am-table">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>真实姓名</th>
+                                    <th>身份</th>
+                                    <th>用户名</th>
+                                    <th>最后登录ip</th>
+                                    <th>最后登录时间</th>
+                                    <th>登录次数</th>
+                                    <th>管理员级别</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>天天</td>
+                                    <td>申请者</td>
+                                    <td>Test1</td>
+                                    <td>112.211.114.114</td>
+                                    <td>2011-11-11 11:11</td>
+                                    <td>12</td>
+                                    <td>1</td>
+                                    <td>
+                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
+                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
 
         <!-- content end -->
 
     </div>
 
-    <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+    <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu"
+       data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
     <footer>
         <hr>
@@ -241,6 +394,20 @@
     <!--<![endif]-->
     <script src="<%=basePath%>assets/js/app.js"></script>
     <script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
-
+    <script>
+        $(function() {
+            $('#doc-prompt-toggle').on('click', function() {
+                $('#my-prompt').modal({
+                    relatedTarget: this,
+                    onConfirm: function(e) {
+                        alert('你输入的是：' + e.data || '')
+                    },
+                    onCancel: function(e) {
+                        alert('不想说!');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
