@@ -19,10 +19,18 @@ public class SubjectManagement {
     GroupDao groupDao=new GroupDaoImpl();
 
     @RequestMapping(value = "main",method = {RequestMethod.GET})
-    public ModelAndView getMainPage(ModelAndView modelAndView){
+    public ModelAndView getMainPage(ModelAndView modelAndView,String page){
+        int intpage;
+        if(page==null){
+            intpage=1;
+        }else{
+            intpage=Integer.parseInt(page);
+        }
         modelAndView.setViewName("sbjman/main");
-        ArrayList<SubjectGroup> subjectGroups=groupDao.getAllSubjectGroup();
+        ArrayList<SubjectGroup> subjectGroups=groupDao.getAllSubjectGroup(intpage,10);
         modelAndView.addObject("subjectGroups",subjectGroups);
+        modelAndView.addObject("amount", groupDao.getGroupAmount());
+        modelAndView.addObject("pages",intpage);
         return modelAndView;
     }
 
@@ -40,10 +48,7 @@ public class SubjectManagement {
             return modelAndView;
         }
         groupDao.deleteSubjectGroupByName(name);
-        ArrayList<SubjectGroup> subjectGroups=groupDao.getAllSubjectGroup();
-        modelAndView.addObject("subjectGroups",subjectGroups);
-        modelAndView.setViewName("sbjman/main");
-        return modelAndView;
+        return getMainPage(modelAndView,"1");
     }
 
     @RequestMapping(value = "toChangeSubjectGroup",method = {RequestMethod.GET})
@@ -78,9 +83,7 @@ public class SubjectManagement {
             modelAndView.addObject("message",message);
             return modelAndView;
         }
-        ArrayList<SubjectGroup> subjectGroups=groupDao.getAllSubjectGroup();
-        modelAndView.addObject("subjectGroups",subjectGroups);
-        return modelAndView;
+        return getMainPage(modelAndView,"1");
     }
 
     @RequestMapping(value = "changeSubjectGroup",method = RequestMethod.POST)
@@ -102,8 +105,6 @@ public class SubjectManagement {
             modelAndView.addObject("message",message);
             return modelAndView;
         }
-        ArrayList<SubjectGroup> subjectGroups=groupDao.getAllSubjectGroup();
-        modelAndView.addObject("subjectGroups",subjectGroups);
-        return modelAndView;
+        return getMainPage(modelAndView,"1");
     }
 }
