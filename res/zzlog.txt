@@ -1,0 +1,26 @@
+zz更新日志:
+
+1:51 2015/5/9
+
+#创建了数据库连接池webapp.utils.DbConnector
+#[不推荐-->]想要直接拿到数据库连接池可以调用 DbConnector.getConnection()
+#请各位在webapp.util.DbConnector.java中修改开始四条语句为各位本地数据库环境
+#->>private static String dburl="localhost";  //数据库ip 
+    private static String dbname= "webapp"; //数据库名
+    private static String dbusername="root";//数据库用户名
+    private static String dbpassword="root";//数据库密码
+#请在以后提交代码时不要提交这份文件
+
+#-->在将res/*.sql导入数据库中后 请将下列三条语句插入您的数据库
+
+insert into opentime values('proposer','2011-11-11 21:12:21',"2012-12-12 12:12");
+insert into opentime values('expert','2011-11-11 21:12:21',"2012-12-12 12:12");
+insert into opentime values('recunits','2011-11-11 21:12:21',"2012-12-12 12:12");
+
+###这起的翔一样的名字还要让我查词典 \###
+
+#更新二:
+将所有数据连接建立在了webapp.dao下 此目录下是接口 实现放在./impl中
+
+#更新三:
+基本完成了整个系统管理功能 许多细节还要完善
