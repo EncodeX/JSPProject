@@ -148,8 +148,8 @@
 
         <div class="am-cf am-padding">
             <form action="">
-                <a class="am-btn am-btn am-btn-primary"><i class="am-icon-plus"></i>增加推荐单位账号</a>
-                <a class="am-btn am-btn am-btn-success"><i class="am-icon-plus"></i>增加评审专家账号</a>
+                <a class="am-btn am-btn am-btn-secondary"><i class="am-icon-plus"></i>增加推荐单位账号</a>
+                <a class="am-btn am-btn am-btn-secondary"><i class="am-icon-plus"></i>增加评审专家账号</a>
             </form>
         </div>
 
@@ -158,222 +158,200 @@
 
                 <!--推荐单位折叠面板-->
                 <div class="am-panel am-panel-secondary">
-                    <div class="am-panel-hd">
-                        <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
-                            推荐单位信息管理
-                        </h4>
-                    </div>
-                    <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">
-                        <div class="am-panel-bd">
-                            <table class="am-table">
-                                <thead>
-                                <tr>
-                                    <th>序号</th>
-                                    <th>真实姓名</th>
-                                    <th>身份</th>
-                                    <th>用户名</th>
-                                    <th>最后登录ip</th>
-                                    <th>最后登录时间</th>
-                                    <th>登录次数</th>
-                                    <th>管理员级别</th>
-                                    <th>操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>天天</td>
-                                    <td>推荐单位</td>
-                                    <td>Test1</td>
-                                    <td>112.211.114.114</td>
-                                    <td>2011-11-11 11:11</td>
-                                    <td>12</td>
-                                    <td>1</td>
-                                    <td>
-                                        <button class="am-btn am-btn-secondary" id="doc-prompt-toggle">修改</button>
-
-                                        <div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
-                                            <div class="am-modal-dialog">
-                                                <div class="am-modal-hd">修改密码</div>
-                                                <div class="am-modal-bd">
-                                                    当前用户密码是：1234<br>
-                                                    <label>请输入新密码</label>
-                                                    <input type="text" class="am-modal-prompt-input">
-                                                </div>
-                                                <div class="am-modal-footer">
-                                                    <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                                                    <span class="am-modal-btn" data-am-modal-confirm>修改</span>
-                                                </div>
+                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">推荐单位信息管理<span class="am-icon-chevron-down am-fr" ></span></div>
+                    <div class="am-panel-bd am-collapse" id="collapse-panel-1">
+                        <table class="am-table">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>真实姓名</th>
+                                <th>身份</th>
+                                <th>用户名</th>
+                                <th>最后登录ip</th>
+                                <th>最后登录时间</th>
+                                <th>登录次数</th>
+                                <th>管理员级别</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>天天</td>
+                                <td>推荐单位</td>
+                                <td>Test1</td>
+                                <td>112.211.114.114</td>
+                                <td>2011-11-11 11:11</td>
+                                <td>12</td>
+                                <td>1</td>
+                                <td>
+                                    <button class="am-btn am-btn-secondary" id="recunitmodify-toggle1">修改</button>
+                                    <div class="am-modal am-modal-prompt" tabindex="-1" id="my-recunitmodify1">
+                                        <div class="am-modal-dialog">
+                                            <div class="am-modal-hd">修改密码</div>
+                                            <div class="am-modal-bd">
+                                                当前用户密码是：1234<br>
+                                                <label>请输入新密码</label>
+                                                <input type="text" class="am-modal-prompt-input">
+                                            </div>
+                                            <div class="am-modal-footer">
+                                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                                                <span class="am-modal-btn" data-am-modal-confirm>修改</span>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-confirm'}">删除</button>
-
-                                        <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
-                                            <div class="am-modal-dialog">
-                                                <div class="am-modal-hd">提示</div>
-                                                <div class="am-modal-bd">
-                                                    你确定要删除该账户吗？
-                                                </div>
-                                                <div class="am-modal-footer">
-                                                    <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                                                    <span class="am-modal-btn" data-am-modal-confirm>确定</span>
-                                                </div>
+                                    <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-recunitremove1'}">删除</button>
+                                    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-recunitremove1">
+                                        <div class="am-modal-dialog">
+                                            <div class="am-modal-hd">提示</div>
+                                            <div class="am-modal-bd">
+                                                你确定要删除该账户吗？
+                                            </div>
+                                            <div class="am-modal-footer">
+                                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                                                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
                                             </div>
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>天天</td>
-                                    <td>推荐单位</td>
-                                    <td>Test1</td>
-                                    <td>112.211.114.114</td>
-                                    <td>2011-11-11 11:11</td>
-                                    <td>12</td>
-                                    <td>1</td>
-                                    <td>
-                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
-                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>天天</td>
-                                    <td>推荐单位</td>
-                                    <td>Test1</td>
-                                    <td>112.211.114.114</td>
-                                    <td>2011-11-11 11:11</td>
-                                    <td>12</td>
-                                    <td>1</td>
-                                    <td>
-                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
-                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
-                                    </td>
-                                </tr>
-
-                                </tbody>
-                            </table>
-
-                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
                 <!--评审专家折叠面板-->
                 <div class="am-panel am-panel-secondary">
-                    <div class="am-panel-hd">
-                        <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
-                            评审专家信息管理
-                        </h4>
-                    </div>
-                    <div id="do-not-say-2" class="am-panel-collapse am-collapse">
-                        <div class="am-panel-bd">
-                            <table class="am-table">
-                                <thead>
-                                <tr>
-                                    <th>序号</th>
-                                    <th>真实姓名</th>
-                                    <th>身份</th>
-                                    <th>用户名</th>
-                                    <th>最后登录ip</th>
-                                    <th>最后登录时间</th>
-                                    <th>登录次数</th>
-                                    <th>管理员级别</th>
-                                    <th>操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>天天</td>
-                                    <td>评审专家</td>
-                                    <td>Test1</td>
-                                    <td>112.211.114.114</td>
-                                    <td>2011-11-11 11:11</td>
-                                    <td>12</td>
-                                    <td>1</td>
-                                    <td>
-                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
-                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>天天</td>
-                                    <td>评审专家</td>
-                                    <td>Test1</td>
-                                    <td>112.211.114.114</td>
-                                    <td>2011-11-11 11:11</td>
-                                    <td>12</td>
-                                    <td>1</td>
-                                    <td>
-                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
-                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>天天</td>
-                                    <td>评审专家</td>
-                                    <td>Test1</td>
-                                    <td>112.211.114.114</td>
-                                    <td>2011-11-11 11:11</td>
-                                    <td>12</td>
-                                    <td>1</td>
-                                    <td>
-                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
-                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
-                                    </td>
-                                </tr>
+                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-2'}">评审专家信息管理<span class="am-icon-chevron-down am-fr" ></span></div>
+                    <div class="am-panel-bd am-collapse" id="collapse-panel-2">
+                        <table class="am-table">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>真实姓名</th>
+                                <th>身份</th>
+                                <th>用户名</th>
+                                <th>最后登录ip</th>
+                                <th>最后登录时间</th>
+                                <th>登录次数</th>
+                                <th>管理员级别</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>天天</td>
+                                <td>推荐单位</td>
+                                <td>Test1</td>
+                                <td>112.211.114.114</td>
+                                <td>2011-11-11 11:11</td>
+                                <td>12</td>
+                                <td>1</td>
+                                <td>
+                                    <button class="am-btn am-btn-secondary" id="promodify-toggle1">修改</button>
 
-                                </tbody>
-                            </table>
-                        </div>
+                                    <div class="am-modal am-modal-prompt" tabindex="-1" id="my-promodify1">
+                                        <div class="am-modal-dialog">
+                                            <div class="am-modal-hd">修改密码</div>
+                                            <div class="am-modal-bd">
+                                                当前用户密码是：1234<br>
+                                                <label>请输入新密码</label>
+                                                <input type="text" class="am-modal-prompt-input">
+                                            </div>
+                                            <div class="am-modal-footer">
+                                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                                                <span class="am-modal-btn" data-am-modal-confirm>修改</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-proremove1'}">删除</button>
+
+                                    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-proremove1">
+                                        <div class="am-modal-dialog">
+                                            <div class="am-modal-hd">提示</div>
+                                            <div class="am-modal-bd">
+                                                你确定要删除该账户吗？
+                                            </div>
+                                            <div class="am-modal-footer">
+                                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                                                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
                 <!--申请者折叠面板-->
                 <div class="am-panel am-panel-secondary">
-                    <div class="am-panel-hd">
-                        <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
-                            申请者信息管理
-                        </h4>
-                    </div>
-                    <div id="do-not-say-3" class="am-panel-collapse am-collapse">
-                        <div class="am-panel-bd">
-                            <table class="am-table">
-                                <thead>
-                                <tr>
-                                    <th>序号</th>
-                                    <th>真实姓名</th>
-                                    <th>身份</th>
-                                    <th>用户名</th>
-                                    <th>最后登录ip</th>
-                                    <th>最后登录时间</th>
-                                    <th>登录次数</th>
-                                    <th>管理员级别</th>
-                                    <th>操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>天天</td>
-                                    <td>申请者</td>
-                                    <td>Test1</td>
-                                    <td>112.211.114.114</td>
-                                    <td>2011-11-11 11:11</td>
-                                    <td>12</td>
-                                    <td>1</td>
-                                    <td>
-                                        <a href="#" class="am-btn am-btn-secondary" role="button">修改</a>
-                                        <a href="#" class="am-btn am-btn-danger" role="button">删除</a>
-                                    </td>
-                                </tr>
+                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">评审专家信息管理<span class="am-icon-chevron-down am-fr" ></span></div>
+                    <div class="am-panel-bd am-collapse" id="collapse-panel-3">
+                        <table class="am-table">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>真实姓名</th>
+                                <th>身份</th>
+                                <th>用户名</th>
+                                <th>最后登录ip</th>
+                                <th>最后登录时间</th>
+                                <th>登录次数</th>
+                                <th>管理员级别</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>天天</td>
+                                <td>推荐单位</td>
+                                <td>Test1</td>
+                                <td>112.211.114.114</td>
+                                <td>2011-11-11 11:11</td>
+                                <td>12</td>
+                                <td>1</td>
+                                <td>
+                                    <button class="am-btn am-btn-secondary" id="candmodify-toggle1">修改</button>
 
-                                </tbody>
-                            </table>
-                        </div>
+                                    <div class="am-modal am-modal-prompt" tabindex="-1" id="my-candmodify1">
+                                        <div class="am-modal-dialog">
+                                            <div class="am-modal-hd">修改密码</div>
+                                            <div class="am-modal-bd">
+                                                当前用户密码是：1234<br>
+                                                <label>请输入新密码</label>
+                                                <input type="text" class="am-modal-prompt-input">
+                                            </div>
+                                            <div class="am-modal-footer">
+                                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                                                <span class="am-modal-btn" data-am-modal-confirm>修改</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-candremove1'}">删除</button>
+
+                                    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-candremove1">
+                                        <div class="am-modal-dialog">
+                                            <div class="am-modal-hd">提示</div>
+                                            <div class="am-modal-bd">
+                                                你确定要删除该账户吗？
+                                            </div>
+                                            <div class="am-modal-footer">
+                                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                                                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -409,14 +387,31 @@
     <script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
     <script>
         $(function() {
-            $('#doc-prompt-toggle').on('click', function() {
-                $('#my-prompt').modal({
+            $('#recunitmodify-toggle1').on('click', function() {
+                $('#my-recunitmodify1').modal({
                     relatedTarget: this,
                     onConfirm: function(e) {
                         alert('该用户的新密码是：' + e.data || '')
                     }
                 });
             });
+            $('#promodify-toggle1').on('click', function() {
+                $('#my-promodify1').modal({
+                    relatedTarget: this,
+                    onConfirm: function(e) {
+                        alert('该用户的新密码是：' + e.data || '')
+                    }
+                });
+            });
+            $('#candmodify-toggle1').on('click', function() {
+                $('#my-candmodify1').modal({
+                    relatedTarget: this,
+                    onConfirm: function(e) {
+                        alert('该用户的新密码是：' + e.data || '')
+                    }
+                });
+            });
+
         });
     </script>
 </body>
