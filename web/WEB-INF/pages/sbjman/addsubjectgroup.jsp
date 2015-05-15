@@ -119,33 +119,15 @@
     <div class="admin-content">
 
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学科管理</strong> / <small>管理学科组信息</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学科管理</strong> / <small>管理学科组信息/增加学科组</small></div>
         </div>
 
         <div class="am-cf am-padding">
-            <a class="am-btn am-btn am-btn-primary" href="<%=basePath%>sbjman/toAddSubjectGroup"><i class="am-icon-plus"></i>增加学科组</a>
-        </div>
-
-        <div class="am-cf am-padding">
-            <table class="am-table">
-                <thead>
-                <tr>
-                    <th>序号</th>
-                    <th>组名</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${subjectGroups}" var="subjectGroup" varStatus="status">
-                    <tr>
-                        <td>${status.count}</td>
-                        <td>${subjectGroup.groName}</td>
-                        <td><a href="<%=basePath%>sbjman/toChangeSubjectGroup?name=${subjectGroup.groName}">修改</a>
-                            <a href="<%=basePath%>sbjman/deleteSubjectGroup?name=${subjectGroup.groName}">删除</a></td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+            <form method="post" action="<%=basePath%>sbjman/addSubjectGroup">
+                学科组名称<input type="text" name="groName"><br>
+                学科组提交名额<input type="text" name="subNum"><br>
+                <input type="submit" value="提交">
+            </form>
         </div>
 
 
