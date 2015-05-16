@@ -14,18 +14,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!-- content start -->
 <div class="admin-content">
-
     <div class="am-cf am-padding">
         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学科管理</strong> / <small>管理学科组信息</small></div>
     </div>
-
     <div class="am-cf am-padding">
         <a class="am-btn am-btn am-btn-primary" href="<%=basePath%>sbjman/toAddSubjectGroup"><i class="am-icon-plus"></i>增加学科组</a>
     </div>
-
     <div class="am-cf am-padding">
         <table class="am-table">
             <thead>
@@ -46,7 +42,6 @@
             </c:forEach>
             </tbody>
         </table>
-
         <%--分页--%>
         <ul class="am-pagination am-pagination-right">
             <%
@@ -95,8 +90,5 @@
             }
         %>
         </ul>
-
     </div>
-
 </div>
-
