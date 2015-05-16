@@ -8,6 +8,8 @@ import java.util.*;
  */
 public interface GroupDao {
     ArrayList<SubjectGroup> getAllSubjectGroup();
+    ArrayList<SubjectGroup> getAllSubjectGroup(int page,int numPerPage);
+    int getGroupAmount();
     boolean isExist(String name);
     SubjectGroup getSubjectGroupByName(String name);
     void deleteSubjectGroupByName(String name);
