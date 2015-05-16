@@ -28,6 +28,7 @@
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
     <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/app.css">
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -35,7 +36,7 @@
     以获得更好的体验！</p>
 <![endif]-->
 
-<header class="am-topbar admin-header">
+<header class="am-topbar admin-header" style="position: fixed;width: 100%;">
     <div class="am-topbar-brand">
         <strong>辽宁省优秀科技工作者评选系统</strong> <small>后台管理中心</small>
     </div>
@@ -60,7 +61,7 @@
 
 <div class="am-cf admin-main">
     <!-- sidebar start -->
-    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas" style="position: fixed;margin-top: 51px;background-color: #fff;">
         <div class="am-offcanvas-bar admin-offcanvas-bar">
             <ul class="am-list admin-sidebar-list">
                 <li><a href="<%=basePath%>mainindex"><span class="am-icon-home"></span> 首页</a></li>
@@ -108,16 +109,13 @@
 
 
             </ul>
-
-
-            <div class="am-panel am-panel-default admin-sidebar-panel">
             </div>
         </div>
     </div>
     <!-- sidebar end -->
 
     <!-- content start -->
-    <div class="admin-content">
+    <div class="admin-content"style="margin-left: 261px; margin-top: 51px;">
 
         <div class="am-cf am-padding">
             <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>一些常用模块</small></div>
@@ -365,7 +363,7 @@
 
 <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
-<footer>
+<footer style="width: 100%;margin-left: 261px;">
     <hr>
     <p class="am-padding-left">© 2015 --辽宁省科学技术协会--.</p>
 </footer>
