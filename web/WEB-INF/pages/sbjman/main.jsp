@@ -123,7 +123,7 @@
         </div>
 
         <div class="am-cf am-padding">
-            <a class="am-btn am-btn am-btn-primary" href="<%=basePath%>sbjman/toAddSubjectGroup"><i class="am-icon-plus"></i>增加学科组</a>
+            <a class="am-btn am-btn am-btn-primary"><i class="am-icon-plus"></i>增加学科组</a>
         </div>
 
         <div class="am-cf am-padding">
@@ -136,14 +136,37 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${subjectGroups}" var="subjectGroup" varStatus="status">
-                    <tr>
-                        <td>${status.count}</td>
-                        <td>${subjectGroup.groName}</td>
-                        <td><a href="<%=basePath%>sbjman/toChangeSubjectGroup?name=${subjectGroup.groName}">修改</a>
-                            <a href="<%=basePath%>sbjman/deleteSubjectGroup?name=${subjectGroup.groName}">删除</a></td>
-                    </tr>
-                </c:forEach>
+                <tr>
+                    <td>1</td>
+                    <td>理工一组</td>
+                    <td>修改 删除</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>理工二组</td>
+                    <td>修改 删除</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>理工三组</td>
+                    <td>修改 删除</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>农林组</td>
+                    <td>修改 删除</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>医药组</td>
+                    <td>修改 删除</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>交叉组</td>
+                    <td>修改 删除</td>
+                </tr>
+
                 </tbody>
             </table>
         </div>
