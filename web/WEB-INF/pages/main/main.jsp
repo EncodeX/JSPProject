@@ -61,60 +61,58 @@
 
 <div class="am-cf admin-main">
     <!-- sidebar start -->
-    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas" style="position: fixed;margin-top: 51px;background-color: #fff;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
-        <div class="am-offcanvas-bar admin-offcanvas-bar am-sticky" style="width: 260px;">
-            <div class="am-nav" style="width: 260px; top: 51px; border-right: 1px solid #cecece; overflow-x: hidden; overflow-y: auto; position: fixed; bottom: 0; left: 0;">
-                <ul class="am-list admin-sidebar-list">
-                    <li><a href="<%=basePath%>mainindex"><span class="am-icon-home"></span> 首页</a></li>
-                    <li><a href="<%=basePath%>sysman/main"><span class="am-icon-gear"></span> 系统管理</a></li>
-                    <li><a href="<%=basePath%>userinfo/main"><span class="am-icon-users"></span> 用户信息管理</a></li>
-                    <li><a href="<%=basePath%>sbjman/main"><span class="am-icon-pencil-square-o"></span> 学科管理</a></li>
+    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas" style="width: 20%;position: fixed;margin-top: 51px;background-color: #fff;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
+        <div class="am-nav" style="width: 20%; top: 51px; border-right: 1px solid #cecece; overflow-x: hidden; overflow-y: auto; position: fixed; bottom: 0; left: 0;">
+            <ul class="am-list admin-sidebar-list">
+                <li><a href="<%=basePath%>mainindex"><span class="am-icon-home"></span> 首页</a></li>
+                <li><a href="<%=basePath%>sysman/main"><span class="am-icon-gear"></span> 系统管理</a></li>
+                <li><a href="<%=basePath%>userinfo/main"><span class="am-icon-users"></span> 用户信息管理</a></li>
+                <li><a href="<%=basePath%>sbjman/main"><span class="am-icon-pencil-square-o"></span> 学科管理</a></li>
 
-                    <li class="admin-parent">
-                        <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-male"></span> 候选人管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
-                            <li><a href="<%=basePath%>candman/sbjman" class="am-cf"><span class="am-icon-cogs"></span> 候选人学科管理</a></li>
-                            <li><a href="<%=basePath%>candman/firstresult"><span class="am-icon-cube"></span> 候选人初评结果管理</a></li>
-                            <li><a href="<%=basePath%>candman/finalresult"><span class="am-icon-cubes"></span> 候选人终评结果管理</a></li>
-                        </ul>
-                    </li>
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-male"></span> 候选人管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
+                        <li><a href="<%=basePath%>candman/sbjman" class="am-cf"><span class="am-icon-cogs"></span> 候选人学科管理</a></li>
+                        <li><a href="<%=basePath%>candman/firstresult"><span class="am-icon-cube"></span> 候选人初评结果管理</a></li>
+                        <li><a href="<%=basePath%>candman/finalresult"><span class="am-icon-cubes"></span> 候选人终评结果管理</a></li>
+                    </ul>
+                </li>
 
-                    <li class="admin-parent">
-                        <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span> 名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
-                            <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span> 推荐单位提交名额管理</a></li>
-                            <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span> 初评名额管理</a></li>
-                            <li><a href="<%=basePath%>quotaman/finalquota"><span class="am-icon-file"></span> 终评名额管理</a></li>
-                        </ul>
-                    </li>
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span> 名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
+                        <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span> 推荐单位提交名额管理</a></li>
+                        <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span> 初评名额管理</a></li>
+                        <li><a href="<%=basePath%>quotaman/finalquota"><span class="am-icon-file"></span> 终评名额管理</a></li>
+                    </ul>
+                </li>
 
-                    <li class="admin-parent">
-                        <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-bar-chart"></span> 投票管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
-                            <li><a href="<%=basePath%>voteman/provote" class="am-cf"><span class="am-icon-check"></span> 专家组投票管理</a></li>
-                            <li><a href="<%=basePath%>voteman/councilvote"><span class="am-icon-circle"></span> 评审委员会投票管理</a></li>
-                        </ul>
-                    </li>
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-bar-chart"></span> 投票管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
+                        <li><a href="<%=basePath%>voteman/provote" class="am-cf"><span class="am-icon-check"></span> 专家组投票管理</a></li>
+                        <li><a href="<%=basePath%>voteman/councilvote"><span class="am-icon-circle"></span> 评审委员会投票管理</a></li>
+                    </ul>
+                </li>
 
-                    <li class="admin-parent">
-                        <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-building"></span> 推荐单位管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
-                            <li><a href="<%=basePath%>departman/citysciassoc" class="am-cf"><span class="am-icon-bank"></span> 市科协</a></li>
-                            <li><a href="<%=basePath%>departman/sciassoc"><span class="am-icon-circle"></span> 理科学会</a></li>
-                            <li><a href="<%=basePath%>departman/engassoc"><span class="am-icon-magnet"></span> 工科学会</a></li>
-                            <li><a href="<%=basePath%>departman/agriassoc"><span class="am-icon-tree"></span> 农林学会</a></li>
-                            <li><a href="<%=basePath%>departman/mediassoc"><span class="am-icon-plus-circle"></span> 医药学会</a></li>
-                            <li><a href="<%=basePath%>departman/crossassoc"><span class="am-icon-random"></span> 交叉学科学会</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-building"></span> 推荐单位管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
+                        <li><a href="<%=basePath%>departman/citysciassoc" class="am-cf"><span class="am-icon-bank"></span> 市科协</a></li>
+                        <li><a href="<%=basePath%>departman/sciassoc"><span class="am-icon-circle"></span> 理科学会</a></li>
+                        <li><a href="<%=basePath%>departman/engassoc"><span class="am-icon-magnet"></span> 工科学会</a></li>
+                        <li><a href="<%=basePath%>departman/agriassoc"><span class="am-icon-tree"></span> 农林学会</a></li>
+                        <li><a href="<%=basePath%>departman/mediassoc"><span class="am-icon-plus-circle"></span> 医药学会</a></li>
+                        <li><a href="<%=basePath%>departman/crossassoc"><span class="am-icon-random"></span> 交叉学科学会</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
     <!-- sidebar end -->
 
     <!-- content start -->
-    <div class="admin-content"style="margin-left: 261px; margin-top: 51px;">
+    <div class="admin-content" style="margin-top: 51px;margin-left: 20%;width: 80%;">
 
         <div class="am-cf am-padding">
             <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>一些常用模块</small></div>
@@ -362,7 +360,7 @@
 
 <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
-<footer style="width: 100%;margin-left: 261px;">
+<footer style="margin-left: 20%;width: 80%;">
     <hr>
     <p class="am-padding-left">© 2015 --辽宁省科学技术协会--.</p>
 </footer>
