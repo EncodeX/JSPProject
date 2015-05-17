@@ -24,9 +24,13 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+
     <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.min.css"/>
     <link rel="stylesheet" href="<%=basePath%>assets/css/admin.css">
     <link rel="stylesheet" href="<%=basePath%>assets/css/amazeui.datetimepicker.css">
+    <link rel="stylesheet" href="<%=basePath%>assets/css/app.css">
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -34,7 +38,8 @@
     以获得更好的体验！</p>
 <![endif]-->
 
-<header class="am-topbar admin-header">
+<header class="am-topbar admin-header"
+        style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 9999;">
     <div class="am-topbar-brand">
         <strong>辽宁省优秀科技工作者评选系统</strong>
         <small>后台管理中心</small>
@@ -62,84 +67,70 @@
 </header>
 
 <div class="am-cf admin-main">
-
     <!-- sidebar start -->
-    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
-        <div class="am-offcanvas-bar admin-offcanvas-bar">
-            <ul class="am-list admin-sidebar-list">
-                <li><a href="<%=basePath%>mainindex"><span class="am-icon-home"></span> 首页</a></li>
-                <li><a href="<%=basePath%>sysman/main"><span class="am-icon-gear"></span> 系统管理</a></li>
-                <li><a href="<%=basePath%>userinfo/main"><span class="am-icon-users"></span> 用户信息管理</a></li>
-                <li><a href="<%=basePath%>sbjman/main"><span class="am-icon-pencil-square-o"></span> 学科管理</a></li>
+    <div class="am-nav"
+         style="min-width: 260px; top: 51px; border-right: 1px solid #cecece; overflow-x: hidden; overflow-y: auto; position: fixed; bottom: 51px; left: 0;z-index: 1000;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;background: #f3f3f3;">
+        <ul class="am-list admin-sidebar-list">
+            <li><a href="<%=basePath%>mainindex"><span class="am-icon-home"></span> 首页</a></li>
+            <li><a href="<%=basePath%>sysman/main"><span class="am-icon-gear"></span> 系统管理</a></li>
+            <li><a href="<%=basePath%>userinfo/main"><span class="am-icon-users"></span> 用户信息管理</a></li>
+            <li><a href="<%=basePath%>sbjman/main"><span class="am-icon-pencil-square-o"></span> 学科管理</a></li>
 
-                <li class="admin-parent">
-                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-male"></span>
-                        候选人管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                    <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
-                        <li><a href="<%=basePath%>candman/sbjman" class="am-cf"><span class="am-icon-cogs"></span>
-                            候选人学科管理</a></li>
-                        <li><a href="<%=basePath%>candman/firstresult"><span class="am-icon-cube"></span> 候选人初评结果管理</a>
-                        </li>
-                        <li><a href="<%=basePath%>candman/finalresult"><span class="am-icon-cubes"></span> 候选人终评结果管理</a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="admin-parent">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-male"></span> 候选人管理
+                    <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
+                    <li><a href="<%=basePath%>candman/sbjman" class="am-cf"><span class="am-icon-cogs"></span>
+                        候选人学科管理</a></li>
+                    <li><a href="<%=basePath%>candman/firstresult"><span class="am-icon-cube"></span> 候选人初评结果管理</a></li>
+                    <li><a href="<%=basePath%>candman/finalresult"><span class="am-icon-cubes"></span> 候选人终评结果管理</a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="admin-parent">
-                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span>
-                        名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                    <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
-                        <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span
-                                class="am-icon-file-o"></span> 推荐单位提交名额管理</a></li>
-                        <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span>
-                            初评名额管理</a></li>
-                        <li><a href="<%=basePath%>quotaman/finalquota"><span class="am-icon-file"></span> 终评名额管理</a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="admin-parent">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span>
+                    名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
+                    <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span>
+                        推荐单位提交名额管理</a></li>
+                    <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span> 初评名额管理</a>
+                    </li>
+                    <li><a href="<%=basePath%>quotaman/finalquota"><span class="am-icon-file"></span> 终评名额管理</a></li>
+                </ul>
+            </li>
 
-                <li class="admin-parent">
-                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span
-                            class="am-icon-bar-chart"></span> 投票管理 <span
-                            class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                    <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
-                        <li><a href="<%=basePath%>voteman/provote" class="am-cf"><span class="am-icon-check"></span>
-                            专家组投票管理</a></li>
-                        <li><a href="<%=basePath%>voteman/councilvote"><span class="am-icon-circle"></span>
-                            评审委员会投票管理</a></li>
-                    </ul>
-                </li>
+            <li class="admin-parent">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-bar-chart"></span>
+                    投票管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
+                    <li><a href="<%=basePath%>voteman/provote" class="am-cf"><span class="am-icon-check"></span> 专家组投票管理</a>
+                    </li>
+                    <li><a href="<%=basePath%>voteman/councilvote"><span class="am-icon-circle"></span> 评审委员会投票管理</a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="admin-parent">
-                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span
-                            class="am-icon-building"></span> 推荐单位管理 <span
-                            class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                    <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
-                        <li><a href="<%=basePath%>departman/citysciassoc" class="am-cf"><span
-                                class="am-icon-bank"></span> 市科协</a></li>
-                        <li><a href="<%=basePath%>departman/sciassoc"><span class="am-icon-circle"></span> 理科学会</a></li>
-                        <li><a href="<%=basePath%>departman/engassoc"><span class="am-icon-magnet"></span> 工科学会</a></li>
-                        <li><a href="<%=basePath%>departman/agriassoc"><span class="am-icon-tree"></span> 农林学会</a></li>
-                        <li><a href="<%=basePath%>departman/mediassoc"><span class="am-icon-plus-circle"></span>
-                            医药学会</a></li>
-                        <li><a href="<%=basePath%>departman/crossassoc"><span class="am-icon-random"></span> 交叉学科学会</a>
-                        </li>
-                    </ul>
-                </li>
-
-
-            </ul>
-
-
-            <div class="am-panel am-panel-default admin-sidebar-panel">
-            </div>
-        </div>
+            <li class="admin-parent">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-building"></span>
+                    推荐单位管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
+                    <li><a href="<%=basePath%>departman/citysciassoc" class="am-cf"><span class="am-icon-bank"></span>
+                        市科协</a></li>
+                    <li><a href="<%=basePath%>departman/sciassoc"><span class="am-icon-circle"></span> 理科学会</a></li>
+                    <li><a href="<%=basePath%>departman/engassoc"><span class="am-icon-magnet"></span> 工科学会</a></li>
+                    <li><a href="<%=basePath%>departman/agriassoc"><span class="am-icon-tree"></span> 农林学会</a></li>
+                    <li><a href="<%=basePath%>departman/mediassoc"><span class="am-icon-plus-circle"></span> 医药学会</a>
+                    </li>
+                    <li><a href="<%=basePath%>departman/crossassoc"><span class="am-icon-random"></span> 交叉学科学会</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <!-- sidebar end -->
 
     <!-- content start -->
     <div class="admin-content">
-
         <div class="am-cf am-padding">
             <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong> /
                 <small>管理推荐单位、评审专家、申报者账号</small>
@@ -148,7 +139,23 @@
 
         <div class="am-cf am-padding">
             <form action="">
-                <a class="am-btn am-btn am-btn-secondary"><i class="am-icon-plus"></i>增加推荐单位账号</a>
+                <button class="am-btn am-btn-secondary" data-am-modal="{target: '#my-popup'}"><i
+                        class="am-icon-plus"></i>增加推荐单位账号
+                </button>
+
+                <div class="am-popup" id="my-popup">
+                    <div class="am-popup-inner">
+                        <div class="am-popup-hd">
+                            <h4 class="am-popup-title">增加推荐单位账号</h4>
+      <span data-am-modal-close
+            class="am-close">&times;</span>
+
+                        </div>
+                        <div class="am-popup-bd">
+                            hahaha
+                        </div>
+                    </div>
+                </div>
                 <a class="am-btn am-btn am-btn-secondary"><i class="am-icon-plus"></i>增加评审专家账号</a>
             </form>
         </div>
@@ -158,7 +165,8 @@
 
                 <!--推荐单位折叠面板-->
                 <div class="am-panel am-panel-secondary">
-                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">推荐单位信息管理<span class="am-icon-chevron-down am-fr" ></span></div>
+                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">推荐单位信息管理<span
+                            class="am-icon-chevron-down am-fr"></span></div>
                     <div class="am-panel-bd am-collapse" id="collapse-panel-1">
                         <table class="am-table">
                             <thead>
@@ -201,7 +209,9 @@
                                         </div>
                                     </div>
 
-                                    <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-recunitremove1'}">删除</button>
+                                    <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-recunitremove1'}">
+                                        删除
+                                    </button>
                                     <div class="am-modal am-modal-confirm" tabindex="-1" id="my-recunitremove1">
                                         <div class="am-modal-dialog">
                                             <div class="am-modal-hd">提示</div>
@@ -223,7 +233,8 @@
 
                 <!--评审专家折叠面板-->
                 <div class="am-panel am-panel-secondary">
-                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-2'}">评审专家信息管理<span class="am-icon-chevron-down am-fr" ></span></div>
+                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-2'}">评审专家信息管理<span
+                            class="am-icon-chevron-down am-fr"></span></div>
                     <div class="am-panel-bd am-collapse" id="collapse-panel-2">
                         <table class="am-table">
                             <thead>
@@ -267,7 +278,8 @@
                                         </div>
                                     </div>
 
-                                    <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-proremove1'}">删除</button>
+                                    <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-proremove1'}">删除
+                                    </button>
 
                                     <div class="am-modal am-modal-confirm" tabindex="-1" id="my-proremove1">
                                         <div class="am-modal-dialog">
@@ -290,7 +302,8 @@
 
                 <!--申请者折叠面板-->
                 <div class="am-panel am-panel-secondary">
-                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">评审专家信息管理<span class="am-icon-chevron-down am-fr" ></span></div>
+                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">评审专家信息管理<span
+                            class="am-icon-chevron-down am-fr"></span></div>
                     <div class="am-panel-bd am-collapse" id="collapse-panel-3">
                         <table class="am-table">
                             <thead>
@@ -334,7 +347,9 @@
                                         </div>
                                     </div>
 
-                                    <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-candremove1'}">删除</button>
+                                    <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-candremove1'}">
+                                        删除
+                                    </button>
 
                                     <div class="am-modal am-modal-confirm" tabindex="-1" id="my-candremove1">
                                         <div class="am-modal-dialog">
@@ -357,62 +372,31 @@
             </div>
 
         </div>
-
-
-        <!-- content end -->
-
     </div>
+    <!-- content end -->
+</div>
 
-    <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu"
-       data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
-    <footer>
-        <hr>
-        <p class="am-padding-left">© 2015 --辽宁省科学技术协会--.</p>
-    </footer>
+<footer style="width: 260px; min-height: 50px; z-index: 9999;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
+    <div class="am-topbar-brand am-padding-left">
+        <small>© 2015 辽宁省科学技术协会</small>
+    </div>
+</footer>
 
-    <!--[if lt IE 9]>
-    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-    <script src="<%=basePath%>assets/js/polyfill/rem.min.js"></script>
-    <script src="<%=basePath%>assets/js/polyfill/respond.min.js"></script>
-    <script src="<%=basePath%>assets/js/amazeui.legacy.js"></script>
-    <![endif]-->
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="<%=basePath%>assets/js/polyfill/rem.min.js"></script>
+<script src="<%=basePath%>assets/js/polyfill/respond.min.js"></script>
+<script src="<%=basePath%>assets/js/amazeui.legacy.js"></script>
+<![endif]-->
 
-    <!--[if (gte IE 9)|!(IE)]><!-->
-    <script src="<%=basePath%>assets/js/jquery.min.js"></script>
-    <script src="<%=basePath%>assets/js/amazeui.min.js"></script>
-    <!--<![endif]-->
-    <script src="<%=basePath%>assets/js/app.js"></script>
-    <script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
-    <script>
-        $(function() {
-            $('#recunitmodify-toggle1').on('click', function() {
-                $('#my-recunitmodify1').modal({
-                    relatedTarget: this,
-                    onConfirm: function(e) {
-                        alert('该用户的新密码是：' + e.data || '')
-                    }
-                });
-            });
-            $('#promodify-toggle1').on('click', function() {
-                $('#my-promodify1').modal({
-                    relatedTarget: this,
-                    onConfirm: function(e) {
-                        alert('该用户的新密码是：' + e.data || '')
-                    }
-                });
-            });
-            $('#candmodify-toggle1').on('click', function() {
-                $('#my-candmodify1').modal({
-                    relatedTarget: this,
-                    onConfirm: function(e) {
-                        alert('该用户的新密码是：' + e.data || '')
-                    }
-                });
-            });
-
-        });
-    </script>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="<%=basePath%>assets/js/jquery.min.js"></script>
+<script src="<%=basePath%>assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="<%=basePath%>assets/js/app.js"></script>
+<script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
 </body>
 </html>
