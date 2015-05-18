@@ -17,7 +17,7 @@ public class ExpertDaoImpl implements ExpertDao{
     @Override
     public boolean addExpert(String expName, String expPwd, int groupID) {
         PreparedStatement ps=null;
-        String sql="INSERT INTO Expert(expName,expPwd,groupID) VALUES (?,?,?,?);";
+        String sql="INSERT INTO Expert(expName,expPwd,groupID) VALUES (?,?,?);";
         try {
             ps=connection.prepareStatement(sql);
             ps.setString(1,expName);
@@ -39,7 +39,7 @@ public class ExpertDaoImpl implements ExpertDao{
         try {
             ps=connection.prepareStatement(sql);
             ps.setString(1, expName);
-            ps.executeUpdate();
+            ps.execute();
             return true;
         }
         catch (Exception e){
@@ -49,15 +49,12 @@ public class ExpertDaoImpl implements ExpertDao{
     }
 
     @Override
-    public boolean updateExpert(String expName, String expPwd, int expID, int groupID) {
-        PreparedStatement ps=null;
-        String sql="update expert set expName=?,expPwd=?,groupID=? where expID='"+expID+"'";
+    public boolean updateExpert(String exOldname,String expName, String expPwd, int groupID) {
+        Statement st=null;
+        String sql="update expert set expName='"+expName+"',expPwd='"+expPwd+"',groupID='"+groupID+"' where expName='"+exOldname+"'";
         try {
-            ps=connection.prepareStatement(sql);
-            ps.setString(1,expName);
-            ps.setString(2,expPwd);
-            ps.setInt(3, groupID);
-            ps.executeUpdate();
+            st=connection.createStatement();
+            st.executeUpdate(sql);
             return true;
         }
         catch (Exception e){
@@ -91,7 +88,7 @@ public class ExpertDaoImpl implements ExpertDao{
     @Override
     public ArrayList<Expert> getAllExperts(int page, int numPerPage) {
         PreparedStatement ps;
-        String sql="select * from subgrp  where subgrp.groID>0 limit ?,?";
+        String sql="select * from expert  where expert.expID>0 limit ?,?";
         ArrayList<Expert> experts=new ArrayList<Expert>();
         try {
             ps=connection.prepareStatement(sql);
@@ -143,6 +140,28 @@ public class ExpertDaoImpl implements ExpertDao{
         catch (Exception e){
             System.err.println("查询信息时出现异常" + sql + e);
             return 0;
+        }
+    }
+
+    @Override
+    public Expert getExpertByName(String name) {
+        PreparedStatement ps;
+        String sql="select DISTINCT * from expert where expName=?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setString(1,name);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            Expert expert=new Expert();
+            expert.setExpName(rs.getString(1));
+            expert.setExpPwd(rs.getString(2));
+            expert.setExpID(rs.getInt(3));
+            expert.setGroupID(rs.getInt(4));
+            return expert;
+        }
+        catch (Exception ex){
+            System.err.println("[DB ERROR]SubjectGroup getSubjectGroupByName ERROR.");
+            return null;
         }
     }
 }

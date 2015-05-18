@@ -11,9 +11,10 @@ import java.util.Vector;
 public interface ExpertDao {
     public boolean addExpert(String expName, String expPwd, int groupID);
     public boolean deleteExpert(String expID);
-    public boolean updateExpert(String expName, String expPwd,int expID, int groupID);
+    public boolean updateExpert(String exOldname,String expName, String expPwd, int groupID);
     public Vector<Expert> updateExpert();
     public ArrayList<Expert> getAllExperts(int page,int numPerPage);
     public int getExpertAmount();
     boolean isExist(String expName);
+    Expert getExpertByName(String name);
 }

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2015/5/16
-  Time: 22:57
+  Date: 2015/5/18
+  Time: 8:55
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
@@ -19,18 +19,14 @@
 
   <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong>
-      <small>修改评审专家账号</small>
+      <small>增加学科组账号</small>
     </div>
   </div>
 
   <div class="am-cf am-padding">
-    <form method="post" action="<%=basePath%>userinfo/updateExpertToDB">
-      <input type="hidden" name="exOldname" value="${expert.expName}"><%-- 隐藏信息用于修改数据 --%>
-      专家名称<input type="text" name="expName" value="${expert.expName}"><br>
-      修改密码<input type="text" name="expPwd" value="${expert.expPwd}"><br>
-      再次输入密码<input type="text" name="expPwd2" value="${expert.expPwd}"><br>
-      所属学科组ID<input type="text" name="groID" value="${expert.groupID}"><br>
+    <form method="post" action="<%=basePath%>userinfo/addGroupToDB">
+      学科组名称<input type="text" name="groName"><br>
+      学科组提交名额<input type="text" name="subNum"><br>
       <input type="submit" value="提交">
     </form>
   </div>
-
