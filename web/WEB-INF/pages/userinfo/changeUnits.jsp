@@ -132,32 +132,40 @@
     <!-- content start -->
     <div class="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学科管理</strong>/
-                <small>增加学科组</small>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong>/
+                <small>修改推荐单位账号</small>
             </div>
         </div>
 
         <div class="am-cf am-padding">
-            <form method="post" action="<%=basePath%>sbjman/addSubjectGroup">
+            <form method="post" action="<%=basePath%>userinfo/updateUnitsToDB">
                 <fieldset>
-                    <legend>增加学科组</legend>
+                    <legend>修改推荐单位账号</legend>
                     <div class="am-form-group">
-                        <label for="doc-vld-name">学科组名称：</label>
-                        <input type="text" name="groName" id="doc-vld-name" minlength="3" placeholder="输入学科组名称"
-                               class="am-form-field" required/>
-                        <label for="doc-vld-num">学科组提交名额：</label>
-                        <input type="text" name="subNum" id="doc-vld-num" minlength="3" placeholder="输入名额"
-                               class="am-form-field" required/>
+                        <input type="hidden" name="oldname" value="${units.unitsName}">
+                        <label>推荐单位名称：</label>
+                        <input type="text" name="unitName" value="${units.unitsName}" class="am-form-field">
+
+                        <label>推荐单位初始密码：</label>
+                        <input type="text" name="unitPwd" value="${units.unitsPwd}" class="am-form-field">
+
+                        <label>再次输入密码：</label>
+                        <input type="text" name="unitPwd2" value="${units.unitsPwd}" class="am-form-field">
+
+                        <label>推荐单位名额：</label>
+                        <input type="text" name="unitTotal" value="${units.recTotal}" class="am-form-field">
+
                     </div>
                     <button class="am-btn am-btn-secondary" type="submit">提交</button>
                 </fieldset>
             </form>
         </div>
+        <!-- content end -->
     </div>
-    <!-- content end -->
 </div>
 
-<a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu"
+   data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
 <footer style="width: 260px; min-height: 50px; z-index: 9999;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
     <div class="am-topbar-brand am-padding-left">
@@ -181,3 +189,6 @@
 <script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
 </body>
 </html>
+
+
+

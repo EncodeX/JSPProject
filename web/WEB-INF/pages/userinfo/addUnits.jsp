@@ -132,22 +132,23 @@
     <!-- content start -->
     <div class="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学科管理</strong>/
-                <small>增加学科组</small>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong>/
+                <small>增加推荐单位账号</small>
             </div>
         </div>
-
         <div class="am-cf am-padding">
-            <form method="post" action="<%=basePath%>sbjman/addSubjectGroup">
+            <form method="post" action="<%=basePath%>userinfo/addUnitsToDB">
                 <fieldset>
-                    <legend>增加学科组</legend>
+                    <legend>增加推荐单位账号</legend>
                     <div class="am-form-group">
-                        <label for="doc-vld-name">学科组名称：</label>
-                        <input type="text" name="groName" id="doc-vld-name" minlength="3" placeholder="输入学科组名称"
-                               class="am-form-field" required/>
-                        <label for="doc-vld-num">学科组提交名额：</label>
-                        <input type="text" name="subNum" id="doc-vld-num" minlength="3" placeholder="输入名额"
-                               class="am-form-field" required/>
+                        <label>推荐单位名称</label>
+                        <input type="text" name="unitName" placeholder="输入推荐单位名称" class="am-form-field" required/>
+                        <label>推荐单位初始密码</label>
+                        <input type="text" name="unitPwd" placeholder="输入推荐单位初始密码" class="am-form-field" required/>
+                        <label>再次输入密码</label>
+                        <input type="text" name="unitPwd2" placeholder="请再次输入以上面相同的密码" class="am-form-field" required/>
+                        <label>推荐单位名额</label>
+                        <input type="text" name="unitTotal" placeholder="输入推荐名额" class="am-form-field" required/>
                     </div>
                     <button class="am-btn am-btn-secondary" type="submit">提交</button>
                 </fieldset>

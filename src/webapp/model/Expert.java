@@ -6,7 +6,7 @@ package webapp.model;
 public class Expert {
     private String expName;
     private String expPwd;
-    private String expID;
+    private int expID;
     private int groupID;
 
     public String getExpName() {
@@ -25,11 +25,11 @@ public class Expert {
         this.expPwd = expPwd;
     }
 
-    public String getExpID() {
+    public int getExpID() {
         return expID;
     }
 
-    public void setExpID(String expID) {
+    public void setExpID(int expID) {
         this.expID = expID;
     }
 

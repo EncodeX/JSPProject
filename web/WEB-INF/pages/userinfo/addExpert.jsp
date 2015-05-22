@@ -132,26 +132,32 @@
     <!-- content start -->
     <div class="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学科管理</strong>/
-                <small>增加学科组</small>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong>/
+                <small>增加评审专家账号</small>
             </div>
         </div>
 
         <div class="am-cf am-padding">
-            <form method="post" action="<%=basePath%>sbjman/addSubjectGroup">
-                <fieldset>
-                    <legend>增加学科组</legend>
-                    <div class="am-form-group">
-                        <label for="doc-vld-name">学科组名称：</label>
-                        <input type="text" name="groName" id="doc-vld-name" minlength="3" placeholder="输入学科组名称"
-                               class="am-form-field" required/>
-                        <label for="doc-vld-num">学科组提交名额：</label>
-                        <input type="text" name="subNum" id="doc-vld-num" minlength="3" placeholder="输入名额"
-                               class="am-form-field" required/>
-                    </div>
-                    <button class="am-btn am-btn-secondary" type="submit">提交</button>
-                </fieldset>
-            </form>
+            <div class="am-cf am-padding">
+                <form method="post" action="<%=basePath%>userinfo/addExpertToDB">
+                    <fieldset>
+                        <legend>增加评审专家账号</legend>
+                        <div class="am-form-group">
+                            <label>评审专家名称：</label>
+                            <input type="text" name="expName" placeholder="输入评审专家" class="am-form-field" required/>
+                            <label>评审专家密码：</label>
+                            <input type="text" name="expPwd" placeholder="请输入评审专家密码" class="am-form-field" required/>
+                            <label>再次输入密码：</label>
+                            <input type="text" name="expPwd2" placeholder="请再次输入以上面相同的密码" class="am-form-field" required/>
+                            <label>所属学科组ID：</label>
+                            <input type="text" name="groID" placeholder="输入专家所属学科组ID" class="am-form-field" required/>
+
+                        </div>
+                        <button class="am-btn am-btn-secondary" type="submit">提交</button>
+                    </fieldset>
+                </form>
+            </div>
+
         </div>
     </div>
     <!-- content end -->

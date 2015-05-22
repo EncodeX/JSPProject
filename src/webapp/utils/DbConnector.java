@@ -13,7 +13,7 @@ public class DbConnector {
     private static String dburl="localhost";
     private static String dbname= "project_db";
     private static String dbusername="root";
-    private static String dbpassword="1234";
+    private static String dbpassword="155369";
 
     private static Connection connection=null;
 
