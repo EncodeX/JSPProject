@@ -131,40 +131,41 @@
 
     <!-- content start -->
     <div class="admin-content">
-        <div class="admin-content">
             <div class="am-cf am-padding">
                 <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong>/
                     <small>错误信息</small>
                 </div>
             </div>
-            <div class="admin-content">
-                ${message}
+            <div class="am-cf am-padding">
+                <p><h1>${message}</h1></p>
             </div>
             <!-- content end -->
         </div>
+    </div>
+</div>
 
-        <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu"
-           data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu"
+   data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
-        <footer style="width: 260px; min-height: 50px; z-index: 9999;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
-            <div class="am-topbar-brand am-padding-left">
-                <small>© 2015 辽宁省科学技术协会</small>
-            </div>
-        </footer>
+<footer style="width: 260px; min-height: 50px; z-index: 9999;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
+    <div class="am-topbar-brand am-padding-left">
+        <small>© 2015 辽宁省科学技术协会</small>
+    </div>
+</footer>
 
-        <!--[if lt IE 9]>
-        <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-        <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-        <script src="<%=basePath%>assets/js/polyfill/rem.min.js"></script>
-        <script src="<%=basePath%>assets/js/polyfill/respond.min.js"></script>
-        <script src="<%=basePath%>assets/js/amazeui.legacy.js"></script>
-        <![endif]-->
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="<%=basePath%>assets/js/polyfill/rem.min.js"></script>
+<script src="<%=basePath%>assets/js/polyfill/respond.min.js"></script>
+<script src="<%=basePath%>assets/js/amazeui.legacy.js"></script>
+<![endif]-->
 
-        <!--[if (gte IE 9)|!(IE)]><!-->
-        <script src="<%=basePath%>assets/js/jquery.min.js"></script>
-        <script src="<%=basePath%>assets/js/amazeui.min.js"></script>
-        <!--<![endif]-->
-        <script src="<%=basePath%>assets/js/app.js"></script>
-        <script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="<%=basePath%>assets/js/jquery.min.js"></script>
+<script src="<%=basePath%>assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="<%=basePath%>assets/js/app.js"></script>
+<script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
 </body>
 </html>
