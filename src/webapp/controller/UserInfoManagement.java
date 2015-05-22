@@ -7,10 +7,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import webapp.dao.ExpertDao;
 import webapp.dao.GroupDao;
+import webapp.dao.ProposerDao;
+import webapp.dao.ResUnitsDao;
 import webapp.dao.impl.ExpertDaoImpl;
 import webapp.dao.impl.GroupDaoImpl;
+import webapp.dao.impl.ProposerDaoImpl;
+import webapp.dao.impl.ResUnitsDaoImpl;
 import webapp.model.Expert;
+import webapp.model.Proposer;
 import webapp.model.SubjectGroup;
+import webapp.model.Units;
 
 import java.util.ArrayList;
 import java.util.Vector;
@@ -22,7 +28,8 @@ import java.util.Vector;
 @RequestMapping("/userinfo")
 public class UserInfoManagement {
     ExpertDao ExpertDao=new ExpertDaoImpl();
-    GroupDao GroupDao=new GroupDaoImpl();
+    ResUnitsDao ResUnitsDao=new ResUnitsDaoImpl();
+    ProposerDao ProposerDao=new ProposerDaoImpl();
     //Expert
     @RequestMapping(value = "main",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView getMainPage(ModelAndView modelAndView,String page){
@@ -93,9 +100,11 @@ public class UserInfoManagement {
                 modelAndView.addObject("message",message);
                 return modelAndView;
             }
+            ExpertDao.deleteExpert(exOldname);
             if(!ExpertDao.isExist(expName)){
-                ExpertDao.updateExpert(exOldname, expName, expPwd, Integer.parseInt(groID));
+                ExpertDao.addExpert(expName, expPwd, Integer.parseInt(groID));
             }else{
+                modelAndView.setViewName("userinfo/error");
                 message="该用户名已存在！";
                 modelAndView.addObject("message",message);
                 return modelAndView;
@@ -118,36 +127,44 @@ public class UserInfoManagement {
         ExpertDao.deleteExpert(name);
         return getMainPage(modelAndView,"1");
     }
-    //Group
-    @RequestMapping(value = "groupmain",method = {RequestMethod.GET})
-    public ModelAndView getGroupMainPage(ModelAndView modelAndView,String page){
+    //Untis
+    @RequestMapping(value = "resUnitsMain",method = {RequestMethod.GET})
+    public ModelAndView getResUnitsMainPage(ModelAndView modelAndView,String page){
         int intpage;
         if(page==null){
             intpage=1;
         }else{
             intpage=Integer.parseInt(page);
         }
-        modelAndView.setViewName("userinfo/groupmain");
-        ArrayList<SubjectGroup> subjectGroups=GroupDao.getAllSubjectGroup(intpage,10);
-        modelAndView.addObject("subjectGroups",subjectGroups);
-        modelAndView.addObject("amount", GroupDao.getGroupAmount());
+        modelAndView.setViewName("userinfo/resUnitsMain");
+        ArrayList<Units> Units=ResUnitsDao.getAllUnits(intpage, 10);
+        modelAndView.addObject("Units",Units);
+        modelAndView.addObject("amount", ResUnitsDao.getUnitsAmount());
         modelAndView.addObject("pages", intpage);
         return modelAndView;
     }
-    @RequestMapping(value = "addGroup",method =RequestMethod.GET)
-    public ModelAndView addGroup(ModelAndView modelAndView) {
-        modelAndView.setViewName("userinfo/addGroup");
+    @RequestMapping(value = "addUnits",method =RequestMethod.GET)
+    public ModelAndView addUnits(ModelAndView modelAndView) {
+        modelAndView.setViewName("userinfo/addUnits");
         return modelAndView;
     }
-    @RequestMapping(value = "addGroupToDB",method =RequestMethod.POST)
-    public ModelAndView addGroupToDB(ModelAndView modelAndView,String groName,String subNum) {
-        modelAndView.setViewName("userinfo/groupmain");
+    @RequestMapping(value = "addUnitsToDB",method =RequestMethod.POST)
+    public ModelAndView addUntisToDB(ModelAndView modelAndView,String unitName,String unitPwd,String unitPwd2,String unitTotal) {
+        modelAndView.setViewName("userinfo/resUnitsMain");
         String message="";
         try{
-            SubjectGroup subjectGroup=new SubjectGroup(0,groName,Integer.parseInt(subNum));
-            if(!GroupDao.addSubjectGroup(subjectGroup)){
-                //modelAndView.setViewName("sbjman/msg");
-                message="Insert Fail:Already exist";
+            if(Integer.parseInt(unitPwd)!=Integer.parseInt(unitPwd2)){
+                message="您两次输入的密码不一致";
+                modelAndView.setViewName("userinfo/error");
+                modelAndView.addObject("message", message);
+                return modelAndView;
+            }
+            if(!ResUnitsDao.isExist(unitName)){
+                Units unit=new Units(0,unitName,unitPwd,Integer.parseInt(unitTotal));
+                ResUnitsDao.addUnits(unit);
+            }else{
+                modelAndView.setViewName("userinfo/error");
+                message="该用户已经存在！";
                 modelAndView.addObject("message",message);
                 return modelAndView;
             }
@@ -157,45 +174,101 @@ public class UserInfoManagement {
             modelAndView.addObject("message",message);
             return modelAndView;
         }
-        return getMainPage(modelAndView,"1");
+        return getResUnitsMainPage(modelAndView, "1");
     }
-    @RequestMapping(value = "changeGroup",method =RequestMethod.GET)
-    public ModelAndView changeGroup(ModelAndView modelAndView,String name) {
-        SubjectGroup subjectGroup=GroupDao.getSubjectGroupByName(name);
-        modelAndView.addObject(subjectGroup);
-        modelAndView.setViewName("/userinfo/changeGroup");
+    @RequestMapping(value = "changeUnits",method =RequestMethod.GET)
+    public ModelAndView changeUnits(ModelAndView modelAndView,String name) {
+        Units Units=ResUnitsDao.getUnitsByName(name);
+        modelAndView.addObject(Units);
+        modelAndView.setViewName("/userinfo/changeUnits");
         return modelAndView;
     }
-    @RequestMapping(value = "updateGroupToDB",method = RequestMethod.POST)
-    public ModelAndView updateGroupToDB(ModelAndView modelAndView,String groName,String subNum,String oldname){
-        modelAndView.setViewName("userinfo/groupmain");
+    @RequestMapping(value = "updateUnitsToDB",method = RequestMethod.POST)
+    public ModelAndView updateUnitsToDB(ModelAndView modelAndView,String unitName,String unitPwd,String unitPwd2,String unitTotal,String oldname){
+        modelAndView.setViewName("userinfo/resUnitsMain");
         String message="";
         try{
-            SubjectGroup subjectGroup=new SubjectGroup(0,groName,Integer.parseInt(subNum));
-            GroupDao.deleteSubjectGroupByName(oldname);
-            if(!GroupDao.isExist(groName)) {
-                GroupDao.addSubjectGroup(subjectGroup);
-            }else{
-                message = "该用户名已经存在";
+            if(Integer.parseInt(unitPwd)!=Integer.parseInt(unitPwd2)){
+                message="您两次输入的密码不一致";
+                modelAndView.setViewName("userinfo/error");
                 modelAndView.addObject("message", message);
                 return modelAndView;
             }
+            Units unit=new Units(0,unitName,unitPwd,Integer.parseInt(unitTotal));
+            ResUnitsDao.deleteUnitsByName(oldname);
+            ResUnitsDao.addUnits(unit);
         }catch (Exception e){
             modelAndView.setViewName("userinfo/error");
             message="更改失败！ "+e.toString();
             modelAndView.addObject("message",message);
             return modelAndView;
         }
-        return getMainPage(modelAndView,"1");
+        return getResUnitsMainPage(modelAndView, "1");
     }
-    @RequestMapping(value = "deleteGroup",method = {RequestMethod.GET})
-    public ModelAndView deleteGroup(ModelAndView modelAndView,String name){
-        if(!GroupDao.isExist(name)){
-            modelAndView.setViewName("userinfo/groupmain");
+    @RequestMapping(value = "deleteUnits",method = {RequestMethod.GET})
+    public ModelAndView deleteUnits(ModelAndView modelAndView,String name){
+        if(!ResUnitsDao.isExist(name)){
+            modelAndView.setViewName("userinfo/error");
             modelAndView.addObject("message","该用户名不存在 :"+name);
             return modelAndView;
         }
-        GroupDao.deleteSubjectGroupByName(name);
-        return getMainPage(modelAndView,"1");
+        ResUnitsDao.deleteUnitsByName(name);
+        return getResUnitsMainPage(modelAndView,"1");
+    }
+    //proposer
+    @RequestMapping(value = "proposerMain",method = {RequestMethod.GET})
+    public ModelAndView getProposerMainPage(ModelAndView modelAndView,String page){
+        int intpage;
+        if(page==null){
+            intpage=1;
+        }else{
+            intpage=Integer.parseInt(page);
+        }
+        modelAndView.setViewName("userinfo/proposerMain");
+        ArrayList<Proposer> proposers=ProposerDao.getAllProposer(intpage, 10);
+        modelAndView.addObject("proposers",proposers);
+        modelAndView.addObject("amount", ProposerDao.getProposerAmount());
+        modelAndView.addObject("pages", intpage);
+        return modelAndView;
+    }
+    @RequestMapping(value = "changeProposer",method =RequestMethod.GET)
+    public ModelAndView changeProposer(ModelAndView modelAndView,String name) {
+        Proposer proposer=ProposerDao.getProposerByName(name);
+        modelAndView.addObject(proposer);
+        modelAndView.setViewName("/userinfo/changeProposer");
+        return modelAndView;
+    }
+    @RequestMapping(value = "updateProposerToDB",method =RequestMethod.POST)
+    public ModelAndView updateProposerToDB(ModelAndView modelAndView,String oldname,String userName,String userID,
+                                         String name,String subClass,String subID,String recID,String recResult,
+                                           String firCount,String firResult,String lasResult,String userPwd,String userPwd2) {
+        modelAndView.setViewName("userinfo/proposerMain");
+        String message="";
+        try{
+            if(Integer.parseInt(userPwd)!=Integer.parseInt(userPwd2)){
+                message="您修改时两次输入的密码不一致";
+                modelAndView.addObject("message",message);
+                return modelAndView;
+            }
+            Proposer proposer=new Proposer(0,userName,userPwd,name,subClass,Integer.parseInt(subID),Integer.parseInt(recID),Integer.parseInt(recResult),Integer.parseInt(firCount),Integer.parseInt(firResult),Integer.parseInt(lasResult));
+            ProposerDao.deleteProposerByName(oldname);
+            ProposerDao.addProposer(proposer);
+        }catch (Exception e){
+            modelAndView.setViewName("userinfo/error");
+            message="添加失败： "+e.toString();
+            modelAndView.addObject("message",message);
+            return modelAndView;
+        }
+        return getProposerMainPage(modelAndView, "1");
+    }
+    @RequestMapping(value = "deleteProposer",method = RequestMethod.GET)
+    public ModelAndView deleteProposer(ModelAndView modelAndView,String name){
+        if(!ProposerDao.isExist(name)){
+            modelAndView.setViewName("userinfo/error");
+            modelAndView.addObject("message","该用户名不存在!");
+            return modelAndView;
+        }
+        ProposerDao.deleteProposerByName(name);
+        return getProposerMainPage(modelAndView, "1");
     }
 }

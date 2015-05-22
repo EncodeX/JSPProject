@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50137
 File Encoding         : 65001
 
-Date: 2015-05-08 19:44:02
+Date: 2015-05-22 10:46:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,29 +22,10 @@ DROP TABLE IF EXISTS `expert`;
 CREATE TABLE `expert` (
   `expName` varchar(16) DEFAULT NULL,
   `expPwd` varchar(16) DEFAULT NULL,
-  `expID` varchar(16) DEFAULT NULL,
-  `groupID` int(11) NOT NULL,
-  PRIMARY KEY (`groupID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of expert
--- ----------------------------
-
--- ----------------------------
--- Table structure for group
--- ----------------------------
-DROP TABLE IF EXISTS `group`;
-CREATE TABLE `group` (
-  `groID` int(11) NOT NULL,
-  `groName` varchar(16) DEFAULT NULL,
-  `subNum` int(11) DEFAULT NULL,
-  PRIMARY KEY (`groID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of group
--- ----------------------------
+  `expID` int(11) NOT NULL AUTO_INCREMENT,
+  `groupID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`expID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for opentime
@@ -58,15 +39,11 @@ CREATE TABLE `opentime` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of opentime
--- ----------------------------
-
--- ----------------------------
 -- Table structure for proposer
 -- ----------------------------
 DROP TABLE IF EXISTS `proposer`;
 CREATE TABLE `proposer` (
-  `userID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL AUTO_INCREMENT,
   `userName` varchar(16) DEFAULT NULL,
   `userPwd` varchar(16) DEFAULT NULL,
   `name` varchar(10) DEFAULT NULL,
@@ -75,26 +52,30 @@ CREATE TABLE `proposer` (
   `recID` int(11) DEFAULT NULL,
   `recResult` int(11) DEFAULT NULL,
   `firCount` int(11) DEFAULT NULL,
-  `lasResult` int(11) NOT NULL,
+  `firResult` int(11) DEFAULT NULL,
+  `lasResult` int(11) DEFAULT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of proposer
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for rec_units
 -- ----------------------------
 DROP TABLE IF EXISTS `rec_units`;
 CREATE TABLE `rec_units` (
-  `unitsID` int(11) NOT NULL,
+  `unitsID` int(11) NOT NULL AUTO_INCREMENT,
   `unitsName` varchar(16) DEFAULT NULL,
-  `untisPwd` varchar(16) DEFAULT NULL,
+  `unitsPwd` varchar(16) DEFAULT NULL,
   `recTotal` int(11) DEFAULT NULL,
   PRIMARY KEY (`unitsID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of rec_units
+-- Table structure for subgrp
 -- ----------------------------
+DROP TABLE IF EXISTS `subgrp`;
+CREATE TABLE `subgrp` (
+  `groID` int(11) NOT NULL AUTO_INCREMENT,
+  `groName` varchar(16) DEFAULT NULL,
+  `subNum` int(11) DEFAULT NULL,
+  PRIMARY KEY (`groID`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;

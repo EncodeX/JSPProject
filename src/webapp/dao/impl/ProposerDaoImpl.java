@@ -1,0 +1,136 @@
+package webapp.dao.impl;
+
+import webapp.dao.ProposerDao;
+import webapp.model.Proposer;
+import webapp.utils.DbConnector;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+/**
+ * Created by Administrator on 2015/5/19.
+ */
+public class ProposerDaoImpl implements ProposerDao {
+    Connection connection= DbConnector.getConnection();
+    @Override
+    public ArrayList<Proposer> getAllProposer(int page, int numPerPage) {
+        PreparedStatement ps;
+        ArrayList<Proposer> Proposers=new ArrayList<Proposer>();
+        String sql="select * from proposer where proposer.userID>0 limit ?,?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setInt(1,(page-1)*numPerPage);
+            ps.setInt(2,numPerPage);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Proposer proposer=new Proposer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+                Proposers.add(proposer);
+            }
+            return Proposers;
+        }
+        catch (Exception e){
+            System.err.println("从数据库获取信息失败"+sql+e);
+            return null;
+        }
+    }
+
+    @Override
+    public int getProposerAmount() {
+        PreparedStatement ps;
+        String sql="select count(*)  from proposer  where proposer.userID>0";
+        try {
+            ps=connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        }
+        catch (Exception e){
+            System.err.println("查询信息时出现异常" + sql + e);
+            return 0;
+        }
+    }
+
+    @Override
+    public boolean isExist(String name) {
+        PreparedStatement ps;
+        String sql="select DISTINCT * from proposer WHERE userName=?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setString(1,name);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        }
+        catch (Exception e){
+            System.err.println("查询信息时出现异常" + sql + e);
+            return false;
+        }
+    }
+
+    @Override
+    public Proposer getProposerByName(String name) {
+        PreparedStatement ps;
+        String sql="select DISTINCT * from proposer where userName=?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setString(1,name);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            Proposer proposer=new Proposer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+            return proposer;
+        }
+        catch (Exception e){
+            System.err.println("获取信息时出现异常"+sql+e);
+            return null;
+        }
+    }
+
+    @Override
+    public boolean deleteProposerByName(String name) {
+        PreparedStatement ps;
+        String sql="delete from proposer where userName =?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setString(1, name);
+            ps.execute();
+            return true;
+        }
+        catch (Exception e){
+            System.err.println("删除信息时出现异常"+sql+e);
+            return false;
+        }
+
+    }
+
+    @Override
+    public void deleteProposerByGroupId(int id) {
+
+    }
+
+    @Override
+    public boolean addProposer(Proposer proposer) {
+        PreparedStatement ps=null;
+        String sql="INSERT INTO Proposer(username,userPwd,name,subclass,subid,recid,recResult,firCount,firResult,lasResult) " +
+                "VALUES (?,?,?,?,?,?,?,?,?,?);";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setString(1, proposer.getUserName());
+            ps.setString(2, proposer.getUserPwd());
+            ps.setString(3, proposer.getName());
+            ps.setString(4, proposer.getSubClass());
+            ps.setInt(5, proposer.getSubID());
+            ps.setInt(6,proposer.getRecID());
+            ps.setInt(7, proposer.getRecResult());
+            ps.setInt(8, proposer.getFirCount());
+            ps.setInt(9, proposer.getFirResult());
+            ps.setInt(10,proposer.getLasResult());
+            ps.executeUpdate();
+            return true;
+        }
+        catch (Exception e){
+            System.err.println("添加信息时出现异常"+sql+e);
+            return false;
+        }
+    }
+}
