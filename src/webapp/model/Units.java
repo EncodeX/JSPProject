@@ -9,6 +9,13 @@ public class Units {
     private String unitsPwd;
     private int recTotal;
 
+    public Units(int unitsID, String unitsName, String unitsPwd, int recTotal) {
+        this.unitsID = unitsID;
+        this.unitsName = unitsName;
+        this.unitsPwd = unitsPwd;
+        this.recTotal = recTotal;
+    }
+
     public int getUnitsID() {
         return unitsID;
     }
