@@ -129,33 +129,49 @@
   <div class="admin-content">
 
     <div class="am-cf am-padding">
-      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong> / <small>管理推荐单位、评审专家、申报者账号</small></div>
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong> /
+        <small>管理推荐单位、评审专家、申报者账号</small>
+      </div>
     </div>
     <div class="am-cf am-padding">
-      <a class="am-btn am-btn am-btn-primary" href="<%=basePath%>userinfo/addUnits"><i class="am-icon-plus"></i>增加推荐单位账号</a>
-      <a class="am-btn am-btn am-btn-success" href="<%=basePath%>userinfo/addExpert"><i class="am-icon-plus"></i>增加评审专家账号</a>
+      <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/addExpert"><i
+              class="am-icon-plus"></i>增加评审专家账号</a>
+      <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/addUnits"><i
+              class="am-icon-plus"></i>增加推荐单位账号</a>
     </div>
+
     <div class="am-cf am-padding">
+      <div class="am-g">
+        <div class="am-u-sm-1"></div>
+        <div class="am-u-sm-7 am-u-sm-offset-4">
+          <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/main">查看评审专家账号</a>
+          <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/resUnitsMain">查看推荐单位账号</a>
+          <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/proposerMain">查看申请者账号</a>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="am-cf am-padding">
+
       <table class="am-table">
-        <a class="am-btn am-btn am-btn-primary" href="<%=basePath%>userinfo/main">查看专家评审账号</a>
-        <a class="am-btn am-btn am-btn-success" href="<%=basePath%>userinfo/resUnitsMain">查看推荐单位账号</a>
-        <a class="am-btn am-btn am-btn-success" href="<%=basePath%>userinfo/proposerMain">查看申请者账号</a>
         <thead>
         <tr>
-          <td>序号</td>
-          <td>用户名</td>
-          <td>ID</td>
-          <td>真实姓名</td>
-          <td>所在学科组</td>
-          <td>学科组ID</td>
-          <td>推荐单位ID</td>
-          <td>推荐结果</td>
-          <td>初评票数</td>
-          <td>初评结果</td>
-          <td>终评结果</td>
-          <td>操作</td>
+          <th>序号</th>
+          <th>用户名</th>
+          <th>ID</th>
+          <th>真实姓名</th>
+          <th>所在学科组</th>
+          <th>学科组ID</th>
+          <th>推荐单位ID</th>
+          <th>推荐结果</th>
+          <th>初评票数</th>
+          <th>初评结果</th>
+          <th>终评结果</th>
+          <th>操作</th>
         </tr>
         </thead>
+
         <tbody>
         <c:forEach items="${proposers}" var="proposer" varStatus="status">
           <tr>
@@ -177,6 +193,7 @@
         </tbody>
       </table>
       <%--分页--%>
+
       <ul class="am-pagination am-pagination-right">
         <%
           int amount=(Integer)request.getAttribute("amount");

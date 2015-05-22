@@ -131,7 +131,19 @@
 
     <!-- content start -->
     <div class="admin-content">
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学科管理</strong> /
+                <small>管理学科组信息/增加学科组</small>
+            </div>
+        </div>
 
+        <div class="am-cf am-padding">
+            <form method="post" action="<%=basePath%>sbjman/addSubjectGroup">
+                学科组名称<input type="text" name="groName"><br>
+                学科组提交名额<input type="text" name="subNum"><br>
+                <input type="submit" value="提交">
+            </form>
+        </div>
     </div>
     <!-- content end -->
 </div>
