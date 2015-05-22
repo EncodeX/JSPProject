@@ -1,18 +1,6 @@
 /* Write your styles */
 
-[class*=am-icon-]::before,
-[class*=am-btn-],
-.am-btn-group>.am-btn,
-.am-btn-group-stacked>.am-btn,
-[class*=am-u-],
-.am-dropdown{
-    display: inline;
-    position: static;
-}
-
-.am-list>li{
-    position: static;
-}
-.am-comment-main{
-    position: initial;
+.admin-content{
+    margin-top: 51px;
+    margin-left: 260px;
 }
