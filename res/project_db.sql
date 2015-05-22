@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50137
 File Encoding         : 65001
 
-Date: 2015-05-21 09:21:59
+Date: 2015-05-22 10:46:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,7 +25,7 @@ CREATE TABLE `expert` (
   `expID` int(11) NOT NULL AUTO_INCREMENT,
   `groupID` int(11) DEFAULT NULL,
   PRIMARY KEY (`expID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for opentime
@@ -52,9 +52,10 @@ CREATE TABLE `proposer` (
   `recID` int(11) DEFAULT NULL,
   `recResult` int(11) DEFAULT NULL,
   `firCount` int(11) DEFAULT NULL,
-  `lasResult` int(11) NOT NULL,
+  `firResult` int(11) DEFAULT NULL,
+  `lasResult` int(11) DEFAULT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for rec_units
@@ -63,10 +64,10 @@ DROP TABLE IF EXISTS `rec_units`;
 CREATE TABLE `rec_units` (
   `unitsID` int(11) NOT NULL AUTO_INCREMENT,
   `unitsName` varchar(16) DEFAULT NULL,
-  `untisPwd` varchar(16) DEFAULT NULL,
+  `unitsPwd` varchar(16) DEFAULT NULL,
   `recTotal` int(11) DEFAULT NULL,
   PRIMARY KEY (`unitsID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for subgrp
@@ -77,4 +78,4 @@ CREATE TABLE `subgrp` (
   `groName` varchar(16) DEFAULT NULL,
   `subNum` int(11) DEFAULT NULL,
   PRIMARY KEY (`groID`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;

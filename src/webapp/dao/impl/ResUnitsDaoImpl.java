@@ -112,11 +112,7 @@ public class ResUnitsDaoImpl implements ResUnitsDao{
             ps.setInt(2,numPerPage);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                Units units=new Units();
-                units.setUnitsID(rs.getInt(1));
-                units.setUnitsName(rs.getString(2));
-                units.setUnitsPwd(rs.getString(3));
-                units.setRecTotal(rs.getInt(4));
+                Units units=new Units(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4));
                 Units.add(units);
             }
             return Units;
@@ -168,11 +164,7 @@ public class ResUnitsDaoImpl implements ResUnitsDao{
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
             rs.next();
-            Units units=new Units();
-            units.setUnitsID(rs.getInt(1));
-            units.setUnitsName(rs.getString(2));
-            units.setUnitsPwd(rs.getString(3));
-            units.setRecTotal(rs.getInt(4));
+            Units units=new Units(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4));
             return units;
         }
         catch (Exception e){
@@ -201,7 +193,7 @@ public class ResUnitsDaoImpl implements ResUnitsDao{
     @Override
     public boolean addUnits(Units units) {
         PreparedStatement ps;
-        String sql="INSERT INTO Units(unitsname,unitsPwd,rectotal) " +
+        String sql="INSERT INTO rec_units(unitsname,unitsPwd,rectotal) " +
                 "VALUES (?,?,?);";
         try {
             ps=connection.prepareStatement(sql);
