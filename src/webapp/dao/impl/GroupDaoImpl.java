@@ -151,4 +151,48 @@ public class GroupDaoImpl implements GroupDao {
         }
         return true;
     }
+
+    @Override
+    public boolean changeQuotaByGroupName(String name, int number) {
+        PreparedStatement ps;
+        try {
+            ps=connection.prepareStatement("update subgrp set subNum=? where groName=?");
+            ps.setInt(1, number);
+            ps.setString(2, name);
+            ps.execute();
+            return true;
+        }
+        catch (Exception ex){
+            System.err.println("[DB ERROR]GroupDaoImpl boolean changeQuotaByGroupName ERROR.");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean changeQuotaByGroupId(int id, int number) {
+        PreparedStatement ps;
+        try {
+            ps=connection.prepareStatement("update subgrp set subNum=? where groID=?");
+            ps.setInt(1, number);
+            ps.setInt(2, id);
+            ps.execute();
+            return true;
+        }
+        catch (Exception ex){
+            System.err.println("[DB ERROR]GroupDaoImpl boolean changeQuotaByGroupId ERROR.");
+            return false;
+        }
+    }
+
+    @Override
+    public void addFinalGroup() {
+        PreparedStatement ps;
+        try {
+            ps=connection.prepareStatement("insert into subgrp VALUES (-1,'final',0)");
+            ps.execute();
+        }
+        catch (Exception ex){
+            System.err.println("[DB ERROR]GroupDaoImpl boolean changeQuotaByGroupId ERROR.");
+        }
+    }
 }

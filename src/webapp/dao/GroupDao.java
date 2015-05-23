@@ -15,5 +15,8 @@ public interface GroupDao {
     void deleteSubjectGroupByName(String name);
     void deleteSubjectGroupByGroupId(int id);
     boolean addSubjectGroup(SubjectGroup subjectGroup);
+    boolean changeQuotaByGroupName(String name,int number);
+    boolean changeQuotaByGroupId(int id,int number);
 
+    void addFinalGroup();
 }

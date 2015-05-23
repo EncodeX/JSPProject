@@ -11,9 +11,9 @@ import java.sql.DriverManager;
 public class DbConnector {
 
     private static String dburl="localhost";
-    private static String dbname= "project_db";
+    private static String dbname= "webapp";
     private static String dbusername="root";
-    private static String dbpassword="155369";
+    private static String dbpassword="root";
 
     private static Connection connection=null;
 
