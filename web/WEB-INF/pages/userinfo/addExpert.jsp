@@ -151,7 +151,6 @@
                             <input type="text" name="expPwd2" placeholder="请再次输入以上面相同的密码" class="am-form-field" required/>
                             <label>所属学科组ID：</label>
                             <input type="text" name="groID" placeholder="输入专家所属学科组ID" class="am-form-field" required/>
-
                         </div>
                         <button class="am-btn am-btn-secondary" type="submit">提交</button>
                     </fieldset>
