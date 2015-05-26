@@ -1,14 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
-  User: zz
-  Date: 2015/4/28
-  Time: 16:50
+  User: Administrator
+  Date: 2015/5/21
+  Time: 20:01
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -35,10 +35,6 @@
 <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
     以获得更好的体验！</p>
 <![endif]-->
-<<<<<<< Temporary merge branch 1
-
-=======
->>>>>>> Temporary merge branch 2
 <header class="am-topbar admin-header"
         style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 9999;">
     <div class="am-topbar-brand">
@@ -129,226 +125,47 @@
         </ul>
     </div>
     <!-- sidebar end -->
+
     <!-- content start -->
     <div class="admin-content">
+
         <div class="am-cf am-padding">
             <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong> /
                 <small>管理推荐单位、评审专家、申报者账号</small>
             </div>
         </div>
         <div class="am-cf am-padding">
-<<<<<<< Temporary merge branch 1
-            <form action="">
-                <button class="am-btn am-btn-secondary" data-am-modal="{target: '#my-popup'}"><i
-                        class="am-icon-plus"></i>增加推荐单位账号
-                </button>
-
-                <div class="am-popup" id="my-popup">
-                    <div class="am-popup-inner">
-                        <div class="am-popup-hd">
-                            <h4 class="am-popup-title">增加推荐单位账号</h4>
-      <span data-am-modal-close
-            class="am-close">&times;</span>
-
-                        </div>
-                        <div class="am-popup-bd">
-                            hahaha
-                        </div>
-                    </div>
-                </div>
-                <a class="am-btn am-btn am-btn-secondary"><i class="am-icon-plus"></i>增加评审专家账号</a>
-            </form>
-=======
-            <a class="am-btn am-btn am-btn-primary" href="<%=basePath%>userinfo/addUnits"><i class="am-icon-plus"></i>增加推荐单位账号</a>
-            <a class="am-btn am-btn am-btn-success" href="<%=basePath%>userinfo/addExpert"><i class="am-icon-plus"></i>增加评审专家账号</a>
->>>>>>> Temporary merge branch 2
+            <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/addExpert"><i
+                    class="am-icon-plus"></i>增加评审专家账号</a>
+            <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/addUnits"><i
+                    class="am-icon-plus"></i>增加推荐单位账号</a>
         </div>
+
         <div class="am-cf am-padding">
-<<<<<<< Temporary merge branch 1
-            <div class="am-panel-group" id="accordion">
+            <div class="am-g">
+                <div class="am-u-sm-1"></div>
+                <div class="am-u-sm-7 am-u-sm-offset-4">
+                    <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/main">查看评审专家账号</a>
+                    <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/resUnitsMain">查看推荐单位账号</a>
+                    <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/proposerMain">查看申请者账号</a>
 
-                <!--推荐单位折叠面板-->
-                <div class="am-panel am-panel-secondary">
-                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">推荐单位信息管理<span
-                            class="am-icon-chevron-down am-fr"></span></div>
-                    <div class="am-panel-bd am-collapse" id="collapse-panel-1">
-                        <table class="am-table">
-                            <thead>
-                            <tr>
-                                <th>序号</th>
-                                <th>真实姓名</th>
-                                <th>身份</th>
-                                <th>用户名</th>
-                                <th>最后登录ip</th>
-                                <th>最后登录时间</th>
-                                <th>登录次数</th>
-                                <th>管理员级别</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>天天</td>
-                                <td>推荐单位</td>
-                                <td>Test1</td>
-                                <td>112.211.114.114</td>
-                                <td>2011-11-11 11:11</td>
-                                <td>12</td>
-                                <td>1</td>
-                                <td>
-                                    <button class="am-btn am-btn-secondary" id="recunitmodify-toggle1">修改</button>
-                                    <div class="am-modal am-modal-prompt" tabindex="-1" id="my-recunitmodify1">
-                                        <div class="am-modal-dialog">
-                                            <div class="am-modal-hd">修改密码</div>
-                                            <div class="am-modal-bd">
-                                                当前用户密码是：1234<br>
-                                                <label>请输入新密码</label>
-                                                <input type="text" class="am-modal-prompt-input">
-                                            </div>
-                                            <div class="am-modal-footer">
-                                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                                                <span class="am-modal-btn" data-am-modal-confirm>修改</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-recunitremove1'}">
-                                        删除
-                                    </button>
-                                    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-recunitremove1">
-                                        <div class="am-modal-dialog">
-                                            <div class="am-modal-hd">提示</div>
-                                            <div class="am-modal-bd">
-                                                你确定要删除该账户吗？
-                                            </div>
-                                            <div class="am-modal-footer">
-                                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                                                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
+            </div>
+        </div>
 
-                <!--评审专家折叠面板-->
-                <div class="am-panel am-panel-secondary">
-                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-2'}">评审专家信息管理<span
-                            class="am-icon-chevron-down am-fr"></span></div>
-                    <div class="am-panel-bd am-collapse" id="collapse-panel-2">
-                        <table class="am-table">
-                            <thead>
-                            <tr>
-                                <th>序号</th>
-                                <th>真实姓名</th>
-                                <th>身份</th>
-                                <th>用户名</th>
-                                <th>最后登录ip</th>
-                                <th>最后登录时间</th>
-                                <th>登录次数</th>
-                                <th>管理员级别</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>天天</td>
-                                <td>推荐单位</td>
-                                <td>Test1</td>
-                                <td>112.211.114.114</td>
-                                <td>2011-11-11 11:11</td>
-                                <td>12</td>
-                                <td>1</td>
-                                <td>
-                                    <button class="am-btn am-btn-secondary" id="promodify-toggle1">修改</button>
+        <div class="am-cf am-padding">
 
-                                    <div class="am-modal am-modal-prompt" tabindex="-1" id="my-promodify1">
-                                        <div class="am-modal-dialog">
-                                            <div class="am-modal-hd">修改密码</div>
-                                            <div class="am-modal-bd">
-                                                当前用户密码是：1234<br>
-                                                <label>请输入新密码</label>
-                                                <input type="text" class="am-modal-prompt-input">
-                                            </div>
-                                            <div class="am-modal-footer">
-                                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                                                <span class="am-modal-btn" data-am-modal-confirm>修改</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-proremove1'}">删除
-                                    </button>
-
-                                    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-proremove1">
-                                        <div class="am-modal-dialog">
-                                            <div class="am-modal-hd">提示</div>
-                                            <div class="am-modal-bd">
-                                                你确定要删除该账户吗？
-                                            </div>
-                                            <div class="am-modal-footer">
-                                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                                                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!--申请者折叠面板-->
-                <div class="am-panel am-panel-secondary">
-                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">评审专家信息管理<span
-                            class="am-icon-chevron-down am-fr"></span></div>
-                    <div class="am-panel-bd am-collapse" id="collapse-panel-3">
-                        <table class="am-table">
-                            <thead>
-                            <tr>
-                                <th>序号</th>
-                                <th>真实姓名</th>
-                                <th>身份</th>
-                                <th>用户名</th>
-                                <th>最后登录ip</th>
-                                <th>最后登录时间</th>
-                                <th>登录次数</th>
-                                <th>管理员级别</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>天天</td>
-                                <td>推荐单位</td>
-                                <td>Test1</td>
-                                <td>112.211.114.114</td>
-                                <td>2011-11-11 11:11</td>
-                                <td>12</td>
-                                <td>1</td>
-                                <td>
-                                    <button class="am-btn am-btn-secondary" id="candmodify-toggle1">修改</button>
-=======
             <table class="am-table">
-                <a class="am-btn am-btn am-btn-primary" href="<%=basePath%>userinfo/main">查看专家评审账号</a>
-                <a class="am-btn am-btn am-btn-success" href="<%=basePath%>userinfo/resUnitsMain">查看推荐单位账号</a>
-                <a class="am-btn am-btn am-btn-success" href="<%=basePath%>userinfo/proposerMain">查看申请者账号</a>
                 <thead>
                 <tr>
-                    <td>序号</td>
-                    <td>用户名</td>
-                    <td>ID</td>
-                    <td>所在组ID</td>
-                    <td>操作</td>
+                    <th>序号</th>
+                    <th>用户名</th>
+                    <th>ID</th>
+                    <th>所在组ID</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
+
                 <tbody>
                 <c:forEach items="${experts}" var="expert" varStatus="status">
                     <tr>
@@ -357,7 +174,8 @@
                         <td>${expert.expID}</td>
                         <td>${expert.groupID}</td>
                         <td><a href="<%=basePath%>userinfo/changeExpert?name=${expert.expName}">修改</a>
-                            <a href="<%=basePath%>userinfo/deleteExpert?name=${expert.expName}">删除</a></td>
+                            <a href="<%=basePath%>userinfo/deleteExpert?name=${expert.expName}">删除</a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -413,60 +231,6 @@
         </div>
     </div>
 </div>
-    <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
-
-    <footer style="width: 260px; min-height: 50px; z-index: 9999;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
-        <div class="am-topbar-brand am-padding-left">
-            <small>© 2015 辽宁省科学技术协会</small>
-        </div>
-    </footer>
->>>>>>> Temporary merge branch 2
-
-                                    <div class="am-modal am-modal-prompt" tabindex="-1" id="my-candmodify1">
-                                        <div class="am-modal-dialog">
-                                            <div class="am-modal-hd">修改密码</div>
-                                            <div class="am-modal-bd">
-                                                当前用户密码是：1234<br>
-                                                <label>请输入新密码</label>
-                                                <input type="text" class="am-modal-prompt-input">
-                                            </div>
-                                            <div class="am-modal-footer">
-                                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                                                <span class="am-modal-btn" data-am-modal-confirm>修改</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-<<<<<<< Temporary merge branch 1
-                                    <button class="am-btn am-btn-danger" data-am-modal="{target: '#my-candremove1'}">
-                                        删除
-                                    </button>
-
-                                    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-candremove1">
-                                        <div class="am-modal-dialog">
-                                            <div class="am-modal-hd">提示</div>
-                                            <div class="am-modal-bd">
-                                                你确定要删除该账户吗？
-                                            </div>
-                                            <div class="am-modal-footer">
-                                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                                                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- content end -->
-</div>
-
 <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
 <footer style="width: 260px; min-height: 50px; z-index: 9999;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
@@ -491,13 +255,3 @@
 <script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
 </body>
 </html>
-=======
-    <!--[if (gte IE 9)|!(IE)]><!-->
-    <script src="<%=basePath%>assets/js/jquery.min.js"></script>
-    <script src="<%=basePath%>assets/js/amazeui.min.js"></script>
-    <!--<![endif]-->
-    <script src="<%=basePath%>assets/js/app.js"></script>
-    <script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
-    </body>
-</html>
->>>>>>> Temporary merge branch 2
