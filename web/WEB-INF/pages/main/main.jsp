@@ -82,7 +82,8 @@
             <li class="admin-parent">
                 <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span> 名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                 <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
-                    <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span> 推荐单位提交名额管理</a></li>
+                    <%--<li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span> 推荐单位提交名额管理</a></li>--%>
+                    <li><a href="#" class="am-cf" onclick="testtt('<%=basePath%>quotaman/recomquota')"><span class="am-icon-file-o"></span> 推荐单位提交名额管理</a></li>
                     <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span> 初评名额管理</a></li>
                     <li><a href="<%=basePath%>quotaman/finalquota"><span class="am-icon-file"></span> 终评名额管理</a></li>
                 </ul>
@@ -112,7 +113,7 @@
     <!-- sidebar end -->
 
     <!-- content start -->
-    <div class="admin-content">
+    <div id="main-content" class="admin-content">
 
         <div class="am-cf am-padding">
             <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>一些常用模块</small></div>
@@ -378,5 +379,31 @@
 <script src="assets/js/amazeui.min.js"></script>
 <!--<![endif]-->
 <script src="assets/js/app.js"></script>
+<script>
+    var xmlhttp;
+    function testtt(url){
+        xmlhttp=new XMLHttpRequest();
+        if(xmlhttp!=null){
+            console.log("事件发生");
+            xmlhttp.onreadystatechange = state_Change;
+            xmlhttp.open("GET",url,true);
+            xmlhttp.send(null);
+        }
+    }
+    function state_Change()
+    {
+        if (xmlhttp.readyState==4)
+        {// 4 = "loaded"
+            if (xmlhttp.status==200)
+            {// 200 = "OK"
+                document.getElementById('main-content').innerHTML=xmlhttp.responseText;
+            }
+            else
+            {
+                alert("Problem retrieving data:" + xmlhttp.statusText);
+            }
+        }
+    }
+</script>
 </body>
 </html>
