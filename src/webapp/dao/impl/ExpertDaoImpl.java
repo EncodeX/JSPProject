@@ -1,6 +1,9 @@
 package webapp.dao.impl;
 
 import webapp.dao.ExpertDao;
+import webapp.dao.GroupDao;
+import webapp.dao.VoteDao;
+import webapp.model.Committee;
 import webapp.model.Expert;
 import webapp.utils.DbConnector;
 
@@ -14,6 +17,9 @@ import java.util.Vector;
 public class ExpertDaoImpl implements ExpertDao{
 
     Connection connection= DbConnector.getConnection();
+
+    GroupDao groupDao=new GroupDaoImpl();
+    VoteDao voteDao=new VoteDaoImpl();
     @Override
     public boolean addExpert(String expName, String expPwd, int groupID) {
         PreparedStatement ps=null;
@@ -161,6 +167,94 @@ public class ExpertDaoImpl implements ExpertDao{
         }
         catch (Exception ex){
             System.err.println("[DB ERROR]SubjectGroup getSubjectGroupByName ERROR.");
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Expert> getAllExpertsByGroupId(int groupId,int status) {
+        PreparedStatement ps;
+        ResultSet rs;
+        ArrayList<Expert> experts=new ArrayList<Expert>();
+        try {
+            ps=connection.prepareStatement("select * from expert where groupID=? and status=?");
+            ps.setInt(1,groupId);
+            ps.setInt(2,status);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Expert expert=new Expert(rs.getString("expName"),rs.getString("expPwd"),rs.getInt("expID"),rs.getInt("groupID"),rs.getInt("status"));
+                experts.add(expert);
+            }
+            return experts;
+        }
+        catch (Exception ex){
+            System.err.println("[DB ERROR]ArrayList<Expert> getAllExpertsByGroupId ERROR.");
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Expert> getAllExpertsByStatus(int status) {
+        PreparedStatement ps;
+        ResultSet rs;
+        ArrayList<Expert> experts=new ArrayList<Expert>();
+        try {
+            ps=connection.prepareStatement("select * from expert where status=?");
+            ps.setInt(1,status);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Expert expert=new Expert(rs.getString("expName"),rs.getString("expPwd"),rs.getInt("expID"),rs.getInt("groupID"),rs.getInt("status"));
+                experts.add(expert);
+            }
+            return experts;
+        }
+        catch (Exception ex){
+            System.err.println("[DB ERROR]ArrayList<Expert> getAllExpertsByGroupId ERROR.");
+            return null;
+        }
+    }
+
+    @Override
+    public Expert getExpertByExpertID(int expertID) {
+        PreparedStatement ps;
+        String sql="select DISTINCT * from expert where expID=?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setInt(1,expertID);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            Expert expert=new Expert();
+            expert.setExpName(rs.getString(1));
+            expert.setExpPwd(rs.getString(2));
+            expert.setExpID(rs.getInt(3));
+            expert.setGroupID(rs.getInt(4));
+            return expert;
+        }
+        catch (Exception ex){
+            System.err.println("[DB ERROR]SubjectGroup getSubjectGroupByName ERROR.");
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Committee> getAllCommittees() {
+        PreparedStatement ps;
+        ResultSet rs;
+        ArrayList<Committee> committees=new ArrayList<Committee>();
+        try {
+            ps=connection.prepareStatement("select * from expert where status=1");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Expert expert=new Expert(rs.getString("expName"),rs.getString("expPwd"),rs.getInt("expID"),rs.getInt("groupID"),rs.getInt("status"));
+                int limitVote=groupDao.getSubjectGroupByID(expert.getGroupID()).getSubNum();
+                int alreadyVote=groupDao.getAlreadyVoteByGroupName(groupDao.getSubjectGroupByID(expert.getGroupID()).getGroName());
+                Committee committee=new Committee(expert,alreadyVote,limitVote);
+                committees.add(committee);
+            }
+            return committees;
+        }
+        catch (Exception ex){
+            System.err.println("[DB ERROR]ArrayList<Expert> getAllExpertsByGroupId ERROR.");
             return null;
         }
     }

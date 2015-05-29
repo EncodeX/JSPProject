@@ -133,4 +133,78 @@ public class ProposerDaoImpl implements ProposerDao {
             return false;
         }
     }
+
+    @Override
+    public ArrayList<Proposer> getProposerByExpertID(int expID) {
+        PreparedStatement ps;
+        ArrayList<Proposer> proposers=new ArrayList<Proposer>();
+        try {
+            ps=connection.prepareStatement("select distinct * from proposer where userID in(select pid from vote where eid=?)");
+            ps.setInt(1, expID);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Proposer proposer=new Proposer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+                proposers.add(proposer);
+            }
+            return proposers;
+        }
+        catch (Exception e){
+            System.err.println("[DB ERROR]ProposerDaoImpl ArrayList<Proposer> getProposerByExpertID");
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Proposer> getProposerBySearchName(String name) {
+        PreparedStatement ps;
+        ArrayList<Proposer> proposers=new ArrayList<Proposer>();
+        try {
+            if(name==null||name.equals("")){
+                ps=connection.prepareStatement("select distinct * from proposer");
+            }else{
+                ps=connection.prepareStatement("select distinct * from proposer where name LIKE '%"+name+"%'");
+            }
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Proposer proposer=new Proposer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+                proposers.add(proposer);
+            }
+            return proposers;
+        }
+        catch (Exception e){
+            System.err.println("[DB ERROR]ProposerDaoImpl ArrayList<Proposer> getProposerBySearchName");
+            return null;
+        }
+    }
+
+    @Override
+    public void changeLastResult(int userid, int lastresult) {
+        PreparedStatement ps;
+        String sql="update proposer set lasResult=? where userid=?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setInt(1,lastresult);
+            ps.setInt(2,userid);
+            ps.executeUpdate();
+        }
+        catch (Exception e){
+            System.err.println("[DB ERROR]ProposerDaoImpl void changeLastResult");
+        }
+    }
+
+    @Override
+    public int getAmountOfLastResult() {
+        PreparedStatement ps;
+        String sql="select count(*)  from proposer  where lasResult=1";
+        try {
+            ps=connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        }
+        catch (Exception e){
+            System.err.println("查询信息时出现异常" + sql + e);
+            return 0;
+        }
+    }
 }

@@ -41,7 +41,7 @@
                     <td>${status.count}</td>
                     <td>${vo.username}</td>
                     <td>${vo.quota}</td>
-                    <form method="post" action="<%=basePath%>assman/changequota">
+                    <form method="post" action="<%=basePath%>quotaman/changequota">
                         <input type="hidden" name="username" value="${vo.username}">
                     <td><input type="text" name="quota" value="${vo.quota}">
                         <input type="submit" value="修改"> </td>

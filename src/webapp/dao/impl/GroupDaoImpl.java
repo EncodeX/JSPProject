@@ -44,7 +44,7 @@ public class GroupDaoImpl implements GroupDao {
         try {
             ps=connection.prepareStatement("select * from subgrp  where subgrp.groID>0 limit ?,?");
             ps.setInt(1,(page-1)*numPerPage);
-            ps.setInt(2,numPerPage);
+            ps.setInt(2, numPerPage);
             rs = ps.executeQuery();
             while(rs.next()){
                 SubjectGroup sg=new SubjectGroup(rs.getInt("groID"),rs.getString("groName"),rs.getInt("subNum"));
@@ -112,7 +112,7 @@ public class GroupDaoImpl implements GroupDao {
         PreparedStatement ps;
         try {
             ps=connection.prepareStatement("delete from subgrp where groName=?");
-            ps.setString(1,name);
+            ps.setString(1, name);
             ps.execute();
         }
         catch (Exception ex){
@@ -193,6 +193,43 @@ public class GroupDaoImpl implements GroupDao {
         }
         catch (Exception ex){
             System.err.println("[DB ERROR]GroupDaoImpl boolean changeQuotaByGroupId ERROR.");
+        }
+    }
+
+    @Override
+    public int getAlreadyVoteByGroupName(String name) {
+        int groupid=getSubjectGroupByName(name).getGroID();
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            ps=connection.prepareStatement("select count(*) as num from proposer where recResult=1 and subID=?");
+            ps.setInt(1, groupid);
+            rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt("num");
+        }
+        catch (Exception ex){
+            System.err.println("[DB ERROR]GroupDaoImpl int getAlreadyVoteByGroupName ERROR.");
+            return 0;
+        }
+    }
+
+
+
+    @Override
+    public SubjectGroup getSubjectGroupByID(int id) {
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            ps=connection.prepareStatement("select DISTINCT * from subgrp where groID=?");
+            ps.setInt(1,id);
+            rs = ps.executeQuery();
+            rs.next();
+            return new SubjectGroup(rs.getInt("groID"),rs.getString("groName"),rs.getInt("subNum"));
+        }
+        catch (Exception ex){
+            System.err.println("[DB ERROR]SubjectGroup getSubjectGroupByID ERROR.");
+            return null;
         }
     }
 }

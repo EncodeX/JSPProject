@@ -26,7 +26,7 @@
     </div>
 
     <div class="am-cf am-padding">
-        <form method="post" action="<%=basePath%>assman/changefinalquota">
+        <form method="post" action="<%=basePath%>quotaman/changefinalquota">
 
         评审委员会最终名额: ${subjectGroup.subNum} <br>
         修改:
