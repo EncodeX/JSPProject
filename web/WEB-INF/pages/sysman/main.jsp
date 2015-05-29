@@ -39,7 +39,7 @@
 <![endif]-->
 
 <header class="am-topbar admin-header"
-        style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 9999;">
+        style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 1000;">
     <div class="am-topbar-brand">
         <strong>辽宁省优秀科技工作者评选系统</strong>
         <small>后台管理中心</small>
@@ -170,12 +170,12 @@
                     <tbody>
 
                     <tr>
-                        <form action=""   >
+                        <form action="<%=basePath%>sysman/settime/proposer" method="post">
                             <td>申报者</td><td>
 
                             <div class="am-form-group am-form-icon">
                                 <i class="am-icon-calendar"></i>
-                                <input type="text" class="am-form-field" placeholder="日期与时间" id="proposerOpenTime">
+                                <input type="text" value="${proposerOpenTime.year+1900}-${proposerOpenTime.month+1}-${proposerOpenTime.date} ${proposerOpenTime.hours}:${proposerOpenTime.minutes}" class="am-form-field" placeholder="日期与时间" id="proposerOpenTime">
                             </div>
 
 
@@ -183,7 +183,7 @@
                             <td>
                                 <div class="am-form-group am-form-icon">
                                     <i class="am-icon-calendar"></i>
-                                    <input type="text" class="am-form-field" placeholder="日期与时间" id="proposerCloseTime">
+                                    <input type="text" value="${proposerEndTime.year+1900}-${proposerEndTime.month+1}-${proposerEndTime.date} ${proposerEndTime.hours}:${proposerEndTime.minutes}" class="am-form-field" placeholder="日期与时间" id="proposerCloseTime">
                                 </div>
                             </td>
                             <td>
@@ -199,12 +199,12 @@
                     </form>
 
                     <tr>
-                        <form action=""   >
+                        <form action="<%=basePath%>sysman/settime/recunits" method="post">
                             <td>推荐单位</td><td>
 
                             <div class="am-form-group am-form-icon">
                                 <i class="am-icon-calendar"></i>
-                                <input type="text" class="am-form-field" placeholder="日期与时间" id="resUnitsOpenTime">
+                                <input value="${recunitsOpenTime.year+1900}-${recunitsOpenTime.month+1}-${recunitsOpenTime.date} ${recunitsOpenTime.hours}:${recunitsOpenTime.minutes}" type="text" class="am-form-field" placeholder="日期与时间" id="resUnitsOpenTime">
                             </div>
 
 
@@ -212,7 +212,7 @@
                             <td>
                                 <div class="am-form-group am-form-icon">
                                     <i class="am-icon-calendar"></i>
-                                    <input type="text" class="am-form-field" placeholder="日期与时间" id="resUnitsCloseTime">
+                                    <input value="${recunitsEndTime.year+1900}-${recunitsEndTime.month+1}-${recunitsEndTime.date} ${recunitsEndTime.hours}:${recunitsEndTime.minutes}" type="text" class="am-form-field" placeholder="日期与时间" id="resUnitsCloseTime">
                                 </div>
                             </td>
                             <td>
@@ -228,12 +228,12 @@
                     </form>
 
                     <tr>
-                        <form action=""   >
+                        <form action="<%=basePath%>sysman/settime/expert" method="post">
                             <td>评审专家</td><td>
 
                             <div class="am-form-group am-form-icon">
                                 <i class="am-icon-calendar"></i>
-                                <input type="text" class="am-form-field" placeholder="日期与时间" id="expertOpenTime">
+                                <input type="text" value="${expertOpenTime.year+1900}-${expertOpenTime.month+1}-${expertOpenTime.date} ${expertOpenTime.hours}:${expertOpenTime.minutes}" class="am-form-field" placeholder="日期与时间" id="expertOpenTime">
                             </div>
 
 
@@ -241,7 +241,7 @@
                             <td>
                                 <div class="am-form-group am-form-icon">
                                     <i class="am-icon-calendar"></i>
-                                    <input type="text" class="am-form-field" placeholder="日期与时间" id="expertCloseTime">
+                                    <input type="text" value="${expertEndTime.year+1900}-${expertEndTime.month+1}-${expertEndTime.date} ${expertEndTime.hours}:${expertEndTime.minutes}" class="am-form-field" placeholder="日期与时间" id="expertCloseTime">
                                 </div>
                             </td>
                             <td>
@@ -274,7 +274,7 @@
 
 <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
-<footer style="width: 260px; min-height: 50px; z-index: 9999;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
+<footer style="width: 260px; min-height: 50px; z-index: 1000;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
     <div class="am-topbar-brand am-padding-left">
         <small>© 2015 辽宁省科学技术协会</small>
     </div>

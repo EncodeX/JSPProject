@@ -39,7 +39,7 @@
 <![endif]-->
 
 <header class="am-topbar admin-header"
-        style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 9999;">
+        style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 1000;">
   <div class="am-topbar-brand">
     <strong>辽宁省优秀科技工作者评选系统</strong>
     <small>后台管理中心</small>
@@ -131,6 +131,59 @@
 
   <!-- content start -->
   <div class="admin-content">
+      <c:if test="${subjectGroups!=null&&subjectGroups.size()!=0}">
+          <form action="<%=basePath%>voteman/provote" method="post">
+              <select name="group">
+                  <c:forEach items="${subjectGroups}" var="vo" varStatus="status">
+                      <c:if test="${vo.groName.equals(group)}">
+                          <option value="${vo.groName}" selected="selected">${vo.groName}</option>
+                      </c:if>
+                      <c:if test="${!vo.groName.equals(group)}">
+                          <option value="${vo.groName}">${vo.groName}</option>
+                      </c:if>
+                  </c:forEach>
+              </select>
+              <input type="submit" value="选择组">
+          </form>
+      </c:if>
+
+
+    <c:if test="${experts!=null&&experts.size()!=0}">
+        <div class="am-cf am-padding">
+            <table class="am-table">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>评审专家</th>
+                    <th>已投/限制</th>
+                    <th>详细</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${experts}" var="vo" varStatus="status">
+                    <tr>
+                        <td>${status.count}</td>
+                        <td>${vo.expName}</td>
+                        <td>${alreadyVote}/${limitVote}</td>
+                        <form method="post" action="<%=basePath%>voteman/provoteViewDetail">
+                            <input type="hidden" name="expertId" value="${vo.expID}">
+                            <td><input type="submit" value="查看投票详情"> </td>
+                        </form>
+                        <form method="post" action="<%=basePath%>voteman/provoteVoteReset">
+                            <input type="hidden" name="expertId" value="${vo.expID}">
+                            <input type="hidden" name="group" value="${group}">
+                            <td><input type="submit" value="返回重投"> </td>
+                        </form>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+
+        </div>
+
+    </c:if>
+
 
   </div>
   <!-- content end -->
@@ -138,7 +191,7 @@
 
 <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
-<footer style="width: 260px; min-height: 50px; z-index: 9999;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
+<footer style="width: 260px; min-height: 50px; z-index: 1000;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
   <div class="am-topbar-brand am-padding-left">
     <small>© 2015 辽宁省科学技术协会</small>
   </div>

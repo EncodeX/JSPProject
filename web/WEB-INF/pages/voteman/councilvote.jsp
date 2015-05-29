@@ -39,7 +39,7 @@
 <![endif]-->
 
 <header class="am-topbar admin-header"
-        style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 9999;">
+        style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 1000;">
   <div class="am-topbar-brand">
     <strong>辽宁省优秀科技工作者评选系统</strong>
     <small>后台管理中心</small>
@@ -131,6 +131,61 @@
 
   <!-- content start -->
   <div class="admin-content">
+      <div>
+          <form action="<%=basePath%>voteman/councilvote" method="post">
+              <input type="text" value="${search}" name="search">
+              <input type="submit" value="搜索">
+          </form>
+      </div>
+
+      <div><p>已投${alreadVote}人 限制${limitVote}人</p></div>
+
+
+    <c:if test="${proposers!=null&&proposers.size()!=0}">
+        <div class="am-cf am-padding">
+            <table class="am-table">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>申报者用户名</th>
+                    <th>申报者姓名</th>
+                    <th>评审结果</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${proposers}" var="vo" varStatus="status">
+                    <tr>
+                        <td>${status.count}</td>
+                        <td>${vo.userName}</td>
+                        <td>${vo.name}</td>
+                        <c:if test="${vo.lasResult==0}"><td>未通过</td></c:if>
+                        <c:if test="${vo.lasResult==1}"><td>已通过</td></c:if>
+                        <td>
+                            <c:if test="${vo.lasResult==0}">
+                        <form method="post" action="<%=basePath%>voteman/councilvoteadd">
+                            <input type="hidden" name="userid" value="${vo.userID}">
+                            <input type="hidden" name="search" value="${search}">
+                            <input type="submit" value="添加">
+                        </form>
+                            </c:if>
+                            <c:if test="${vo.lasResult==1}">
+                        <form method="post" action="<%=basePath%>voteman/councilvotedelete">
+                            <input type="hidden" name="userid" value="${vo.userID}">
+                            <input type="hidden" name="search" value="${search}">
+                            <input type="submit" value="删除">
+                        </form>
+                            </c:if>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+
+        </div>
+
+    </c:if>
+
 
   </div>
   <!-- content end -->
@@ -138,7 +193,7 @@
 
 <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
-<footer style="width: 260px; min-height: 50px; z-index: 9999;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
+<footer style="width: 260px; min-height: 50px; z-index: 1000;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
   <div class="am-topbar-brand am-padding-left">
     <small>© 2015 辽宁省科学技术协会</small>
   </div>

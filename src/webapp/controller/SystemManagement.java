@@ -44,14 +44,14 @@ public class SystemManagement {
             openTimestamp.setDate(Integer.parseInt(startdate.split("-")[2]));
             openTimestamp.setHours(Integer.parseInt(starttime.split(":")[0]));
             openTimestamp.setMinutes(Integer.parseInt(starttime.split(":")[1]));
-            openTimestamp.setSeconds(Integer.parseInt(starttime.split(":")[2]));
+            openTimestamp.setSeconds(0);
 
             endTimestamp.setYear(Integer.parseInt(enddate.split("-")[0])-1900);
             endTimestamp.setMonth(Integer.parseInt(enddate.split("-")[1])-1);
             endTimestamp.setDate(Integer.parseInt(enddate.split("-")[2]));
             endTimestamp.setHours(Integer.parseInt(endtime.split(":")[0]));
             endTimestamp.setMinutes(Integer.parseInt(endtime.split(":")[1]));
-            endTimestamp.setSeconds(Integer.parseInt(endtime.split(":")[2]));
+            endTimestamp.setSeconds(0);
         }catch (Exception e){
             messageTitle="错误的输入格式";
             messageEntity="请检查日期是否输入正确";

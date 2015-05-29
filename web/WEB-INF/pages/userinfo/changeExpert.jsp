@@ -155,6 +155,8 @@
                         <label>所属学科组ID：</label>
                         <input type="text" name="groID" value="${expert.groupID}" class="am-form-field">
 
+                        <input type="hidden" name="status" value="${expert.status}" >
+
                     </div>
                     <button class="am-btn am-btn-secondary" type="submit">提交</button>
                 </fieldset>

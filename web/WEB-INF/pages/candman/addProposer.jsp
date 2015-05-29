@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: zz
-  Date: 2015/4/28
-  Time: 16:50
+  User: Administrator
+  Date: 2015/5/23
+  Time: 15:55
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
@@ -39,7 +39,7 @@
 <![endif]-->
 
 <header class="am-topbar admin-header"
-        style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 1000;">
+        style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 9999;">
   <div class="am-topbar-brand">
     <strong>辽宁省优秀科技工作者评选系统</strong>
     <small>后台管理中心</small>
@@ -114,8 +114,8 @@
       <li class="admin-parent">
         <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-building"></span>
           推荐单位管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav4">
-          <li><a href="<%=basePath%>departman/citysciassoc " class="am-cf"><span class="am-icon-bank"></span>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
+          <li><a href="<%=basePath%>departman/citysciassoc" class="am-cf"><span class="am-icon-bank"></span>
             市科协</a></li>
           <li><a href="<%=basePath%>departman/sciassoc"><span class="am-icon-circle"></span> 理科学会</a></li>
           <li><a href="<%=basePath%>departman/engassoc"><span class="am-icon-magnet"></span> 工科学会</a></li>
@@ -131,14 +131,61 @@
 
   <!-- content start -->
   <div class="admin-content">
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong>/
+        <small>增加候选人</small>
+      </div>
+    </div>
 
+    <div class="am-cf am-padding">
+      <form method="post" action="<%=basePath%>candman/addProposerToDB">
+        <fieldset>
+          <legend>增加候选人：</legend>
+          <div class="am-form-group">
+
+            <label>用户名：</label>
+            <input type="text" name="userName" value="${proposer.userName}" class="am-form-field">
+
+            <label>ID：</label>
+            <input type="text" name="userID" value="${proposer.userID}" class="am-form-field">
+            <label>账号密码：</label>
+            <input type="text" name="userPwd" value="${proposer.userPwd}" class="am-form-field">
+
+            <label>真实姓名：</label>
+            <input type="text" name="name" value="${proposer.name}" class="am-form-field">
+
+            <label>所在学科组：</label>
+            <input type="text" name="subClass" value="${proposer.subClass}" class="am-form-field">
+
+            <label>学科组ID：</label>
+            <input type="text" name="subID" value="${proposer.subID}" class="am-form-field">
+
+            <label>推荐单位ID：</label>
+            <input type="text" name="recID" value="${proposer.recID}" class="am-form-field">
+
+            <label>推荐结果：</label>
+            <input type="text" name="recResult" value="${proposer.recResult}" class="am-form-field">
+
+            <label>初评票数：</label>
+            <input type="text" name="firCount" value="${proposer.firCount}" class="am-form-field">
+
+            <label>初评结果：</label>
+            <input type="text" name="firResult" value="${proposer.firResult}" class="am-form-field">
+
+            <label>终评结果：</label>
+            <input type="text" name="lasResult" value="${proposer.lasResult}" class="am-form-field">
+
+          </div>
+          <button class="am-btn am-btn-secondary" type="submit">提交</button>
+        </fieldset>
+      </form>
+    </div>
   </div>
   <!-- content end -->
 </div>
-
 <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
-<footer style="width: 260px; min-height: 50px; z-index: 1000;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
+<footer style="width: 260px; min-height: 50px; z-index: 9999;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
   <div class="am-topbar-brand am-padding-left">
     <small>© 2015 辽宁省科学技术协会</small>
   </div>
@@ -160,3 +207,5 @@
 <script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
 </body>
 </html>
+
+
