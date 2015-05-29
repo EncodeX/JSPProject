@@ -30,7 +30,7 @@
             <thead>
             <tr>
                 <th>序号</th>
-                <th>评审专家组</th>
+                <th>学科组</th>
                 <th>初评名额</th>
                 <th>修改推荐名额</th>
             </tr>
@@ -41,7 +41,7 @@
                     <td>${status.count}</td>
                     <td>${vo.groName}</td>
                     <td>${vo.subNum}</td>
-                    <form method="post" action="<%=basePath%>assman/changefirstquota">
+                    <form method="post" action="<%=basePath%>quotaman/changefirstquota">
                         <input type="hidden" name="groupname" value="${vo.groName}">
                     <td><input type="text" name="number" value="${vo.subNum}">
                         <input type="submit" value="修改"> </td>

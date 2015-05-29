@@ -1,5 +1,6 @@
 package webapp.dao;
 
+import webapp.model.Committee;
 import webapp.model.Expert;
 
 import java.util.ArrayList;
@@ -17,4 +18,11 @@ public interface ExpertDao {
     public int getExpertAmount();
     boolean isExist(String expName);
     Expert getExpertByName(String name);
+
+
+    //by zz
+    ArrayList<Expert> getAllExpertsByGroupId(int groupId,int status);
+    ArrayList<Expert> getAllExpertsByStatus(int status);
+    Expert getExpertByExpertID(int expertID);
+    ArrayList<Committee> getAllCommittees();
 }

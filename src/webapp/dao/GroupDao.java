@@ -19,4 +19,6 @@ public interface GroupDao {
     boolean changeQuotaByGroupId(int id,int number);
 
     void addFinalGroup();
+    int getAlreadyVoteByGroupName(String name);
+    SubjectGroup getSubjectGroupByID(int id);
 }
