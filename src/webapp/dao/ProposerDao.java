@@ -24,4 +24,11 @@ public interface ProposerDao {
     void deleteProposerByGroupId(int id);
     boolean addProposer(Proposer proposer);
     boolean changeSubID(String userName,int subID);
+
+    //by zz
+    ArrayList<Proposer> getProposerByExpertID(int expID);
+    ArrayList<Proposer> getProposerBySearchName(String name);
+    void changeLastResult(int userid,int lastresult);
+    int getAmountOfLastResult();
+
 }
