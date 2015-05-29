@@ -131,6 +131,61 @@
 
   <!-- content start -->
   <div class="admin-content">
+      <div>
+          <form action="<%=basePath%>voteman/councilvote" method="post">
+              <input type="text" value="${search}" name="search">
+              <input type="submit" value="搜索">
+          </form>
+      </div>
+
+      <div><p>已投${alreadVote}人 限制${limitVote}人</p></div>
+
+
+    <c:if test="${proposers!=null&&proposers.size()!=0}">
+        <div class="am-cf am-padding">
+            <table class="am-table">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>申报者用户名</th>
+                    <th>申报者姓名</th>
+                    <th>评审结果</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${proposers}" var="vo" varStatus="status">
+                    <tr>
+                        <td>${status.count}</td>
+                        <td>${vo.userName}</td>
+                        <td>${vo.name}</td>
+                        <c:if test="${vo.lasResult==0}"><td>未通过</td></c:if>
+                        <c:if test="${vo.lasResult==1}"><td>已通过</td></c:if>
+                        <td>
+                            <c:if test="${vo.lasResult==0}">
+                        <form method="post" action="<%=basePath%>voteman/councilvoteadd">
+                            <input type="hidden" name="userid" value="${vo.userID}">
+                            <input type="hidden" name="search" value="${search}">
+                            <input type="submit" value="添加">
+                        </form>
+                            </c:if>
+                            <c:if test="${vo.lasResult==1}">
+                        <form method="post" action="<%=basePath%>voteman/councilvotedelete">
+                            <input type="hidden" name="userid" value="${vo.userID}">
+                            <input type="hidden" name="search" value="${search}">
+                            <input type="submit" value="删除">
+                        </form>
+                            </c:if>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+
+        </div>
+
+    </c:if>
+
 
   </div>
   <!-- content end -->
