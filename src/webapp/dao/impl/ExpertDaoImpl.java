@@ -15,14 +15,15 @@ public class ExpertDaoImpl implements ExpertDao{
 
     Connection connection= DbConnector.getConnection();
     @Override
-    public boolean addExpert(String expName, String expPwd, int groupID) {
+    public boolean addExpert(String expName, String expPwd, int groupID,int status) {
         PreparedStatement ps=null;
-        String sql="INSERT INTO Expert(expName,expPwd,groupID) VALUES (?,?,?);";
+        String sql="INSERT INTO Expert(expName,expPwd,groupID,status) VALUES (?,?,?,?);";
         try {
             ps=connection.prepareStatement(sql);
             ps.setString(1,expName);
             ps.setString(2,expPwd);
             ps.setInt(3, groupID);
+            ps.setInt(4, status);
             ps.executeUpdate();
             return true;
         }
@@ -49,9 +50,9 @@ public class ExpertDaoImpl implements ExpertDao{
     }
 
     @Override
-    public boolean updateExpert(String exOldname,String expName, String expPwd, int groupID) {
+    public boolean updateExpert(String exOldname,String expName, String expPwd, int groupID,int status) {
         Statement st=null;
-        String sql="update expert set expName='"+expName+"',expPwd='"+expPwd+"',groupID='"+groupID+"' where expName='"+exOldname+"'";
+        String sql="update expert set expName='"+expName+"',expPwd='"+expPwd+"',groupID='"+groupID+"',status='"+status+"' where expName='"+exOldname+"'";
         try {
             st=connection.createStatement();
             st.executeUpdate(sql);
@@ -76,6 +77,7 @@ public class ExpertDaoImpl implements ExpertDao{
                 Expert.setExpPwd(rs.getString(2));
                 Expert.setExpID(rs.getInt(3));
                 Expert.setGroupID(rs.getInt(4));
+                Expert.setStatus(rs.getInt(5));
                 Experts.add(Expert);
             }
         } catch (Exception e){
@@ -101,6 +103,7 @@ public class ExpertDaoImpl implements ExpertDao{
                 expert.setExpPwd(rs.getString(2));
                 expert.setExpID(rs.getInt(3));
                 expert.setGroupID(rs.getInt(4));
+                expert.setStatus(rs.getInt(5));
                 experts.add(expert);
             }
             return experts;
@@ -157,10 +160,11 @@ public class ExpertDaoImpl implements ExpertDao{
             expert.setExpPwd(rs.getString(2));
             expert.setExpID(rs.getInt(3));
             expert.setGroupID(rs.getInt(4));
+            expert.setStatus(rs.getInt(5));
             return expert;
         }
-        catch (Exception ex){
-            System.err.println("[DB ERROR]SubjectGroup getSubjectGroupByName ERROR.");
+        catch (Exception e){
+            System.err.println("获取信息时出现异常" + sql + e);
             return null;
         }
     }

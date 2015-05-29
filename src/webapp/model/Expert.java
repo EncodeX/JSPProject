@@ -8,6 +8,15 @@ public class Expert {
     private String expPwd;
     private int expID;
     private int groupID;
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public String getExpName() {
         return expName;

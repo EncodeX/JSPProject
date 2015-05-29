@@ -10,6 +10,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -139,7 +140,9 @@
         </div>
         <div class="am-cf am-padding">
             <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/addExpert"><i
-                    class="am-icon-plus"></i>增加评审专家账号</a>
+                    class="am-icon-plus"></i>增加专家组账号</a>
+            <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/addCouncil"><i
+                    class="am-icon-plus"></i>增加评审委员会账号</a>
             <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>userinfo/addUnits"><i
                     class="am-icon-plus"></i>增加推荐单位账号</a>
         </div>
@@ -165,10 +168,10 @@
                     <th>用户名</th>
                     <th>ID</th>
                     <th>所在组ID</th>
+                    <th>身份</th>
                     <th>操作</th>
                 </tr>
                 </thead>
-
                 <tbody>
                 <c:forEach items="${experts}" var="expert" varStatus="status">
                     <tr>
@@ -176,6 +179,14 @@
                         <td>${expert.expName}</td>
                         <td>${expert.expID}</td>
                         <td>${expert.groupID}</td>
+                        <td>
+                            <c:if test="${expert.status==0}">
+                                专家组
+                            </c:if>
+                            <c:if test="${expert.status==1}">
+                                评审委员会
+                            </c:if>
+                        </td>
                         <td><a href="<%=basePath%>userinfo/changeExpert?name=${expert.expName}">修改</a>
                             <a href="<%=basePath%>userinfo/deleteExpert?name=${expert.expName}">删除</a>
                         </td>

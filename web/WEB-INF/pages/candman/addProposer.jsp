@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: zz
-  Date: 2015/4/28
-  Time: 16:50
+  User: Administrator
+  Date: 2015/5/23
+  Time: 15:55
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
@@ -39,7 +39,7 @@
 <![endif]-->
 
 <header class="am-topbar admin-header"
-        style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 1000;">
+        style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 9999;">
   <div class="am-topbar-brand">
     <strong>辽宁省优秀科技工作者评选系统</strong>
     <small>后台管理中心</small>
@@ -131,110 +131,61 @@
 
   <!-- content start -->
   <div class="admin-content">
-
     <div class="am-cf am-padding">
-      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">候选人终评结果管理</strong> /
-        <small>候选人通过所属学科组分类</small>
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong>/
+        <small>增加候选人</small>
       </div>
     </div>
-    <div class="am-cf am-padding">
-    <label>目前共有：${amount} 人</label>
-      </div>
-    <div class="am-cf am-padding">
 
-      <table class="am-table">
-        <thead>
-        <tr>
-          <th>序号</th>
-          <th>用户名</th>
-          <th>ID</th>
-          <th>真实姓名</th>
-          <th>所在学科</th>
-          <th>学科组ID</th>
-          <th>推荐单位ID</th>
-          <th>推荐结果</th>
-          <th>初评票数</th>
-          <th>初评结果</th>
-          <th>终评结果</th>
-          <th>操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${proposers}" var="proposer" varStatus="status">
-            <tr>
-              <td>${status.count+(pages-1)*10}</td>
-              <td>${proposer.userName}</td>
-              <td>${proposer.userID}</td>
-              <td>${proposer.name}</td>
-              <td>${proposer.subClass}</td>
-              <td>${proposer.subID}</td>
-              <td>${proposer.recID}</td>
-              <td>${proposer.recResult}</td>
-              <td>${proposer.firCount}</td>
-              <td>${proposer.firResult}</td>
-              <td>${proposer.lasResult}</td>
-              <td><a href="<%=basePath%>candman/changeProposer?name=${proposer.userName}">修改</a></td>
-            </tr>
-        </c:forEach>
-        </tbody>
+    <div class="am-cf am-padding">
+      <form method="post" action="<%=basePath%>candman/addProposerToDB">
+        <fieldset>
+          <legend>增加候选人：</legend>
+          <div class="am-form-group">
 
-      </table>
-      <%--分页--%>
-      <ul class="am-pagination am-pagination-right">
-        <%
-          int amount=(Integer)request.getAttribute("amount");
-          int pageAmount=(amount%10==0)?amount/10:amount/10+1;
-          int pages=(Integer)request.getAttribute("pages");
-          if(pages==1){
-        %><li class="am-disabled"><a href="#">&laquo;</a></li><%
-      }else{
-      %><li><a href="<%=basePath%>candman/finalresult?page=<%=pages-1%>">&laquo;</a></li><%
-        }
-        if(pageAmount<=5||pages<3){
-          int temp=0;
-          if(pageAmount<=5)
-            temp=pageAmount;
-          else if(pages<3)
-            temp=5;
-          for (int i = 1; i <= temp; i++) {
-            if(i==pages){
-      %><li class="am-active"><a href="<%=basePath%>candman/finalresult?page=<%=i%>"><%=i%></a></li><%
-      }else{
-      %><li><a href="<%=basePath%>candman/finalresult?page=<%=i%>"><%=i%></a></li><%
-          }
-        }
-      }else if(pageAmount>5&&pages>pageAmount-2){
-        for (int i = pageAmount-4; i <= pageAmount; i++) {
-          if(i==pages){
-      %><li class="am-active"><a href="<%=basePath%>candman/finalresult?page=<%=i%>"><%=i%></a></li><%
-      }else{
-      %><li><a href="<%=basePath%>candman/finalresult?page=<%=i%>"><%=i%></a></li><%
-          }
-        }
-      }else{
-        for (int i = pages-2; i <= pages+2; i++) {
-          if(i==pages){
-      %><li class="am-active"><a href="<%=basePath%>candman/finalresult?page=<%=i%>"><%=i%></a></li><%
-      }else{
-      %><li><a href="<%=basePath%>candman/finalresult?page=<%=i%>"><%=i%></a></li><%
-            }
-          }
-        }
-        if (pages<pageAmount){
-      %><li><a href="<%=basePath%>candman/finalresult?page=<%=pages+1%>">&raquo;</a></li><%
-      }else{
-      %><li class="am-disabled"><a href="#">&raquo;</a></li><%
-        }
-      %>
-      </ul>
+            <label>用户名：</label>
+            <input type="text" name="userName" value="${proposer.userName}" class="am-form-field">
+
+            <label>ID：</label>
+            <input type="text" name="userID" value="${proposer.userID}" class="am-form-field">
+            <label>账号密码：</label>
+            <input type="text" name="userPwd" value="${proposer.userPwd}" class="am-form-field">
+
+            <label>真实姓名：</label>
+            <input type="text" name="name" value="${proposer.name}" class="am-form-field">
+
+            <label>所在学科组：</label>
+            <input type="text" name="subClass" value="${proposer.subClass}" class="am-form-field">
+
+            <label>学科组ID：</label>
+            <input type="text" name="subID" value="${proposer.subID}" class="am-form-field">
+
+            <label>推荐单位ID：</label>
+            <input type="text" name="recID" value="${proposer.recID}" class="am-form-field">
+
+            <label>推荐结果：</label>
+            <input type="text" name="recResult" value="${proposer.recResult}" class="am-form-field">
+
+            <label>初评票数：</label>
+            <input type="text" name="firCount" value="${proposer.firCount}" class="am-form-field">
+
+            <label>初评结果：</label>
+            <input type="text" name="firResult" value="${proposer.firResult}" class="am-form-field">
+
+            <label>终评结果：</label>
+            <input type="text" name="lasResult" value="${proposer.lasResult}" class="am-form-field">
+
+          </div>
+          <button class="am-btn am-btn-secondary" type="submit">提交</button>
+        </fieldset>
+      </form>
     </div>
   </div>
   <!-- content end -->
 </div>
-
 <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
-<footer style="width: 260px; min-height: 50px; z-index: 1000;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
+<footer style="width: 260px; min-height: 50px; z-index: 9999;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
   <div class="am-topbar-brand am-padding-left">
     <small>© 2015 辽宁省科学技术协会</small>
   </div>
@@ -256,3 +207,5 @@
 <script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
 </body>
 </html>
+
+

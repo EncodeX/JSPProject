@@ -9,6 +9,7 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String status=(String)request.getAttribute("status");
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -151,6 +152,7 @@
                             <input type="text" name="expPwd2" placeholder="请再次输入以上面相同的密码" class="am-form-field" required/>
                             <label>所属学科组ID：</label>
                             <input type="text" name="groID" placeholder="输入专家所属学科组ID" class="am-form-field" required/>
+                            <input type="hidden" name="status" value="<%=status%>">
                         </div>
                         <button class="am-btn am-btn-secondary" type="submit">提交</button>
                     </fieldset>
