@@ -114,7 +114,7 @@
       <li class="admin-parent">
         <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-building"></span>
           推荐单位管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
+        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav4">
           <li><a href="<%=basePath%>departman/citysciassoc" class="am-cf"><span class="am-icon-bank"></span>
             市科协</a></li>
           <li><a href="<%=basePath%>departman/sciassoc"><span class="am-icon-circle"></span> 理科学会</a></li>

@@ -79,7 +79,7 @@
                     <li class="admin-parent">
                         <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-male"></span> 候选人管理
                             <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
+                        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
                             <li><a href="<%=basePath%>candman/sbjman" class="am-cf"><span class="am-icon-cogs"></span>
                                 候选人学科管理</a></li>
                             <li><a href="<%=basePath%>candman/firstresult"><span class="am-icon-cube"></span> 候选人初评结果管理</a></li>
@@ -91,7 +91,7 @@
                     <li class="admin-parent">
                         <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span>
                             名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
+                        <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav2">
                             <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span>
                                 推荐单位提交名额管理</a></li>
                             <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span> 初评名额管理</a>

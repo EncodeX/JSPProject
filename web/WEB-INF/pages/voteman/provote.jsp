@@ -103,7 +103,7 @@
       <li class="admin-parent">
         <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-bar-chart"></span>
           投票管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
+        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav3">
           <li><a href="<%=basePath%>voteman/provote" class="am-cf"><span class="am-icon-check"></span> 专家组投票管理</a>
           </li>
           <li><a href="<%=basePath%>voteman/councilvote"><span class="am-icon-circle"></span> 评审委员会投票管理</a>

@@ -91,7 +91,7 @@
       <li class="admin-parent">
         <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span>
           名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
+        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav2">
           <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span>
             推荐单位提交名额管理</a></li>
           <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span> 初评名额管理</a>
