@@ -30,17 +30,17 @@ IntelliJ 13 以上
 
 <table>
     <tr>
-        <td>ID</td>  userID (int)
-        <td>用户名</td> userName (varchar16)
-        <td>密码</td>   userPwd (varchar16)
-        <td>姓名</td>   name(varchar10)
-        <td>学科类别</td>  subClass(varchar16)
-        <td>学科组ID</td>  subID(int)
-        <td>推荐单位ID</td>  recID(int)
-        <td>推荐结果</td>    recResult(int 0为同意，1为不同意)
-        <td>初评票数</td>    firCount(int)
-        <td>初评结果</td>    firResult(int 0为成功，1为不成功)
-        <td>终评结果</td>    lasResult(int 0为成功，1为不成功)
+        <td>ID  userID (int)</td>
+        <td>用户名 userName (varchar16)</td>
+        <td>密码   userPwd (varchar16)</td>
+        <td>姓名   name(varchar10)</td>
+        <td>学科类别  subClass(varchar16)</td>
+        <td>学科组ID  subID(int)</td>
+        <td>推荐单位ID  recID(int)</td>
+        <td>推荐结果    recResult(int 0为同意，1为不同意)</td>
+        <td>初评票数    firCount(int)</td>
+        <td>初评结果    firResult(int 0为成功，1为不成功)</td>
+        <td>终评结果    lasResult(int 0为成功，1为不成功)</td>
     </tr>
 </table>
 
