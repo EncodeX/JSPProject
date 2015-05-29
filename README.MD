@@ -26,45 +26,46 @@ Spring MVC 使用？
 
 ## 3 数据库设计
 
-### 3.1 申报者
+### 3.1 申报者(表名：Proposer)
 
 <table>
     <tr>
-        <td>ID</td>
-        <td>用户名</td>
-        <td>密码</td>
-        <td>姓名</td>
-        <td>学科类别</td>
-        <td>学科组ID</td>
-        <td>推荐单位ID</td>
-        <td>推荐结果</td>
-        <td>初评票数</td>
-        <td>初评结果</td>
-        <td>终评结果</td>
+        <td>ID  userID(int)</td>
+        <td>用户名 userName (varchar16)</td>
+        <td>密码 userPwd (varchar16)</td>
+        <td>姓名 name(varchar10)</td>
+        <td>学科类别 subClass(varchar16)</td>
+        <td>学科组ID subID(int)</td>
+        <td>推荐单位ID recID(int) </td>
+        <td>推荐结果 recResult(int 0为同意，1为不同意)</td>
+        <td>初评票数 firCount(int) x</td>
+        <td>初评结果 firResult(int 0为成功，1为不成功)</td>
+        <td>终评结果 lasResult(int 0为成功，1为不成功)</td>
     </tr>
 </table>
 
 > 暂时仅设计这几个属性
 
-### 3.2 推荐单位
+### 3.2 推荐单位(表名：Rec_units)
 
 <table>
     <tr>
-        <td>ID</td>
-        <td>用户名</td>
-        <td>密码</td>
-        <td>推荐名额</td>
+        <td>ID unitsID(int)</td>
+        <td>用户名 unitsName(varchar16)</td>
+        <td>密码 unitsPwd(varchar16)</td>
+        <td>推荐名额 recTotal(int)</td>
     </tr>
 </table>
 
-### 3.3 评审专家
+### 3.3 评审专家(表名：Expert)
 
 <table>
     <tr>
-        <td>用户名</td>
-        <td>密码</td>
-        <td>身份</td>
-        <td>学科组ID</td>
+        <td>ID expID(int)</td>
+        <td>用户名 expName(varchar16)</td>
+        <td>密码 expPwd(varchar16)</td>
+        <td>身份 status(int)</td>
+        <td>学科组ID groupID(int)</td>
     </tr>
 </table>
 
@@ -72,30 +73,25 @@ Spring MVC 使用？
 > * 评审专家组成员包括组员与组长
 > * 刘洪娟老师所分出的副组长与主任、副主任意义未知
 
-### 3.4 学科组
+### 3.4 学科组(表名：Group)
 
 <table>
     <tr>
-        <td>ID</td>
-        <td>名称</td>
-        <td>提交名额</td>
+        <td>ID groID(int)</td>
+        <td>名称 groName(varchar16)</td>
+        <td>提交名额 subNum(int)</td>
     </tr>
 </table>
 
 > * 最终优秀科技工作者评选名额也作为一类学科组存入，将其ID设为0或-1等特定值并在编辑学科组时不给予显示或无法删除
 
-### 3.5 开放时间
+### 3.5 开放时间(表名：openTime)
 
 <table>
     <tr>
-<<<<<<< Temporary merge branch 1
-        <td>用户类型</td>
-        <td>开放时间</td>
-=======
-        <td>用户类型</td> type(varchar20)
-        <td>开放时间</td> openTime(DateTime)
-        <td>截止时间</td> endTime(DateTime)
->>>>>>> Temporary merge branch 2
+        <td>用户类型 type(varchar20)</td>
+        <td>开放时间 openTime(DateTime)</td>
+        <td>截止时间 endTime(DateTime)</td>
     </tr>
 </table>
 

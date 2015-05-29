@@ -7,6 +7,7 @@ import webapp.utils.DbConnector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -14,6 +15,69 @@ import java.util.ArrayList;
  */
 public class ProposerDaoImpl implements ProposerDao {
     Connection connection= DbConnector.getConnection();
+
+    @Override
+    public ArrayList<Proposer> getProposersByLasResult(int page, int numPerPage) {
+        PreparedStatement ps;
+        ArrayList<Proposer> Proposers=new ArrayList<Proposer>();
+        String sql="select * from proposer where proposer.lasResult=1 limit ?,?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setInt(1,(page-1)*numPerPage);
+            ps.setInt(2,numPerPage);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Proposer proposer=new Proposer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+                Proposers.add(proposer);
+            }
+            return Proposers;
+        }
+        catch (Exception e){
+            System.err.println("从数据库获取信息失败"+sql+e);
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Proposer> getAllByLasResult() {
+        PreparedStatement ps;
+        ArrayList<Proposer> Proposers=new ArrayList<Proposer>();
+        String sql="select * from proposer where proposer.lasResult=1";
+        try {
+            ps=connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Proposer proposer=new Proposer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+                Proposers.add(proposer);
+            }
+            return Proposers;
+        }
+        catch (Exception e){
+            System.err.println("从数据库获取信息失败"+sql+e);
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Proposer> getAllProposer() {
+        PreparedStatement ps;
+        String sql="select * from Proposer where proposer.userID>0";
+        ArrayList<Proposer> proposers=new ArrayList<Proposer>();
+        try {
+            ps=connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Proposer proposer=new Proposer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+                proposers.add(proposer);
+            }
+            return proposers;
+        }
+        catch (Exception e){
+            System.err.println("从数据库获取信息失败"+sql+e);
+            return null;
+        }
+    }
+
     @Override
     public ArrayList<Proposer> getAllProposer(int page, int numPerPage) {
         PreparedStatement ps;
@@ -33,6 +97,107 @@ public class ProposerDaoImpl implements ProposerDao {
         catch (Exception e){
             System.err.println("从数据库获取信息失败"+sql+e);
             return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Proposer> getAllBySubID(int subID) {
+        PreparedStatement ps;
+        String sql="select * from Proposer where proposer.subID=?";
+        ArrayList<Proposer> proposers=new ArrayList<Proposer>();
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setInt(1,subID);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Proposer proposer=new Proposer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+                proposers.add(proposer);
+            }
+            return proposers;
+        }
+        catch (Exception e){
+            System.err.println("从数据库获取信息失败"+sql+e);
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Proposer> getProposersBySubClass(int page, int numPerPage, String subClass) {
+        PreparedStatement ps;
+        ArrayList<Proposer> Proposers=new ArrayList<Proposer>();
+        String sql="select * from proposer where proposer.subClass=? limit ?,?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setString(1,subClass);
+            ps.setInt(2,(page-1)*numPerPage);
+            ps.setInt(3,numPerPage);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Proposer proposer=new Proposer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+                Proposers.add(proposer);
+            }
+            return Proposers;
+        }
+        catch (Exception e){
+            System.err.println("从数据库获取信息失败"+sql+e);
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Proposer> getProposersBySubID(int page, int numPerPage, int subID) {
+        PreparedStatement ps;
+        ArrayList<Proposer> Proposers=new ArrayList<Proposer>();
+        String sql="select * from proposer where proposer.subID=? limit ?,?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setInt(1, subID);
+            ps.setInt(2,(page-1)*numPerPage);
+            ps.setInt(3,numPerPage);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Proposer proposer=new Proposer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+                Proposers.add(proposer);
+            }
+            return Proposers;
+        }
+        catch (Exception e){
+            System.err.println("从数据库获取信息失败"+sql+e);
+            return null;
+        }
+    }
+
+    @Override
+    public int getProposerAmountBySubID(int subID) {
+        PreparedStatement ps;
+        String sql="select count(*)  from proposer  where proposer.subID=?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setInt(1, subID);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        }
+        catch (Exception e){
+            System.err.println("查询信息时出现异常" + sql + e);
+            return 0;
+        }
+    }
+
+    @Override
+    public int getProposerAmountBySubClass(String subClass) {
+        PreparedStatement ps;
+        String sql="select count(*)  from proposer  where proposer.subClass=?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setString(1, subClass);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        }
+        catch (Exception e){
+            System.err.println("查询信息时出现异常" + sql + e);
+            return 0;
         }
     }
 
@@ -130,6 +295,21 @@ public class ProposerDaoImpl implements ProposerDao {
         }
         catch (Exception e){
             System.err.println("添加信息时出现异常"+sql+e);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean changeSubID(String userName, int subID) {
+        Statement st;
+        String sql="update proposer set subID='"+subID+"' where userName='"+userName+"'";
+        try {
+            st=connection.createStatement();
+            st.executeUpdate(sql);
+            return true;
+        }
+        catch (Exception e){
+            System.err.println("更新信息时出现异常"+sql+e);
             return false;
         }
     }
