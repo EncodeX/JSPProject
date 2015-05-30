@@ -31,9 +31,8 @@ public class TestController {
 
     @RequestMapping(value = "mainindex",method = {RequestMethod.GET})
     public ModelAndView backToMain(ModelAndView modelAndView,String username,String password){
-        modelAndView.setViewName("main/main");
+        modelAndView.setViewName("main/maincontent");
         return modelAndView;
     }
-
 
 }

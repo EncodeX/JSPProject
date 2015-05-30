@@ -16,42 +16,38 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!-- content start -->
-<div class="admin-content">
 
-    <div class="am-cf am-padding">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">名额分配管理</strong> / <small>初评名额管理</small></div>
-    </div>
-
-    <div class="am-cf am-padding">
-    </div>
-
-    <div class="am-cf am-padding">
-        <table class="am-table">
-            <thead>
-            <tr>
-                <th>序号</th>
-                <th>学科组</th>
-                <th>初评名额</th>
-                <th>修改推荐名额</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${subjectGroups}" var="vo" varStatus="status">
-                <tr>
-                    <td>${status.count}</td>
-                    <td>${vo.groName}</td>
-                    <td>${vo.subNum}</td>
-                    <form method="post" action="<%=basePath%>quotaman/changefirstquota">
-                        <input type="hidden" name="groupname" value="${vo.groName}">
-                    <td><input type="text" name="number" value="${vo.subNum}">
-                        <input type="submit" value="修改"> </td>
-                    </form>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-
-    </div>
-
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">名额分配管理</strong> / <small>初评名额管理</small></div>
 </div>
 
+<div class="am-cf am-padding">
+</div>
+
+<div class="am-cf am-padding">
+    <table class="am-table">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>学科组</th>
+            <th>初评名额</th>
+            <th>修改推荐名额</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${subjectGroups}" var="vo" varStatus="status">
+            <tr>
+                <td>${status.count}</td>
+                <td>${vo.groName}</td>
+                <td>${vo.subNum}</td>
+                <form method="post" action="<%=basePath%>quotaman/changefirstquota">
+                    <input type="hidden" name="groupname" value="${vo.groName}">
+                    <td><input type="text" name="number" value="${vo.subNum}">
+                        <input type="submit" value="修改"> </td>
+                </form>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+
+</div>

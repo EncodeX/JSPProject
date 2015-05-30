@@ -65,46 +65,47 @@
     <!-- sidebar start -->
     <div class="am-nav" style="min-width: 260px; top: 51px; border-right: 1px solid #cecece; overflow-x: hidden; overflow-y: auto; position: fixed; bottom: 51px; left: 0;z-index: 1000;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;background: #f3f3f3;">
         <ul class="am-list admin-sidebar-list">
-            <li><a href="<%=basePath%>mainindex"><span class="am-icon-home"></span> 首页</a></li>
-            <li><a href="<%=basePath%>sysman/main"><span class="am-icon-gear"></span> 系统管理</a></li>
-            <li><a href="<%=basePath%>userinfo/main"><span class="am-icon-users"></span> 用户信息管理</a></li>
-            <li><a href="<%=basePath%>sbjman/main"><span class="am-icon-pencil-square-o"></span> 学科管理</a></li>
+            <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>mainindex')"><span class="am-icon-home"></span> 首页</a></li>
+            <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>sysman/main')"><span class="am-icon-gear"></span> 系统管理</a></li>
+            <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>userinfo/main')"><span class="am-icon-users"></span> 用户信息管理</a></li>
+            <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>sbjman/main')"><span class="am-icon-pencil-square-o"></span> 学科管理</a></li>
 
             <li class="admin-parent">
                 <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-male"></span> 候选人管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                 <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
-                    <li><a href="<%=basePath%>candman/sbjman" class="am-cf"><span class="am-icon-cogs"></span> 候选人学科管理</a></li>
-                    <li><a href="<%=basePath%>candman/firstresult"><span class="am-icon-cube"></span> 候选人初评结果管理</a></li>
-                    <li><a href="<%=basePath%>candman/finalresult"><span class="am-icon-cubes"></span> 候选人终评结果管理</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>candman/sbjman')"><span class="am-icon-cogs"></span> 候选人学科管理</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>candman/firstresult')"><span class="am-icon-cube"></span> 候选人初评结果管理</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>candman/finalresult')"><span class="am-icon-cubes"></span> 候选人终评结果管理</a></li>
                 </ul>
             </li>
 
             <li class="admin-parent">
                 <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span> 名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                 <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
-                    <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span> 推荐单位提交名额管理</a></li>
-                    <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span> 初评名额管理</a></li>
-                    <li><a href="<%=basePath%>quotaman/finalquota"><span class="am-icon-file"></span> 终评名额管理</a></li>
+                    <%--<li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span> 推荐单位提交名额管理</a></li>--%>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>quotaman/recomquota')"><span class="am-icon-file-o"></span> 推荐单位提交名额管理</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>quotaman/firstquota')"><span class="am-icon-file-text"></span> 初评名额管理</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>quotaman/finalquota')"><span class="am-icon-file"></span> 终评名额管理</a></li>
                 </ul>
             </li>
 
             <li class="admin-parent">
                 <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-bar-chart"></span> 投票管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                 <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
-                    <li><a href="<%=basePath%>voteman/provote" class="am-cf"><span class="am-icon-check"></span> 专家组投票管理</a></li>
-                    <li><a href="<%=basePath%>voteman/councilvote"><span class="am-icon-circle"></span> 评审委员会投票管理</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>voteman/provote')"><span class="am-icon-check"></span> 专家组投票管理</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>voteman/councilvote')"><span class="am-icon-circle"></span> 评审委员会投票管理</a></li>
                 </ul>
             </li>
 
             <li class="admin-parent">
                 <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-building"></span> 推荐单位管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                 <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
-                    <li><a href="<%=basePath%>departman/citysciassoc" class="am-cf"><span class="am-icon-bank"></span> 市科协</a></li>
-                    <li><a href="<%=basePath%>departman/sciassoc"><span class="am-icon-circle"></span> 理科学会</a></li>
-                    <li><a href="<%=basePath%>departman/engassoc"><span class="am-icon-magnet"></span> 工科学会</a></li>
-                    <li><a href="<%=basePath%>departman/agriassoc"><span class="am-icon-tree"></span> 农林学会</a></li>
-                    <li><a href="<%=basePath%>departman/mediassoc"><span class="am-icon-plus-circle"></span> 医药学会</a></li>
-                    <li><a href="<%=basePath%>departman/crossassoc"><span class="am-icon-random"></span> 交叉学科学会</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>departman/citysciassoc')"><span class="am-icon-bank"></span> 市科协</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>departman/sciassoc')"><span class="am-icon-circle"></span> 理科学会</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>departman/engassoc')"><span class="am-icon-magnet"></span> 工科学会</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>departman/agriassoc')"><span class="am-icon-tree"></span> 农林学会</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>departman/mediassoc')"><span class="am-icon-plus-circle"></span> 医药学会</a></li>
+                    <li><a href="#" class="am-cf" onclick="refresh_Content('<%=basePath%>departman/crossassoc')"><span class="am-icon-random"></span> 交叉学科学会</a></li>
                 </ul>
             </li>
         </ul>
@@ -112,7 +113,7 @@
     <!-- sidebar end -->
 
     <!-- content start -->
-    <div class="admin-content">
+    <div id="main-content" class="admin-content">
 
         <div class="am-cf am-padding">
             <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>一些常用模块</small></div>
@@ -378,5 +379,31 @@
 <script src="assets/js/amazeui.min.js"></script>
 <!--<![endif]-->
 <script src="assets/js/app.js"></script>
+<script>
+    var xmlhttp;
+    function refresh_Content(url){
+        xmlhttp=new XMLHttpRequest();
+        if(xmlhttp!=null){
+            console.log("事件发生");
+            xmlhttp.onreadystatechange = state_Change;
+            xmlhttp.open("GET",url,true);
+            xmlhttp.send(null);
+        }
+    }
+    function state_Change()
+    {
+        if (xmlhttp.readyState==4)
+        {// 4 = "loaded"
+            if (xmlhttp.status==200)
+            {// 200 = "OK"
+                document.getElementById('main-content').innerHTML=xmlhttp.responseText;
+            }
+            else
+            {
+                alert("Problem retrieving data:" + xmlhttp.statusText);
+            }
+        }
+    }
+</script>
 </body>
 </html>

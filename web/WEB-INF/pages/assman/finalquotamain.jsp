@@ -15,26 +15,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<!-- content start -->
-<div class="admin-content">
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">名额分配管理</strong> / <small>终评名额管理</small></div>
+</div>
 
-    <div class="am-cf am-padding">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">名额分配管理</strong> / <small>终评名额管理</small></div>
-    </div>
+<div class="am-cf am-padding">
+</div>
 
-    <div class="am-cf am-padding">
-    </div>
-
-    <div class="am-cf am-padding">
-        <form method="post" action="<%=basePath%>quotaman/changefinalquota">
+<div class="am-cf am-padding">
+    <form method="post" action="<%=basePath%>quotaman/changefinalquota">
 
         评审委员会最终名额: ${subjectGroup.subNum} <br>
         修改:
-            <input type="text" name="number" value="${subjectGroup.subNum}">
-                <input type="submit" value="修改">
-        </form>
-
-    </div>
+        <input type="text" name="number" value="${subjectGroup.subNum}">
+        <input type="submit" value="修改">
+    </form>
 
 </div>
-
