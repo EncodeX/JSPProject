@@ -91,7 +91,7 @@
       <li class="admin-parent">
         <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span>
           名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-ckollapse admin-sidebar-sub" id="collapse-nav2">
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
           <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span>
             推荐单位提交名额管理</a></li>
           <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span> 初评名额管理</a>
@@ -131,41 +131,71 @@
 
   <!-- content start -->
   <div class="admin-content">
-    <div class="admin-content">
-
-      <div class="am-cf am-padding">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">推荐单位管理</strong> / <small>农林类学会</small></div>
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">推荐单位搜索</strong> /
+        <small>搜索结果</small>
       </div>
-      <div class="am-cf am-padding">
+    </div>
+
+    <div class="am-cf am-padding">
+      <form method="post" action="<%=basePath%>departman/searchUnits">
         <table class="am-table">
           <thead>
           <tr>
-            <th>辽宁省农学会</th>
+            <th>序号</th>
+            <th>Id</th>
+            <th>人名</th>
+
           </tr>
           </thead>
           <tbody>
+          <c:forEach items="${proposers}" var="proposer" varStatus="status">
+            <tr>
+              <c:if test="${proposer.recResult==1}">
+                <td>${status.count}</td>
+                <td>${proposer.name}</td>
+                <td>${proposer.userID}</td>
+              </c:if>
+            </tr>
 
-          <tr>
-
-            <form method="post" action="http://localhost:8080/root/departman/searchUnits">
-              <input type="hidden" name="username" value="2">
-              <td><input type="text" name="recID" value="2">
-                <input type="submit" value="查询"> </td>
-
-            </form>
-          </tr>
-
-
+          </c:forEach>
 
           </tbody>
         </table>
+              灰色：
 
-      </div>
+                <table class="am-table">
+                  <thead>
+                  <tr>
+                    <th>序号</th>
+                    <th>Id</th>
+                    <th>人名</th>
 
+                  </tr>
+                  </thead>
+                  <tbody>
+
+            <c:forEach items="${proposers}" var="proposer" varStatus="status">
+            <tr>
+              <c:if test="${proposer.recResult==0}">
+                <td>${status.count}</td>
+                <td>${proposer.name}</td>
+                <td>${proposer.userID}</td>
+              </c:if>
+            </tr>
+          </c:forEach>
+
+          </tbody>
+        </table>
+      </form>
     </div>
-
   </div>
 
+
+</div>
+
+
+</div>
   <!-- content end -->
 </div>
 

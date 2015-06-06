@@ -15,9 +15,10 @@ public interface ProposerDao {
     boolean deleteProposerByName(String name);
     void deleteProposerByGroupId(int id);
     boolean addProposer(Proposer proposer);
-
+  //  ArrayList<Proposer> searchInfoByUnitsName(String unitsName,int page, int numPerPage);
     //by zz
     ArrayList<Proposer> getProposerByExpertID(int expID);
+    ArrayList<Proposer> getProposerByRecID(int recID);
     ArrayList<Proposer> getProposerBySearchName(String name);
     void changeLastResult(int userid,int lastresult);
     int getAmountOfLastResult();

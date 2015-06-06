@@ -14,7 +14,34 @@ import java.util.ArrayList;
  */
 public class ProposerDaoImpl implements ProposerDao {
     Connection connection= DbConnector.getConnection();
-    @Override
+//@Override
+//    public ArrayList<Proposer> searchInfoByUnitsName(String unitsName,int page, int numPerPage) {
+//        PreparedStatement ps;
+//        ResultSet rs;
+//        ArrayList<Proposer> unit_Users= new ArrayList();
+//        try {
+//            ps = connection.prepareStatement("SELECT * from proposer where subClass=? limit ?,?");
+//            ps.setString(1, unitsName);
+//            ps.setInt(2,(page-1)*numPerPage);
+//            ps.setInt(3,numPerPage);
+//            rs = ps.executeQuery();
+//            while (rs.next()) {
+//                Proposer us;
+//                us = new Proposer(rs.getString("subClass"), rs.getInt("userID"), rs.getString("name"));
+//                unit_Users.add(us);
+//            }
+//            return (unit_Users);
+//        }
+//        catch(Exception ex){
+//            System.err.println("[DB ERROR]ResUnitsDaoImpl ArrayList<User> searchInfoByUnitsName ERROR.");
+//            return null;
+//        }
+//
+//
+//
+//    }
+
+   @Override
     public ArrayList<Proposer> getAllProposer(int page, int numPerPage) {
         PreparedStatement ps;
         ArrayList<Proposer> Proposers=new ArrayList<Proposer>();
@@ -25,7 +52,8 @@ public class ProposerDaoImpl implements ProposerDao {
             ps.setInt(2,numPerPage);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                Proposer proposer=new Proposer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+                Proposer proposer;
+                proposer = new Proposer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
                 Proposers.add(proposer);
             }
             return Proposers;
@@ -58,7 +86,7 @@ public class ProposerDaoImpl implements ProposerDao {
         String sql="select DISTINCT * from proposer WHERE userName=?";
         try {
             ps=connection.prepareStatement(sql);
-            ps.setString(1,name);
+            ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
             return rs.next();
         }
@@ -153,7 +181,26 @@ public class ProposerDaoImpl implements ProposerDao {
             return null;
         }
     }
-
+    @Override
+    public ArrayList<Proposer> getProposerByRecID(int recID) {
+        PreparedStatement ps;
+        ArrayList<Proposer> proposers=new ArrayList<Proposer>();
+        try {
+            ps=connection.prepareStatement("select  * from proposer where recID=?");
+            ps.setInt(1, recID);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Proposer proposer=new Proposer(rs.getString(1),rs.getInt(2),rs.getString(3),rs.getInt("recresult"));
+                proposers.add(proposer);
+            }
+            return proposers;
+        }
+        catch (Exception e){
+            System.err.println("[DB ERROR]ProposerDaoImpl ArrayList<Proposer> getProposerByrecID");
+            e.printStackTrace();
+            return null;
+        }
+    }
     @Override
     public ArrayList<Proposer> getProposerBySearchName(String name) {
         PreparedStatement ps;

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page import="webapp.model.Units" %>
 <%
   String path = request.getContextPath();
   String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -91,7 +92,7 @@
       <li class="admin-parent">
         <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-child"></span>
           名额分配管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-ckollapse admin-sidebar-sub" id="collapse-nav2">
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
           <li><a href="<%=basePath%>quotaman/recomquota" class="am-cf"><span class="am-icon-file-o"></span>
             推荐单位提交名额管理</a></li>
           <li><a href="<%=basePath%>quotaman/firstquota"><span class="am-icon-file-text"></span> 初评名额管理</a>
@@ -131,42 +132,46 @@
 
   <!-- content start -->
   <div class="admin-content">
-    <div class="admin-content">
-
-      <div class="am-cf am-padding">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">推荐单位管理</strong> / <small>农林类学会</small></div>
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">推荐单位信息查询结果</strong> /
+        <small>信息</small>
       </div>
-      <div class="am-cf am-padding">
+    </div>
+
+    <div class="am-cf am-padding">
+      <form method="post" action="<%=basePath%>departman/searchUnit">
         <table class="am-table">
           <thead>
           <tr>
-            <th>辽宁省农学会</th>
+            <th>单位ID号</th>
+            <th>单位名</th>
+            <th>推荐人数</th>
+
           </tr>
           </thead>
           <tbody>
+              <c:forEach items="${unitses}" var="units" varStatus="status">
+            <tr>
+              <td>${units.unitsID}</td>
+              <td>${units.unitsName}</td>
+              <td>${units.recTotal}</td>
 
-          <tr>
-
-            <form method="post" action="http://localhost:8080/root/departman/searchUnits">
-              <input type="hidden" name="username" value="2">
-              <td><input type="text" name="recID" value="2">
-                <input type="submit" value="查询"> </td>
-
-            </form>
-          </tr>
-
+            </tr>
+            </c:forEach>
 
 
           </tbody>
         </table>
-
-      </div>
-
+      </form>
     </div>
-
   </div>
 
-  <!-- content end -->
+
+</div>
+
+
+</div>
+<!-- content end -->
 </div>
 
 <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
