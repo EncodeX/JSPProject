@@ -138,7 +138,7 @@
         </div>
 
         <div class="am-cf am-padding">
-            <form method="post" action="<%=basePath%>sbjman/addSubjectGroup">
+            <form method="get" action="<%=basePath%>sbjman/addSubjectGroup">
                 <fieldset>
                     <legend>增加学科组</legend>
                     <div class="am-form-group">
