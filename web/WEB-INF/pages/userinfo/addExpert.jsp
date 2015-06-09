@@ -37,7 +37,7 @@
                     <input type="text" name="groID" placeholder="输入专家所属学科组ID" class="am-form-field" required/>
                     <input type="hidden" name="status" value="<%=status%>">
                 </div>
-                <button id="addExpertBtn" class="am-btn am-btn-secondary" type="submit">提交</button>
+                <button id="addExpertBtn" class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>userinfo/addExpertToDB','#addExpert')">提交</button>
             </fieldset>
         </form>
 

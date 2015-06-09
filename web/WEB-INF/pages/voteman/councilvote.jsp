@@ -7,24 +7,34 @@
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%
-  String path = request.getContextPath();
-  String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div>
-    <form action="<%=basePath%>voteman/councilvote" method="post">
-        <input type="text" value="${search}" name="search">
-        <input type="submit" value="搜索">
-    </form>
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">投票管理</strong> /
+        <small>评审委员会投票管理</small>
+    </div>
 </div>
 
-<div><p>已投${alreadVote}人 限制${limitVote}人</p></div>
+<div class="am-cf am-padding">
 
-
+    <form id="councilvote1" action="" method="post">
+        <div class="am-g">
+            <div class="am-u-sm-3"><input type="text" value="${search}" name="search" class="am-form-field"></div>
+            <div class="am-u-sm-3">
+                <button class="am-btn am-btn-secondary" type="button"
+                        onclick="post_form('<%=basePath%>voteman/councilvote','#councilvote1')">搜索
+                </button>
+            </div>
+            <div class="am-u-sm-3 am-u-end"><h2>已投${alreadVote}人 限制${limitVote}人</h2></div>
+        </div>
+    </form>
+</div>
 <c:if test="${proposers!=null&&proposers.size()!=0}">
     <div class="am-cf am-padding">
         <table class="am-table">
@@ -43,21 +53,29 @@
                     <td>${status.count}</td>
                     <td>${vo.userName}</td>
                     <td>${vo.name}</td>
-                    <c:if test="${vo.lasResult==0}"><td>未通过</td></c:if>
-                    <c:if test="${vo.lasResult==1}"><td>已通过</td></c:if>
+                    <c:if test="${vo.lasResult==0}">
+                        <td>未通过</td>
+                    </c:if>
+                    <c:if test="${vo.lasResult==1}">
+                        <td>已通过</td>
+                    </c:if>
                     <td>
                         <c:if test="${vo.lasResult==0}">
-                            <form method="post" action="<%=basePath%>voteman/councilvoteadd">
+                            <form id="councilvote2" method="post">
                                 <input type="hidden" name="userid" value="${vo.userID}">
                                 <input type="hidden" name="search" value="${search}">
-                                <input type="submit" value="添加">
+                                <button class="am-btn am-btn-secondary" type="button"
+                                        onclick="post_form('<%=basePath%>voteman/councilvoteadd','#councilvote2')">添加
+                                </button>
                             </form>
                         </c:if>
                         <c:if test="${vo.lasResult==1}">
-                            <form method="post" action="<%=basePath%>voteman/councilvotedelete">
+                            <form id="councilvote3" method="post" action="<%=basePath%>voteman/councilvotedelete">
                                 <input type="hidden" name="userid" value="${vo.userID}">
                                 <input type="hidden" name="search" value="${search}">
-                                <input type="submit" value="删除">
+                                <button class="am-btn am-btn-secondary" type="button"
+                                        onclick="post_form('<%=basePath%>voteman/councilvotedelete','#councilvote3')">删除
+                                </button>
                             </form>
                         </c:if>
                     </td>

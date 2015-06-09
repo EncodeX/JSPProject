@@ -5,10 +5,10 @@
   Time: 16:50
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -16,7 +16,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">名额分配管理</strong> / <small>推荐单位提交名额管理</small></div>
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">名额分配管理</strong> /
+        <small>推荐单位提交名额管理</small>
+    </div>
 </div>
 
 <div class="am-cf am-padding">
@@ -38,10 +40,15 @@
                 <td>${status.count}</td>
                 <td>${vo.username}</td>
                 <td>${vo.quota}</td>
-                <form method="post" action="<%=basePath%>quotaman/changequota">
+                <form id="unitmain" method="post" action="">
                     <input type="hidden" name="username" value="${vo.username}">
-                    <td><input type="text" name="quota" value="${vo.quota}">
-                        <input type="submit" value="修改"> </td>
+                    <td><input type="text" name="quota" value="${vo.quota}" class="am-form-field">
+                    </td>
+                    <td>
+                        <button class="am-btn am-btn-secondary am-btn-sm" type="button"
+                                onclick="post_form('<%=basePath%>quotaman/changequota','#unitmain')">修改
+                        </button>
+                    </td>
                 </form>
             </tr>
         </c:forEach>

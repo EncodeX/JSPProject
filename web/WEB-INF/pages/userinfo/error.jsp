@@ -23,7 +23,11 @@
 </div>
 <div class="am-cf am-padding">
     <p>
-    <h1>${message}</h1></p>
+
+    <h1>
+        <strong>${message}</strong>
+    </h1>
+    </p>
 </div>
 <!-- content end -->
 
