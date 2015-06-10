@@ -285,23 +285,27 @@ public class CandidateManagement {
         modelAndView.addObject("proposer",proposer);
         return modelAndView;
     }
-    @RequestMapping(value = "updateProposerToDB",method = {RequestMethod.GET})
+    @RequestMapping(value = "updateProposerToDB",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView updateProposerToDB(ModelAndView modelAndView,String oldName,String userName,String userID,
                                            String name,String subClass,String subID,String recID,String recResult,
                                            String firCount,String firResult,String lasResult,String userPwd){
-        modelAndView.setViewName("/candman/finalresult");
+        //modelAndView.setViewName("candman/finalresult");
         String message="";
         try{
+            System.out.println("0");
             ProposerDao.deleteProposerByName(oldName);
             Proposer proposer=new Proposer(0,userName,userPwd,name,subClass,Integer.parseInt(subID),Integer.parseInt(recID),Integer.parseInt(recResult),Integer.parseInt(firCount),Integer.parseInt(firResult),Integer.parseInt(lasResult));
+            System.out.println("1");
             ProposerDao.addProposer(proposer);
+            System.out.println("2");
+            return finalresult(modelAndView,"1");
         }catch (Exception e){
             modelAndView.setViewName("candman/error");
             message="修改失败： "+e.toString();
             modelAndView.addObject("message",message);
             return modelAndView;
         }
-        return modelAndView;
+
     }
     public ModelAndView getProposerOrder(ModelAndView modelAndView,String page,String subID,ArrayList<Proposer> subproposers,String order){
         int pages,max;

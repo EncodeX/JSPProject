@@ -59,8 +59,8 @@
                 <td>${unit.unitsName}</td>
                 <td>${unit.unitsID}</td>
                 <td>${unit.recTotal}</td>
-                <td><a href="#" onclick="refresh_Content('<%=basePath%>userinfo/changeUnits?name=${unit.unitsName}">修改</a>
-                    <a href="#" onclick="refresh_Content('<%=basePath%>userinfo/deleteUnits?name=${unit.unitsName}">删除</a>
+                <td><a class="am-btn am-btn-link am-btn-sm" href="#" onclick="refresh_Content('<%=basePath%>userinfo/changeUnits?name=${unit.unitsName}')">修改</a>
+                    <a class="am-btn am-btn-link am-btn-sm" href="#" onclick="refresh_Content('<%=basePath%>userinfo/deleteUnits?name=${unit.unitsName}')">删除</a>
                 </td>
             </tr>
         </c:forEach>
@@ -78,7 +78,7 @@
         <%
         } else {
         %>
-        <li><a href="<%=basePath%>userinfo/resUnitsMain?page=<%=pages-1%>">&laquo;</a></li>
+        <li><a onclick="refresh_Content('<%=basePath%>userinfo/resUnitsMain?page=<%=pages-1%>')" href="#">&laquo;</a></li>
         <%
             }
             if (pageAmount <= 5 || pages < 3) {
@@ -90,12 +90,12 @@
                 for (int i = 1; i <= temp; i++) {
                     if (i == pages) {
         %>
-        <li class="am-active"><a href="<%=basePath%>userinfo/resUnitsMain?page=<%=i%>"><%=i%>
+        <li class="am-active"><a onclick="refresh_Content('<%=basePath%>userinfo/resUnitsMain?page=<%=i%>')" href="#"><%=i%>
         </a></li>
         <%
         } else {
         %>
-        <li><a href="<%=basePath%>userinfo/resUnitsMain?page=<%=i%>"><%=i%>
+        <li><a onclick="refresh_Content('<%=basePath%>userinfo/resUnitsMain?page=<%=i%>')" href="#"><%=i%>
         </a></li>
         <%
                 }
@@ -104,12 +104,12 @@
             for (int i = pageAmount - 4; i <= pageAmount; i++) {
                 if (i == pages) {
         %>
-        <li class="am-active"><a href="<%=basePath%>userinfo/resUnitsMain?page=<%=i%>"><%=i%>
+        <li class="am-active"><a onclick="refresh_Content('<%=basePath%>userinfo/resUnitsMain?page=<%=i%>')" href="#"><%=i%>
         </a></li>
         <%
         } else {
         %>
-        <li><a href="<%=basePath%>userinfo/resUnitsMain?page=<%=i%>"><%=i%>
+        <li><a onclick="refresh_Content('<%=basePath%>userinfo/resUnitsMain?page=<%=i%>')" href="#"><%=i%>
         </a></li>
         <%
                 }
@@ -118,12 +118,12 @@
             for (int i = pages - 2; i <= pages + 2; i++) {
                 if (i == pages) {
         %>
-        <li class="am-active"><a href="<%=basePath%>userinfo/resUnitsMain?page=<%=i%>"><%=i%>
+        <li class="am-active"><a onclick="refresh_Content('<%=basePath%>userinfo/resUnitsMain?page=<%=i%>')" href="#"><%=i%>
         </a></li>
         <%
         } else {
         %>
-        <li><a href="<%=basePath%>userinfo/resUnitsMain?page=<%=i%>"><%=i%>
+        <li><a onclick="refresh_Content('<%=basePath%>userinfo/resUnitsMain?page=<%=i%>')" href="#"><%=i%>
         </a></li>
         <%
                     }
@@ -131,7 +131,7 @@
             }
             if (pages < pageAmount) {
         %>
-        <li><a href="<%=basePath%>userinfo/resUnitsMain?page=<%=pages+1%>">&raquo;</a></li>
+        <li><a onclick="refresh_Content('<%=basePath%>userinfo/resUnitsMain?page=<%=pages+1%>')" href="#">&raquo;</a></li>
         <%
         } else {
         %>

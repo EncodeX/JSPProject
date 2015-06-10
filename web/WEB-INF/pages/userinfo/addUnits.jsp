@@ -34,7 +34,7 @@
                 <label>推荐单位名额</label>
                 <input type="text" name="unitTotal" placeholder="输入推荐名额" class="am-form-field" required/>
             </div>
-            <button id="addUnitsBtn" class="am-btn am-btn-secondary" type="submit" onclick="addUnits()">提交</button>
+            <button id="addUnitsBtn" class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>userinfo/addUnitsToDB','#addUnits')">提交</button>
         </fieldset>
     </form>
 </div>

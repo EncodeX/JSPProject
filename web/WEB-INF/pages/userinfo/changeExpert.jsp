@@ -22,7 +22,7 @@
 </div>
 
 <div class="am-cf am-padding">
-    <form method="post" action="<%=basePath%>userinfo/updateExpertToDB">
+    <form id="changeExpert" method="post">
         <fieldset>
             <legend>修改评审专家账号</legend>
             <div class="am-form-group">
@@ -37,27 +37,8 @@
                 <input type="text" name="groID" value="${expert.groupID}" class="am-form-field">
                 <input type="hidden" name="status" value="${expert.status}">
             </div>
-            <button class="am-btn am-btn-secondary" type="submit">提交</button>
+            <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>userinfo/updateExpertToDB','#changeExpert')">提交</button>
         </fieldset>
     </form>
 </div>
 <!-- content end -->
-<script language="JavaScript">
-    $(document).ready(function () {
-        $("#button").click(function () {
-            $.ajax({
-                cache: true,
-                type: "POST",
-                url: 'ashx/GetTree.ashx?action=Ajax',//提交的URL
-                data: $('#form1').serialize(), // 要提交的表单,必须使用name属性
-                async: false,
-                success: function (data) {
-                    $("#common").html(data);//输出提交的表表单
-                },
-                error: function (request) {
-                    alert("Connection error");
-                }
-            });
-        });
-    });
-</script>

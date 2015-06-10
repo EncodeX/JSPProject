@@ -23,7 +23,7 @@
 </div>
 
 <div class="am-cf am-padding">
-    <form method="post" action="<%=basePath%>userinfo/updateProposerToDB">
+    <form id="changeProposer" method="post">
         <fieldset>
             <legend>修改申请者账号：</legend>
             <div class="am-form-group">
@@ -66,7 +66,7 @@
                 <input type="text" name="userPwd2" value="${proposer.userPwd}" class="am-form-field">
 
             </div>
-            <button class="am-btn am-btn-secondary" type="submit">提交</button>
+            <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>userinfo/updateProposerToDB','#changeProposer')">提交</button>
         </fieldset>
     </form>
 </div>

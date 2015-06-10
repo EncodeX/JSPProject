@@ -65,7 +65,7 @@ public class SubjectManagement {
         return modelAndView;
     }
 
-    @RequestMapping(value = "addSubjectGroup",method = RequestMethod.POST)
+    @RequestMapping(value = "addSubjectGroup",method = {RequestMethod.POST,RequestMethod.GET})
     public ModelAndView addSubjectGroup(ModelAndView modelAndView,String groName,String subNum){
         modelAndView.setViewName("sbjman/main");
         String message="";

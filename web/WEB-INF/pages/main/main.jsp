@@ -399,8 +399,6 @@
 <!--[if (gte IE 9)|!(IE)]><!-->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/amazeui.min.js"></script>
-<script src="assets/js/jquery.form.js"></script>
-<script src="assets/js/jquery-1.8.0.js"></script>
 <!--<![endif]-->
 <script src="assets/js/app.js"></script>
 <%--<script src ="assets/js/jquery.form.js"></script>--%>
@@ -425,44 +423,26 @@
             }
         }
     }
-
-
-    $('#addExpertBtn').click(function () {
-        console.log("事件发生");
-        $.post("<%=basePath%>userinfo/addExpertToDB",
-                {
-                    expName: $("input[name='expName']").val(),
-                    expPwd: $("input[name='expPwd']").val(),
-                    expPwd2:$("input[name='expPwd2']").val(),
-                    groID:$("input[name='groID']").val(),
-                    status:$("input[name='status']").val()
-                },
-                function (data, status) {
-                    $("#main-content").html(data)
-                });
-    });
-
-    function formi(url){
-
-    }
-    $('#addUnitsBtn').click(function () {
+    function post_form(url,div_id) {
         console.log("事件发生");
         $.ajax({
             cache: true,
-            type: 'POST',
-            url:'<%=basePath%>userinfo/addUnitsToDB',
-            data:$('#addUnits').serialize(),// 你的formid
+            type: "POST",
+            url: url,
+            data: $(div_id).serialize(),// 你的formid
             async: false,
-            error: function(request) {
-                alert("Connection error");
+            error: function (request) {
+                alert("操作失败！");
+
             },
-            success: function(data) {
-                alert("success");
-                console.log("hah");
-                $("#main-content").html(data);
+            success: function (data) {
+                alert("操作成功！");
+                console.log("success");
+                $("#main-content").empty().append(data);
             }
         });
-    });
+
+    }
 </script>
 
 </body>

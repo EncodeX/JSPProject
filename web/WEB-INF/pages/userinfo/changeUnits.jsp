@@ -22,7 +22,7 @@
     </div>
 </div>
 <div class="am-cf am-padding">
-    <form method="post" action="<%=basePath%>userinfo/updateUnitsToDB">
+    <form id="changeUnits" method="post">
         <fieldset>
             <legend>修改推荐单位账号</legend>
             <div class="am-form-group">
@@ -36,7 +36,7 @@
                 <label>推荐单位名额：</label>
                 <input type="text" name="unitTotal" value="${units.recTotal}" class="am-form-field">
             </div>
-            <button class="am-btn am-btn-secondary" type="submit">提交</button>
+            <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>userinfo/updateUnitsToDB','#changeUnits')">提交</button>
         </fieldset>
     </form>
 </div>
