@@ -41,26 +41,23 @@ public class UserInfoManagement {
         }
         modelAndView.setViewName("userinfo/main");
         ArrayList<Expert> experts=ExpertDao.getAllExperts(pages,10);
-        modelAndView.addObject("experts", experts);
-        modelAndView.addObject("pages", pages);
-        modelAndView.addObject("amount", ExpertDao.getExpertAmount());
+        if(ExpertDao.getExpertAmount()==0) {
+            modelAndView.addObject("message", "目前还没有评审专家信息！");
+        }else {
+            modelAndView.addObject("experts", experts);
+            modelAndView.addObject("pages", pages);
+            modelAndView.addObject("amount", ExpertDao.getExpertAmount());
+        }
         return modelAndView;
     }
     @RequestMapping(value = "addExpert",method =RequestMethod.GET)
     public ModelAndView addExpert(ModelAndView modelAndView) {
         modelAndView.setViewName("/userinfo/addExpert");
-        modelAndView.addObject("status","0");
         return modelAndView;
     }
-    @RequestMapping(value = "addCouncil",method =RequestMethod.GET)
-    public ModelAndView addCouncil(ModelAndView modelAndView) {
-        modelAndView.setViewName("/userinfo/addExpert");
-        modelAndView.addObject("status","1");
-        return modelAndView;
-    }
-    @RequestMapping(value = "addExpertToDB",method = RequestMethod.POST)
+    @RequestMapping(value = "addExpertToDB",method =RequestMethod.POST)
     public ModelAndView addExpertToDB(ModelAndView modelAndView,String expName,String expPwd,
-                                      String expPwd2,String groID,String status) {
+                                      String expPwd2,String groID) {
         modelAndView.setViewName("userinfo/main");
         String message="";
         try{
@@ -71,7 +68,7 @@ public class UserInfoManagement {
                 return modelAndView;
             }
             if(!ExpertDao.isExist(expName)){
-                ExpertDao.addExpert(expName, expPwd, Integer.parseInt(groID),Integer.parseInt(status));
+                ExpertDao.addExpert(expName, expPwd, Integer.parseInt(groID));
             }else{
                 message="该用户已存在！";
                 modelAndView.addObject("message",message);
@@ -94,7 +91,7 @@ public class UserInfoManagement {
     }
     @RequestMapping(value = "updateExpertToDB",method =RequestMethod.POST)
     public ModelAndView updateExpertToDB(ModelAndView modelAndView,String exOldname,String expName,String expPwd,
-                                      String expPwd2,String groID,String status) {
+                                      String expPwd2,String groID) {
         modelAndView.setViewName("userinfo/main");
         String message="";
         try{
@@ -105,7 +102,7 @@ public class UserInfoManagement {
             }
             ExpertDao.deleteExpert(exOldname);
             if(!ExpertDao.isExist(expName)){
-                ExpertDao.addExpert(expName, expPwd, Integer.parseInt(groID),Integer.parseInt(status));
+                ExpertDao.addExpert(expName, expPwd, Integer.parseInt(groID));
             }else{
                 modelAndView.setViewName("userinfo/error");
                 message="该用户名已存在！";
@@ -181,8 +178,8 @@ public class UserInfoManagement {
     }
     @RequestMapping(value = "changeUnits",method =RequestMethod.GET)
     public ModelAndView changeUnits(ModelAndView modelAndView,String name) {
-        Units units=ResUnitsDao.getUnitsByName(name);
-        modelAndView.addObject(units);
+        Units Units=ResUnitsDao.getUnitsByName(name);
+        modelAndView.addObject(Units);
         modelAndView.setViewName("/userinfo/changeUnits");
         return modelAndView;
     }
