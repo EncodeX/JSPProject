@@ -442,11 +442,14 @@
                 });
     });
 
+    function formi(url){
+
+    }
     $('#addUnitsBtn').click(function () {
         console.log("事件发生");
         $.ajax({
             cache: true,
-            type: "POST",
+            type: 'POST',
             url:'<%=basePath%>userinfo/addUnitsToDB',
             data:$('#addUnits').serialize(),// 你的formid
             async: false,
