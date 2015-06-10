@@ -1,6 +1,7 @@
 package webapp.dao.impl;
 
 import webapp.dao.ResUnitsDao;
+import webapp.model.Proposer;
 import webapp.model.Units;
 import webapp.utils.DbConnector;
 
@@ -10,12 +11,97 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
- * Created by Administrator on 2015/5/20.
+ * Created by y on 2015/5/15.
  */
 public class ResUnitsDaoImpl implements ResUnitsDao{
+
     Connection connection= DbConnector.getConnection();
+    @Override
+    public int showProposerNum() {
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            ps=connection.prepareStatement("select COUNT(*) as num from  proposer WHERE userId");
+            rs = ps.executeQuery();
+            rs.next();
+
+            return rs.getInt("num");
+        }
+        catch (Exception ex){
+            System.err.println("[DB ERROR]ResUnitsDaoImpl int showProposerNum ERROR.");
+            return Integer.parseInt(null);
+        }
+    }
 
     @Override
+    public ArrayList<Units> getAllUnitsinfo() {
+        PreparedStatement ps;
+        ResultSet rs;
+        ArrayList<Units> unit_Users=new ArrayList<Units>();
+        try {
+            ps = connection.prepareStatement("SELECTs * from rec_units");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Units us = new Units( rs.getInt("unitsID"),rs.getString("unitsName"), rs.getInt("recTotal"));
+                unit_Users.add(us);
+            }
+            return (unit_Users);
+        }
+        catch(Exception ex){
+            System.err.println("[DB ERROR]ResUnitsDaoImpl ArrayList<Units> getAllUnitsinfo() ERROR.");
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Proposer> searchInfoByUnitsName(String unitsName) {
+        PreparedStatement ps;
+        ResultSet rs;
+        ArrayList<Proposer> unit_Users= new ArrayList();
+        try {
+            ps = connection.prepareStatement("SELECT * from proposer where subClass=?");
+            ps.setString(1, unitsName);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Proposer us;
+                us = new Proposer(rs.getString("subClass"), rs.getInt("userID"), rs.getString("name"));
+                unit_Users.add(us);
+            }
+            return (unit_Users);
+        }
+            catch(Exception ex){
+                System.err.println("[DB ERROR]ResUnitsDaoImpl ArrayList<User> searchInfoByUnitsName ERROR.");
+                return null;
+            }
+
+
+
+    }
+
+    @Override
+    public ArrayList<Proposer> searchInfoByUnitsId(int unitsID) {
+        PreparedStatement ps;
+        ResultSet rs;
+        ArrayList<Proposer> unit_Users=new ArrayList<Proposer>();
+        try {
+            ps = connection.prepareStatement("SELECT * from proposer where subID=?");
+            ps.setInt(1, unitsID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Proposer us = new Proposer(rs.getString("subClass"), rs.getInt("userID"), rs.getString("name"));
+                unit_Users.add(us);
+            }
+            return (unit_Users);
+        }
+        catch(Exception ex){
+            System.err.println("[DB ERROR]ResUnitsDaoImpl ArrayList<User> searchInfoByUnitsID ERROR.");
+            return null;
+        }
+
+
+
+    }
+
     public ArrayList<Units> getAllUnits(int page, int numPerPage) {
         PreparedStatement ps;
         ArrayList<Units> Units=new ArrayList<Units>();

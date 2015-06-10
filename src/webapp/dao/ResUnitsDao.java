@@ -1,6 +1,7 @@
 package webapp.dao;
 
 import webapp.model.Units;
+import webapp.model.Proposer;
 
 import java.util.ArrayList;
 
@@ -8,6 +9,10 @@ import java.util.ArrayList;
  * Created by zz on 2015/5/8.
  */
 public interface ResUnitsDao {
+    int showProposerNum();
+    ArrayList<Units> getAllUnitsinfo();
+    ArrayList<Proposer> searchInfoByUnitsName(String unitsName);
+    ArrayList<Proposer> searchInfoByUnitsId(int unitsID);
     ArrayList<Units> getAllUnits(int page,int numPerPage);
     int getUnitsAmount();
     boolean isExist(String name);
