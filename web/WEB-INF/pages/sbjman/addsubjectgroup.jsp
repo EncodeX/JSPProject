@@ -138,15 +138,15 @@
         </div>
 
         <div class="am-cf am-padding">
-            <form method="post" action="<%=basePath%>sbjman/addSubjectGroup">
+            <form method="get" action="<%=basePath%>sbjman/addSubjectGroup">
                 <fieldset>
                     <legend>增加学科组</legend>
                     <div class="am-form-group">
-                        <label>学科组名称：</label>
-                        <input type="text" name="groName" id="doc-vld-name" placeholder="输入学科组名称"
+                        <label for="doc-vld-name">学科组名称：</label>
+                        <input type="text" name="groName" id="doc-vld-name" minlength="3" placeholder="输入学科组名称"
                                class="am-form-field" required/>
                         <label for="doc-vld-num">学科组提交名额：</label>
-                        <input type="text" name="subNum" id="doc-vld-num"  placeholder="输入名额"
+                        <input type="text" name="subNum" id="doc-vld-num" minlength="3" placeholder="输入名额"
                                class="am-form-field" required/>
                     </div>
                     <button class="am-btn am-btn-secondary" type="submit">提交</button>

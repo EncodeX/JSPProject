@@ -15,15 +15,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<!-- content start -->
+
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong>/
-        <small>错误信息</small>
-    </div>
+    <label>hahahaa</label>
 </div>
-<div class="am-cf am-padding">
-    <p>
-    <h1>${message}</h1></p>
-</div>
-<!-- content end -->
+
 
