@@ -38,7 +38,7 @@
     以获得更好的体验！</p>
 <![endif]-->
 
-<header class="am-topbar admin-header" style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 1000;">
+<header class="am-topbar admin-header" style="position: fixed;width: 100%; box-shadow: 1px 1px 3px #CCCCCC;-moz-box-shadow: 1px 1px 3px #CCCCCC;  z-index: 9999;">
     <div class="am-topbar-brand">
         <strong>辽宁省优秀科技工作者评选系统</strong> <small>后台管理中心</small>
     </div>
@@ -97,7 +97,8 @@
             </li>
 
             <li class="admin-parent">
-                <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-building"></span> 推荐单位管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}" href="<%=basePath%>departman/main"><span class="am-icon-building"></span>
+                    推荐单位管理 <span class="am-icon-angle-right am-fr am-margin-right"></span><a/>
                 <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
                     <li><a href="<%=basePath%>departman/citysciassoc" class="am-cf"><span class="am-icon-bank"></span> 市科协</a></li>
                     <li><a href="<%=basePath%>departman/sciassoc"><span class="am-icon-circle"></span> 理科学会</a></li>
@@ -359,7 +360,7 @@
 
 <a class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
-<footer style="width: 260px; min-height: 50px; z-index: 1000;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
+<footer style="width: 260px; min-height: 50px; z-index: 9999;bottom:0;position: fixed;background: #f8f8f8;border: 0 solid #cecece;border-top-width: 1px; border-right-width: 1px;box-shadow: 1px 1px 3px #DDDDDD;-moz-box-shadow: 1px 1px 3px #DDDDDD;">
     <div class="am-topbar-brand am-padding-left">
         <small>© 2015 辽宁省科学技术协会</small>
     </div>
