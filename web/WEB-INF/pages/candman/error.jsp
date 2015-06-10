@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: zz
-  Date: 2015/4/28
-  Time: 16:50
+  User: Administrator
+  Date: 2015/5/25
+  Time: 23:45
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
@@ -15,9 +15,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<!-- content start -->
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学科管理</strong>/
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">候选人管理</strong>/
         <small>错误信息</small>
     </div>
 </div>
@@ -27,5 +26,4 @@
     <h1><strong>${message}</strong></h1></p>
 </div>
 <!-- content end -->
-
 

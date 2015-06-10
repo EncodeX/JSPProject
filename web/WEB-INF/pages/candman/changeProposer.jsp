@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: zz
-  Date: 2015/4/28
-  Time: 16:50
+  User: Administrator
+  Date: 2015/5/29
+  Time: 17:33
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
@@ -15,25 +15,25 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<!-- content start -->
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong>/
-        <small>修改申请者账号</small>
+        <small>修改候选人</small>
     </div>
 </div>
 
 <div class="am-cf am-padding">
     <form id="changeProposer" method="post">
         <fieldset>
-            <legend>修改申请者账号：</legend>
+            <legend>修改候选人：</legend>
             <div class="am-form-group">
-                <input type="hidden" name="oldname" value="${proposer.userName}">
-
+                <input type="hidden" name="oldName" value="${proposer.userName}">
                 <label>用户名：</label>
                 <input type="text" name="userName" value="${proposer.userName}" class="am-form-field">
 
                 <label>ID：</label>
                 <input type="text" name="userID" value="${proposer.userID}" class="am-form-field">
+                <label>账号密码：</label>
+                <input type="text" name="userPwd" value="${proposer.userPwd}" class="am-form-field">
 
                 <label>真实姓名：</label>
                 <input type="text" name="name" value="${proposer.name}" class="am-form-field">
@@ -59,16 +59,8 @@
                 <label>终评结果：</label>
                 <input type="text" name="lasResult" value="${proposer.lasResult}" class="am-form-field">
 
-                <label>账号密码：</label>
-                <input type="text" name="userPwd" value="${proposer.userPwd}" class="am-form-field">
-
-                <label>再次输入密码：</label>
-                <input type="text" name="userPwd2" value="${proposer.userPwd}" class="am-form-field">
-
             </div>
-            <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>userinfo/updateProposerToDB','#changeProposer')">提交</button>
+            <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>candman/updateProposerToDB','#changeProposer')">提交</button>
         </fieldset>
     </form>
 </div>
-
-

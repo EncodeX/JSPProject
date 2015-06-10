@@ -26,27 +26,27 @@ IntelliJ 13 以上
 
 ## 3 数据库设计 (数据库名：project_db)
 
-### 3.1 申报者 (表名：Proposer)
+### 3.1 申报者 (表名：proposer)
 
 <table>
     <tr>
-        <td>ID</td>  userID (int)
-        <td>用户名</td> userName (varchar16)
-        <td>密码</td>   userPwd (varchar16)
-        <td>姓名</td>   name(varchar10)
-        <td>学科类别</td>  subClass(varchar16)
-        <td>学科组ID</td>  subID(int)
-        <td>推荐单位ID</td>  recID(int)
-        <td>推荐结果</td>    recResult(int 0为同意，1为不同意)
-        <td>初评票数</td>    firCount(int)
-        <td>初评结果</td>    firResult(int 0为成功，1为不成功)
-        <td>终评结果</td>    lasResult(int 0为成功，1为不成功)
+        <td>ID  userID (int)</td>
+        <td>用户名 userName (varchar16)</td>
+        <td>密码   userPwd (varchar16)</td>
+        <td>姓名   name(varchar10)</td>
+        <td>学科类别  subClass(varchar16)</td>
+        <td>学科组ID  subID(int)</td>
+        <td>推荐单位ID  recID(int)</td>
+        <td>推荐结果    recResult(int 0为同意，1为不同意)</td>
+        <td>初评票数    firCount(int)</td>
+        <td>初评结果    firResult(int 0为成功，1为不成功)</td>
+        <td>终评结果    lasResult(int 0为成功，1为不成功)</td>
     </tr>
 </table>
 
 > 暂时仅设计这几个属性
 
-### 3.2 推荐单位 (表名：Rec_units)
+### 3.2 推荐单位 (表名：rec_units)
 
 <table>
     <tr>
@@ -57,7 +57,7 @@ IntelliJ 13 以上
     </tr>
 </table>
 
-### 3.3 评审专家(表名：Expert)
+### 3.3 评审专家(表名：expert)
 
 <table>
     <tr>
@@ -72,7 +72,7 @@ IntelliJ 13 以上
 > * 评审专家组成员包括组员与组长
 > * 刘洪娟老师所分出的副组长与主任、副主任意义未知
 
-### 3.4 学科组(表名：Group)
+### 3.4 学科组(表名：subgrp)
 
 <table>
     <tr>
@@ -84,7 +84,7 @@ IntelliJ 13 以上
 
 > * 最终优秀科技工作者评选名额也作为一类学科组存入，将其ID设为0或-1等特定值并在编辑学科组时不给予显示或无法删除
 
-### 3.5 开放时间(表名：openTime)
+### 3.5 开放时间(表名：opentime)
 
 <table>
     <tr>

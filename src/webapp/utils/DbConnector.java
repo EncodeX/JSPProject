@@ -13,7 +13,7 @@ public class DbConnector {
     private static String dburl="localhost";
     private static String dbname= "project_db";
     private static String dbusername="root";
-    private static String dbpassword="1234";
+    private static String dbpassword="072FangJy_950426";
 
     private static Connection connection=null;
 
@@ -26,7 +26,7 @@ public class DbConnector {
 
                 connection =
                         DriverManager.getConnection("jdbc:mysql://"+dburl+"/"+dbname+"?" +
-                                "user="+dbusername+"&password="+dbpassword+"&useUnicode=true&characterEncoding=utf8");
+                                "user="+dbusername+"&password="+dbpassword);
             } catch (Exception ex) {
                 System.err.println("数据库连接失败。");
                 return null;
