@@ -30,10 +30,12 @@
 
     <tr>
 
-      <form method="post" action="http://localhost:8080/root/departman/searchUnits">
+      <form method="post" id="engassoc">
         <input type="hidden" name="username" value="2">
         <td><input type="text" name="recID" value="2">
-          <input type="submit" value="查询"> </td>
+          <button class="am-btn am-btn-secondary am-btn-sm" type="button"
+                  onclick="post_form('<%=basePath%>departman/searchUnits','#engassoc')">查询
+          </button> </td>
 
       </form>
     </tr>
