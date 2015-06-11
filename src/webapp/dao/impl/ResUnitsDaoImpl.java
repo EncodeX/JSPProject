@@ -80,7 +80,7 @@ public class ResUnitsDaoImpl implements ResUnitsDao{
             ps=connection.prepareStatement(sql);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
-
+            rs.next();
             Units units=new Units(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4));
 
             return units;
