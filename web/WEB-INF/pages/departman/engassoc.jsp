@@ -14,4 +14,33 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!doctype html>
 
+<div class="am-cf am-padding">
+  <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">推荐单位管理</strong> / <small>工科类学会</small></div>
+</div>
+<div class="am-cf am-padding">
+  <table class="am-table">
+    <thead>
+    <tr>
+      <th>辽宁省机械工程学会</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+
+      <form method="post" action="http://localhost:8080/root/departman/searchUnits">
+        <input type="hidden" name="username" value="2">
+        <td><input type="text" name="recID" value="2">
+          <input type="submit" value="查询"> </td>
+
+      </form>
+    </tr>
+
+
+
+    </tbody>
+  </table>
+
+</div>

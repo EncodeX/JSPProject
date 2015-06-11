@@ -37,6 +37,7 @@ public class AssignManagement {
         modelAndView.setViewName("assman/unitmain");
         ArrayList<RecommendUnit> recommendUnits=assignDao.getAllRecommendUnits();
         modelAndView.addObject("recommendUnits",recommendUnits);
+
         return modelAndView;
     }
 

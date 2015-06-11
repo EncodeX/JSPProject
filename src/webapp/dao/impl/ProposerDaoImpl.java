@@ -128,7 +128,7 @@ public class ProposerDaoImpl implements ProposerDao {
         String sql="select * from proposer where proposer.subClass=? limit ?,?";
         try {
             ps=connection.prepareStatement(sql);
-            ps.setString(1,subClass);
+            ps.setString(1, subClass);
             ps.setInt(2,(page-1)*numPerPage);
             ps.setInt(3,numPerPage);
             ResultSet rs = ps.executeQuery();
@@ -223,7 +223,7 @@ public class ProposerDaoImpl implements ProposerDao {
         String sql="select DISTINCT * from proposer WHERE userName=?";
         try {
             ps=connection.prepareStatement(sql);
-            ps.setString(1,name);
+            ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
             return rs.next();
         }
@@ -311,6 +311,27 @@ public class ProposerDaoImpl implements ProposerDao {
         catch (Exception e){
             System.err.println("更新信息时出现异常"+sql+e);
             return false;
+        }
+    }
+
+    @Override
+    public ArrayList<Proposer> getProposerByRecID(int recID) {
+        PreparedStatement ps;
+        ArrayList<Proposer> proposers=new ArrayList<Proposer>();
+        try {
+            ps=connection.prepareStatement("select  * from proposer where recID=?");
+            ps.setInt(1, recID);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Proposer proposer=new Proposer(rs.getString(1),rs.getInt(2),rs.getString(3),rs.getInt("recresult"));
+                proposers.add(proposer);
+            }
+            return proposers;
+        }
+        catch (Exception e){
+            System.err.println("[DB ERROR]ProposerDaoImpl ArrayList<Proposer> getProposerByrecID");
+            e.printStackTrace();
+            return null;
         }
     }
 

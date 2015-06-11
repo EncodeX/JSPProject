@@ -4,6 +4,7 @@ package webapp.model;
  * Created by zz on 2015/4/28.
  */
 public class User {
+
     private int userID;
     private String userName;
     private String userPwd;
@@ -15,6 +16,13 @@ public class User {
     private int firCount;
     private int firResult;
     private int lasResult;
+
+    public User(String subClass, int userID, String name) {
+        this.subClass=subClass;
+        this.userID=userID;
+        this.name=name;
+    }
+
 
     public int getUserID() {
         return userID;

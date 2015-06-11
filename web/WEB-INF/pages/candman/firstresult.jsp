@@ -22,10 +22,11 @@
 </div>
 
 <div class="am-cf am-padding">
-    <form method="post" action="<%=basePath%>candman/firstresultsubclass">
+    <form id="firstresult1" method="post">
         <select data-am-selected name="groID">
             <option class="am-dropdown-header">请选择您要查看的学科组</option>
-            <%String subID = (String) request.getAttribute("subID");
+            <%
+                String subID = (String) request.getAttribute("subID");
 
             %>
             <c:forEach items="${subjectGroups}" var="SubjectGroup" varStatus="status">
@@ -39,46 +40,55 @@
             </c:forEach>
 
         </select>
-        <button class="am-btn am-btn-secondary" type="submit">确认</button>
+        <button class="am-btn am-btn-secondary" type="button"
+                onclick="post_form('<%=basePath%>candman/firstresultsubclass','#firstresult1')">确认
+        </button>
     </form>
 </div>
 
 <div class="am-cf am-padding">
-    <a class="am-btn am-btn am-btn-secondary" href="<%=basePath%>candman/addProposer"><i
+    <a class="am-btn am-btn am-btn-secondary" onclick="refresh_Content('<%=basePath%>candman/addProposer')" href="#"><i
             class="am-icon-plus"></i>增加候选人账号</a>
 </div>
 
 <div class="am-tabs" id="doc-my-tabs">
     <ul class="am-tabs-nav am-nav am-nav-tabs">
         <c:if test="${order=='userID'}">
-            <li class="am-active"><a href="<%=basePath%>candman/userIDOrder?subID=<%=subID%>">用户ID</a></li>
+            <li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/userIDOrder?subID=<%=subID%>')"
+                                     href="#">用户ID</a></li>
         </c:if>
         <c:if test="${order!='userID'}">
-            <li ><a href="<%=basePath%>candman/userIDOrder?subID=<%=subID%>">用户ID</a></li>
+            <li><a onclick="refresh_Content('<%=basePath%>candman/userIDOrder?subID=<%=subID%>')" href="#">用户ID</a></li>
         </c:if>
         <c:if test="${order=='username'}">
-            <li class="am-active"><a href="<%=basePath%>candman/usernameOrder?subID=<%=subID%>">用户名</a></li>
+            <li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/usernameOrder?subID=<%=subID%>')"
+                                     href="#">用户名</a></li>
         </c:if>
         <c:if test="${order!='username'}">
-            <li><a href="<%=basePath%>candman/usernameOrder?subID=<%=subID%>">用户名</a></li>
+            <li><a onclick="refresh_Content('<%=basePath%>candman/usernameOrder?subID=<%=subID%>')" href="#">用户名</a>
+            </li>
         </c:if>
         <c:if test="${order=='name'}">
-            <li class="am-active"><a href="<%=basePath%>candman/nameOrder?subID=<%=subID%>">真实姓名</a></li>
+            <li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/nameOrder?subID=<%=subID%>')"
+                                     href="#">真实姓名</a></li>
         </c:if>
         <c:if test="${order!='name'}">
-            <li><a href="<%=basePath%>candman/nameOrder?subID=<%=subID%>">真实姓名</a></li>
+            <li><a onclick="refresh_Content('<%=basePath%>candman/nameOrder?subID=<%=subID%>')" href="#">真实姓名</a></li>
         </c:if>
         <c:if test="${order=='rec'}">
-            <li class="am-active"><a href="<%=basePath%>candman/recOrder?subID=<%=subID%>">推荐单位ID</a></li>
+            <li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/recOrder?subID=<%=subID%>')"
+                                     href="#">推荐单位ID</a></li>
         </c:if>
         <c:if test="${order!='rec'}">
-            <li><a href="<%=basePath%>candman/recOrder?subID=<%=subID%>">推荐单位ID</a></li>
+            <li><a onclick="refresh_Content('<%=basePath%>candman/recOrder?subID=<%=subID%>')" href="#">推荐单位ID</a></li>
         </c:if>
         <c:if test="${order=='fircount'}">
-            <li class="am-active"><a href="<%=basePath%>candman/fircountOrder?subID=<%=subID%>">初选票数</a></li>
+            <li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/fircountOrder?subID=<%=subID%>')"
+                                     href="#">初选票数</a></li>
         </c:if>
         <c:if test="${order!='fircount'}">
-            <li><a href="<%=basePath%>candman/fircountOrder?subID=<%=subID%>">初选票数</a></li>
+            <li><a onclick="refresh_Content('<%=basePath%>candman/fircountOrder?subID=<%=subID%>')" href="#">初选票数</a>
+            </li>
         </c:if>
     </ul>
 
@@ -116,7 +126,11 @@
                     <td>${proposer.firResult}</td>
                     <td>${proposer.lasResult}</td>
                     <td>
-                        <a href="<%=basePath%>candman/deleteProposer?name=${proposer.userName}&subID=${proposer.subID}">删除</a>
+                        <button class="am-btn am-btn-secondary" type="button"
+                                onclick="refresh_Content('<%=basePath%>candman/deleteProposer?name=${proposer.userName}&subID=${proposer.subID}')">
+                            删除
+                        </button>
+
                     </td>
                 </tr>
             </c:forEach>
@@ -130,10 +144,10 @@
                 int pageAmount = (amount % 10 == 0) ? amount / 10 : amount / 10 + 1;
                 int pages = (Integer) request.getAttribute("pages");
                 String order = (String) request.getAttribute("order");
-                if(subID==null){
+                if (subID == null) {
 
                 }
-                if(order==null){
+                if (order == null) {
                 }
                 if (pages == 1) {
             %>
@@ -141,7 +155,9 @@
             <%
             } else {
             %>
-            <li><a href="<%=basePath%>candman/nextPage?page=<%=pages-1%>&subID=<%=subID%>&order=<%=order%>">&laquo;</a>
+            <li>
+                <a onclick="refresh_Content('<%=basePath%>candman/nextPage?page=<%=pages-1%>&subID=<%=subID%>&order=<%=order%>')"
+                   href="#">&laquo;</a>
             </li>
             <%
                 }
@@ -155,12 +171,15 @@
                         if (i == pages) {
             %>
             <li class="am-active"><a
-                    href="<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>"><%=i%>
+                    onclick="refresh_Content('<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>')"
+                    href="#"><%=i%>
             </a></li>
             <%
             } else {
             %>
-            <li><a href="<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>"><%=i%>
+            <li><a
+                    onclick="refresh_Content('<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>')"
+                    href="#"><%=i%>
             </a></li>
             <%
                     }
@@ -170,12 +189,15 @@
                     if (i == pages) {
             %>
             <li class="am-active"><a
-                    href="<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>"><%=i%>
+                    onclick="refresh_Content('<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>')"
+                    href="#"><%=i%>
             </a></li>
             <%
             } else {
             %>
-            <li><a href="<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>"><%=i%>
+            <li><a
+                    onclick="refresh_Content('<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>')"
+                    href="#"><%=i%>
             </a></li>
             <%
                     }
@@ -185,12 +207,15 @@
                     if (i == pages) {
             %>
             <li class="am-active"><a
-                    href="<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>"><%=i%>
+                    onclick="refresh_Content('<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>')"
+                    href="#"><%=i%>
             </a></li>
             <%
             } else {
             %>
-            <li><a href="<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>"><%=i%>
+            <li><a
+                    onclick="refresh_Content('<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>')"
+                    href="#"><%=i%>
             </a></li>
             <%
                         }
@@ -198,7 +223,10 @@
                 }
                 if (pages < pageAmount) {
             %>
-            <li><a href="<%=basePath%>candman/nextPage?page=<%=pages+1%>&subID=<%=subID%>&order=<%=order%>">&raquo;</a></li>
+            <li>
+                <a onclick="refresh_Content('<%=basePath%>candman/nextPage?page=<%=pages+1%>&subID=<%=subID%>&order=<%=order%>')"
+                   href="#">&raquo;</a>
+            </li>
             <%
             } else {
             %>

@@ -58,7 +58,7 @@ public class UserInfoManagement {
         modelAndView.addObject("status","1");
         return modelAndView;
     }
-    @RequestMapping(value = "addExpertToDB",method =RequestMethod.POST)
+    @RequestMapping(value = "addExpertToDB",method = RequestMethod.POST)
     public ModelAndView addExpertToDB(ModelAndView modelAndView,String expName,String expPwd,
                                       String expPwd2,String groID,String status) {
         modelAndView.setViewName("userinfo/main");

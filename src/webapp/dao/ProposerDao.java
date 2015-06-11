@@ -27,6 +27,7 @@ public interface ProposerDao {
 
     //by zz
     ArrayList<Proposer> getProposerByExpertID(int expID);
+    ArrayList<Proposer> getProposerByRecID(int recID);
     ArrayList<Proposer> getProposerBySearchName(String name);
     void changeLastResult(int userid,int lastresult);
     int getAmountOfLastResult();

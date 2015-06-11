@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import webapp.dao.GroupDao;
+import webapp.dao.ProposerDao;
 import webapp.dao.impl.GroupDaoImpl;
+import webapp.dao.impl.ProposerDaoImpl;
+import webapp.model.Proposer;
 import webapp.model.SubjectGroup;
 
 import java.util.*;
@@ -18,6 +21,7 @@ public class SubjectManagement {
 
     GroupDao groupDao=new GroupDaoImpl();
 
+
     @RequestMapping(value = "main",method = {RequestMethod.GET})
     public ModelAndView getMainPage(ModelAndView modelAndView,String page){
         int intpage;
@@ -26,9 +30,13 @@ public class SubjectManagement {
         }else{
             intpage=Integer.parseInt(page);
         }
+
         modelAndView.setViewName("sbjman/main");
         ArrayList<SubjectGroup> subjectGroups=groupDao.getAllSubjectGroup(intpage,10);
+
         modelAndView.addObject("subjectGroups",subjectGroups);
+
+
         modelAndView.addObject("amount", groupDao.getGroupAmount());
         modelAndView.addObject("pages",intpage);
         return modelAndView;
@@ -65,7 +73,7 @@ public class SubjectManagement {
         return modelAndView;
     }
 
-    @RequestMapping(value = "addSubjectGroup",method = RequestMethod.POST)
+    @RequestMapping(value = "addSubjectGroup",method = {RequestMethod.POST,RequestMethod.GET})
     public ModelAndView addSubjectGroup(ModelAndView modelAndView,String groName,String subNum){
         modelAndView.setViewName("sbjman/main");
         String message="";

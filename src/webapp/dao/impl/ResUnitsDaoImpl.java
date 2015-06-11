@@ -1,6 +1,7 @@
 package webapp.dao.impl;
 
 import webapp.dao.ResUnitsDao;
+import webapp.model.Proposer;
 import webapp.model.Units;
 import webapp.utils.DbConnector;
 
@@ -10,12 +11,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
- * Created by Administrator on 2015/5/20.
+ * Created by y on 2015/5/15.
  */
 public class ResUnitsDaoImpl implements ResUnitsDao{
+
     Connection connection= DbConnector.getConnection();
 
-    @Override
+
     public ArrayList<Units> getAllUnits(int page, int numPerPage) {
         PreparedStatement ps;
         ArrayList<Units> Units=new ArrayList<Units>();
@@ -71,14 +73,16 @@ public class ResUnitsDaoImpl implements ResUnitsDao{
 
     @Override
     public Units getUnitsByName(String name) {
+
         PreparedStatement ps;
         String sql="select DISTINCT * from rec_units where unitsName=?";
         try {
             ps=connection.prepareStatement(sql);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
-            rs.next();
+
             Units units=new Units(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4));
+
             return units;
         }
         catch (Exception e){
