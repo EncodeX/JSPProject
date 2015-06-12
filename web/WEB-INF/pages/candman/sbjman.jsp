@@ -26,11 +26,11 @@
             <option class="am-dropdown-header">请选择学科类别</option>
             <% String subClass=(String)request.getAttribute("subClass"); %>
             <c:forEach items="${allproposers}" var="proposer" varStatus="status">
-                <c:if test="${subClass==proposer.subClass}">
-                    <option value="${proposer.subClass}" selected>${proposer.subClass}</option>
+                <c:if test="${subClass==proposer}">
+                    <option value="${proposer}" selected>${proposer}</option>
                 </c:if>
-                <c:if test="${subClass!=proposer.subClass}">
-                    <option value="${proposer.subClass}">${proposer.subClass}</option>
+                <c:if test="${subClass!=proposer}">
+                    <option value="${proposer}">${proposer}</option>
                 </c:if>
             </c:forEach>
 

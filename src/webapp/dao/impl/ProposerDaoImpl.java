@@ -79,6 +79,25 @@ public class ProposerDaoImpl implements ProposerDao {
     }
 
     @Override
+    public ArrayList<String> getAllSubclass() {
+        PreparedStatement ps;
+        String sql="select DISTINCT subclass from proposer";
+        ArrayList<String> subclasses=new ArrayList<String>();
+        try {
+            ps=connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                subclasses.add(rs.getString(1));
+            }
+            return subclasses;
+        }
+        catch (Exception e){
+            System.err.println("从数据库获取信息失败"+sql+e);
+            return null;
+        }
+    }
+
+    @Override
     public ArrayList<Proposer> getAllProposer(int page, int numPerPage) {
         PreparedStatement ps;
         ArrayList<Proposer> Proposers=new ArrayList<Proposer>();
