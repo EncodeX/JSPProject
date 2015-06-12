@@ -141,7 +141,7 @@
     <form id="submit_form" name="submit_form" method="post">
         网站分类
         <script language="javascript">
-            <!--
+//            <!--
             var subcat = new Array();
             var biglist = new Array('市科协', '理科学会', '工科学会', '农林学会', '医药学会', '交叉学科学会');
             subcat[0] = new Array('0', '沈阳市科协', '沈阳市科协')
@@ -219,7 +219,7 @@
             }
             //-->
         </script>
-        <select name="bigclass" onchange="changeselect1(this.value)">
+        <select data-am-selected="{dropUp: 1,maxHeight: 300}" id="testselect" name="bigclass" onchange="changeselect1(this.value)">
             <option value="所有单位" selected>所有单位</option>
             <option value="市科协"><a href="<%=basePath%>departman/main?unitName=aaa">市科协</a></option>
             <li></li>
@@ -229,7 +229,7 @@
             <option value="医药学会">医药学会</option>
             <option value="交叉学科学会">交叉学科学会</option>
         </select>
-        <select name="unitName">
+        <select data-am-selected="{dropUp: 1,maxHeight: 300}" name="unitName">
             <option value="所有小类" selected>所有小类</OPTION>
         </select>
         <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>departman/searchUnit','#submit_form')">提交</button>

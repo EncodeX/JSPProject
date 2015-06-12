@@ -3,4 +3,5 @@
 .admin-content{
     margin-top: 51px;
     margin-left: 260px;
+    overflow: visible;
 }
