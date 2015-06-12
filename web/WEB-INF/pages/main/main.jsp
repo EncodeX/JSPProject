@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
     <link rel="stylesheet" href="assets/css/admin.css">
     <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/amazeui.datetimepicker.css">
 
 </head>
 <body>
@@ -409,6 +410,7 @@
 <script src="assets/js/amazeui.min.js"></script>
 <!--<![endif]-->
 <script src="assets/js/app.js"></script>
+<script src="<%=basePath%>assets/js/amazeui.datetimepicker.js"></script>
 <%--<script src ="assets/js/jquery.form.js"></script>--%>
 <script>
     var xmlhttp;
@@ -426,6 +428,7 @@
             if (xmlhttp.status == 200) {// 200 = "OK"
                 document.getElementById('main-content').innerHTML = xmlhttp.responseText;
                 refreshselect();
+                refreshTimePicker();
             }
             else {
                 alert("Problem retrieving data:" + xmlhttp.statusText);
@@ -451,7 +454,6 @@
                 refreshselect();
             }
         });
-
     }
 
 
@@ -549,6 +551,58 @@
     $(function() {
         refreshselect();
     });
+
+    //////Time Picker
+    function refreshTimePicker(){
+        $('#proposerOpenTime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        }).on('changeDate', function(ev){
+            // 使用 getTime() 函数来获取更改后的时间（格式为时间戳数）
+            console.log(ev.date.getTime());
+        });
+
+        $('#proposerCloseTime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        }).on('changeDate', function(ev){
+            console.log(ev.date.getTime());
+        });
+
+        $('#resUnitsOpenTime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        }).on('changeDate', function(ev){
+            console.log(ev.date.getTime());
+        });
+
+        $('#resUnitsCloseTime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        }).on('changeDate', function(ev){
+            console.log(ev.date.getTime());
+        });
+
+        $('#expertOpenTime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        }).on('changeDate', function(ev){
+            console.log(ev.date.getTime());
+        });
+
+        $('#expertCloseTime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        }).on('changeDate', function(ev){
+            console.log(ev.date.getTime());
+        });
+    }
 </script>
 
 </body>
