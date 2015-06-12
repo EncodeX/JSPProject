@@ -342,7 +342,7 @@ public class ProposerDaoImpl implements ProposerDao {
             ps.setInt(1, recID);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                Proposer proposer=new Proposer(rs.getString(1),rs.getInt(2),rs.getString(3),rs.getInt("recresult"));
+                Proposer proposer=new Proposer(rs.getString(2),rs.getInt(1),rs.getString(3),rs.getInt("recresult"));
                 proposers.add(proposer);
             }
             return proposers;

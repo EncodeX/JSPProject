@@ -25,4 +25,6 @@ public interface ExpertDao {
     ArrayList<Expert> getAllExpertsByStatus(int status);
     Expert getExpertByExpertID(int expertID);
     ArrayList<Committee> getAllCommittees();
+
+    void fkDeleteVoteReset(int expId);
 }

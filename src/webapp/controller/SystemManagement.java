@@ -32,6 +32,7 @@ public class SystemManagement {
     @RequestMapping(value = "settime/{type}",method = RequestMethod.POST)
     public ModelAndView setOpenAndEndTime(ModelAndView modelAndView,@PathVariable("type")String type,
                                           String startdate,String starttime,String enddate,String endtime){
+        System.out.print(type);
         modelAndView.setViewName("/sysman/main");
         modelAndView.addObject("ischange",true);
         String messageTitle="";
