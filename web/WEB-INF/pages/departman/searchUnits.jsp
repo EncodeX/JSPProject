@@ -24,6 +24,7 @@
 
 <div class="am-cf am-padding">
   <form method="post" action="<%=basePath%>departman/searchUnits">
+    <label>符合：</label>
     <table class="am-table">
       <thead>
       <tr>
@@ -47,8 +48,7 @@
 
       </tbody>
     </table>
-    灰色：
-
+    <label>不符合：</label>
     <table class="am-table">
       <thead>
       <tr>

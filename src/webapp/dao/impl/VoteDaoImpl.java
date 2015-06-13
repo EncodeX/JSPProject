@@ -1,6 +1,8 @@
 package webapp.dao.impl;
 
+import webapp.dao.ExpertDao;
 import webapp.dao.VoteDao;
+import webapp.model.Expert;
 import webapp.utils.DbConnector;
 
 import java.sql.Connection;
@@ -24,8 +26,10 @@ public class VoteDaoImpl implements VoteDao {
             ps=connection.prepareStatement("delete from vote where eid=?");
             ps.setInt(1, expID);
             ps.execute();
+
         }
         catch (Exception ex){
+            ex.printStackTrace();
             System.err.println("[DB ERROR]VoteDaoImpl void deleteAllVoteByExpertID ERROR.");
         }
     }

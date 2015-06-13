@@ -38,6 +38,7 @@ public class VoteManagement {
     @RequestMapping(value = "/provote")
     public ModelAndView provote (ModelAndView modelAndView,
                                  @RequestParam(value = "group",required = false)String group){
+
         //group-->null
         //get all subject groups
         ArrayList<SubjectGroup> subjectGroups=groupDao.getAllSubjectGroup();
@@ -78,8 +79,11 @@ public class VoteManagement {
 
     @RequestMapping(value = "/provoteVoteReset",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView provoteVoteReset(ModelAndView modelAndView,int expertId,String group){
+
+        System.out.println("Debug:"+expertId+"  "+group);
         //delete things in table vote and change in proposer recResult 1->0
         voteDao.deleteAllVoteByExpertID(expertId);
+        expertDao.fkDeleteVoteReset(expertId);
         return provote(modelAndView,group);
     }
 
