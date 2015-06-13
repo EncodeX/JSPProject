@@ -32,7 +32,8 @@ public class SystemManagement {
     @RequestMapping(value = "settime/{type}",method = RequestMethod.POST)
     public ModelAndView setOpenAndEndTime(ModelAndView modelAndView,@PathVariable("type")String type,
                                           String startdate,String starttime,String enddate,String endtime){
-        System.out.print(type);
+	    System.out.println(type + "  123");
+	    System.out.println("进来了进来了");
         modelAndView.setViewName("/sysman/main");
         modelAndView.addObject("ischange",true);
         String messageTitle="";
@@ -59,6 +60,7 @@ public class SystemManagement {
             modelAndView.addObject("messageTitle", messageTitle);
             modelAndView.addObject("messageEntity",messageEntity);
             addAllTimeAndDateToModelAndView(modelAndView);
+	        System.out.println("title: '" + messageTitle + "' entity: '" + messageEntity + "'");
             return modelAndView;
         }
 
@@ -78,6 +80,8 @@ public class SystemManagement {
             messageTitle = "更新失败";
             messageEntity = "您的处理请求是非法的访问地址!";
         }
+
+        System.out.println("title: '"+messageTitle+"' entity: '"+messageEntity+"'");
 
         modelAndView.addObject("messageTitle", messageTitle);
         modelAndView.addObject("messageEntity", messageEntity);

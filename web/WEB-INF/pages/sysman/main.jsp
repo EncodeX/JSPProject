@@ -34,111 +34,112 @@
                 <th>操作</th>
             </tr>
             </thead>
+
             <tbody>
 
-            <tr>
                 <form id="sysmanmain_proposer" method="post">
-                    <td>申报者</td>
-                    <td>
+                        <tr>
+                        <td>申报者</td>
+                        <td>
 
-                        <div class="am-form-group am-form-icon">
-                            <i class="am-icon-calendar"></i>
-                            <input type="text"
-                                   value="${proposerOpenTime.year+1900}-${proposerOpenTime.month+1}-${proposerOpenTime.date} ${proposerOpenTime.hours}:${proposerOpenTime.minutes}"
-                                   class="am-form-field" placeholder="日期与时间" id="proposerOpenTime">
-                        </div>
+                            <div class="am-form-group am-form-icon">
+                                <i class="am-icon-calendar"></i>
+                                <input type="text"
+                                       value="${proposerOpenTime.year+1900}-${proposerOpenTime.month+1}-${proposerOpenTime.date} ${proposerOpenTime.hours}:${proposerOpenTime.minutes}"
+                                       class="am-form-field" placeholder="日期与时间" id="proposerOpenTime">
+                            </div>
 
 
-                    </td>
-                    <td>
-                        <div class="am-form-group am-form-icon">
-                            <i class="am-icon-calendar"></i>
-                            <input type="text"
-                                   value="${proposerEndTime.year+1900}-${proposerEndTime.month+1}-${proposerEndTime.date} ${proposerEndTime.hours}:${proposerEndTime.minutes}"
-                                   class="am-form-field" placeholder="日期与时间" id="proposerCloseTime">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="am-dropdown" data-am-dropdown>
-                            <button onclick="post_form('<%=basePath%>sysman/settime/proposer','#sysmanmain_proposer')"
-                                    class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
-                                <span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
-                            <ul class="am-dropdown-content">
-                                <li><a href="#">确定</a></li>
-                                <li><a href="#">取消</a></li>
-                            </ul>
-                        </div>
-                    </td>
-            </tr>
-            </form>
+                        </td>
+                        <td>
+                            <div class="am-form-group am-form-icon">
+                                <i class="am-icon-calendar"></i>
+                                <input type="text"
+                                       value="${proposerEndTime.year+1900}-${proposerEndTime.month+1}-${proposerEndTime.date} ${proposerEndTime.hours}:${proposerEndTime.minutes}"
+                                       class="am-form-field" placeholder="日期与时间" id="proposerCloseTime">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="am-dropdown" data-am-dropdown>
+                                <button onclick="post_form('<%=basePath%>sysman/settime/proposer','#sysmanmain_proposer')"
+                                        class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
+                                    <span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+                                <ul class="am-dropdown-content">
+                                    <li><a href="#">确定</a></li>
+                                    <li><a href="#">取消</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        </tr>
+                </form>
 
-            <tr>
                 <form id="sysmanmain_units" method="post">
-                    <td>推荐单位</td>
-                    <td>
+                    <tr>
+                        <td>推荐单位</td>
+                        <td>
 
-                        <div class="am-form-group am-form-icon">
-                            <i class="am-icon-calendar"></i>
-                            <input value="${recunitsOpenTime.year+1900}-${recunitsOpenTime.month+1}-${recunitsOpenTime.date} ${recunitsOpenTime.hours}:${recunitsOpenTime.minutes}"
-                                   type="text" class="am-form-field" placeholder="日期与时间" id="resUnitsOpenTime">
-                        </div>
+                            <div class="am-form-group am-form-icon">
+                                <i class="am-icon-calendar"></i>
+                                <input value="${recunitsOpenTime.year+1900}-${recunitsOpenTime.month+1}-${recunitsOpenTime.date} ${recunitsOpenTime.hours}:${recunitsOpenTime.minutes}"
+                                       type="text" class="am-form-field" placeholder="日期与时间" id="resUnitsOpenTime">
+                            </div>
 
 
-                    </td>
-                    <td>
-                        <div class="am-form-group am-form-icon">
-                            <i class="am-icon-calendar"></i>
-                            <input value="${recunitsEndTime.year+1900}-${recunitsEndTime.month+1}-${recunitsEndTime.date} ${recunitsEndTime.hours}:${recunitsEndTime.minutes}"
-                                   type="text" class="am-form-field" placeholder="日期与时间" id="resUnitsCloseTime">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="am-dropdown" data-am-dropdown>
-                            <button onclick="post_form('<%=basePath%>sysman/settime/recunits','#sysmanmain_units')" class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
-                                <span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
-                            <ul class="am-dropdown-content">
-                                <li><a href="#">确定</a></li>
-                                <li><a href="#">取消</a></li>
-                            </ul>
-                        </div>
-                    </td>
-            </tr>
-            </form>
+                        </td>
+                        <td>
+                            <div class="am-form-group am-form-icon">
+                                <i class="am-icon-calendar"></i>
+                                <input value="${recunitsEndTime.year+1900}-${recunitsEndTime.month+1}-${recunitsEndTime.date} ${recunitsEndTime.hours}:${recunitsEndTime.minutes}"
+                                       type="text" class="am-form-field" placeholder="日期与时间" id="resUnitsCloseTime">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="am-dropdown" data-am-dropdown>
+                                <button onclick="post_form('<%=basePath%>sysman/settime/recunits','#sysmanmain_units')" class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
+                                    <span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+                                <ul class="am-dropdown-content">
+                                    <li><a href="#">确定</a></li>
+                                    <li><a href="#">取消</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </form>
 
-            <tr>
                 <form id="sysmanmain_expert" method="post">
-                    <td>评审专家</td>
-                    <td>
+                    <tr>
+                        <td>评审专家</td>
+                        <td>
 
-                        <div class="am-form-group am-form-icon">
-                            <i class="am-icon-calendar"></i>
-                            <input type="text"
-                                   value="${expertOpenTime.year+1900}-${expertOpenTime.month+1}-${expertOpenTime.date} ${expertOpenTime.hours}:${expertOpenTime.minutes}"
-                                   class="am-form-field" placeholder="日期与时间" id="expertOpenTime">
-                        </div>
+                            <div class="am-form-group am-form-icon">
+                                <i class="am-icon-calendar"></i>
+                                <input type="text"
+                                       value="${expertOpenTime.year+1900}-${expertOpenTime.month+1}-${expertOpenTime.date} ${expertOpenTime.hours}:${expertOpenTime.minutes}"
+                                       class="am-form-field" placeholder="日期与时间" id="expertOpenTime">
+                            </div>
 
 
-                    </td>
-                    <td>
-                        <div class="am-form-group am-form-icon">
-                            <i class="am-icon-calendar"></i>
-                            <input type="text"
-                                   value="${expertEndTime.year+1900}-${expertEndTime.month+1}-${expertEndTime.date} ${expertEndTime.hours}:${expertEndTime.minutes}"
-                                   class="am-form-field" placeholder="日期与时间" id="expertCloseTime">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="am-dropdown" data-am-dropdown>
-                            <button onclick="post_form('<%=basePath%>sysman/settime/expert','#sysmanmain_expert')" class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
-                                <span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
-                            <ul class="am-dropdown-content">
-                                <li><a href="#">确定</a></li>
-                                <li><a href="#">取消</a></li>
-                            </ul>
-                        </div>
-                    </td>
-            </tr>
-            </form>
+                        </td>
+                        <td>
+                            <div class="am-form-group am-form-icon">
+                                <i class="am-icon-calendar"></i>
+                                <input type="text"
+                                       value="${expertEndTime.year+1900}-${expertEndTime.month+1}-${expertEndTime.date} ${expertEndTime.hours}:${expertEndTime.minutes}"
+                                       class="am-form-field" placeholder="日期与时间" id="expertCloseTime">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="am-dropdown" data-am-dropdown>
+                                <button onclick="post_form('<%=basePath%>sysman/settime/expert','#sysmanmain_expert')" class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
+                                    <span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+                                <ul class="am-dropdown-content">
+                                    <li><a href="#">确定</a></li>
+                                    <li><a href="#">取消</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </form>
 
 
             </tbody>

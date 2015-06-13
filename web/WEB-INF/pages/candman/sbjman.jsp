@@ -60,6 +60,7 @@
             <th>操作</th>
         </tr>
         </thead>
+        <tbody>
         <% int z=0;%>
         <c:forEach items="${proposers}" var="proposer" varStatus="status">
             <form id="sbjman<%=z%>" method="post">
