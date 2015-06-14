@@ -445,13 +445,13 @@
             async: false,
             error: function (request) {
                 alert("操作失败！");
-
             },
             success: function (data) {
                 alert("操作成功！");
                 console.log("success");
                 $("#main-content").empty().append(data);
                 refreshselect();
+                refreshTimePicker();
             }
         });
     }
@@ -602,6 +602,13 @@
         }).on('changeDate', function(ev){
             console.log(ev.date.getTime());
         });
+
+        showTip();
+    }
+
+    function showTip(){
+        var $modal = $('#my-alert');
+        $modal.modal('open');
     }
 </script>
 

@@ -20,6 +20,10 @@ public class TestController {
 
     @RequestMapping(value = "login",method = {RequestMethod.POST})
     public ModelAndView login(ModelAndView modelAndView,String username,String password){
+        if(username==null){
+	        modelAndView.setViewName("main/main");
+            return modelAndView;
+        }
         if(username.trim().equals("admin")&&password.trim().equals("admin")){
             modelAndView.setViewName("main/main");
         }else{
