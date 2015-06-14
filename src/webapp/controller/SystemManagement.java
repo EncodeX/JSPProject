@@ -29,11 +29,10 @@ public class SystemManagement {
         return modelAndView;
     }
 
-    @RequestMapping(value = "settime/{type}",method = RequestMethod.POST)
+    @RequestMapping(value = "settime/{type}",method =  {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView setOpenAndEndTime(ModelAndView modelAndView,@PathVariable("type")String type,
-                                          String startdate,String starttime,String enddate,String endtime){
-	    System.out.println(type + "  123");
-	    System.out.println("进来了进来了");
+                                          String start,String end){
+//                                          String startdate,String starttime,String enddate,String endtime){
         modelAndView.setViewName("/sysman/main");
         modelAndView.addObject("ischange",true);
         String messageTitle="";
@@ -41,6 +40,10 @@ public class SystemManagement {
         Timestamp openTimestamp=new Timestamp(0);
         Timestamp endTimestamp=new Timestamp(0);
         try{
+            String startdate=start.trim().split(" ")[0];
+            String starttime=start.trim().split(" ")[1];
+            String enddate=end.trim().split(" ")[0];
+            String endtime=end.trim().split(" ")[1];
             openTimestamp.setYear(Integer.parseInt(startdate.split("-")[0])-1900);
             openTimestamp.setMonth(Integer.parseInt(startdate.split("-")[1])-1);
             openTimestamp.setDate(Integer.parseInt(startdate.split("-")[2]));
@@ -60,7 +63,6 @@ public class SystemManagement {
             modelAndView.addObject("messageTitle", messageTitle);
             modelAndView.addObject("messageEntity",messageEntity);
             addAllTimeAndDateToModelAndView(modelAndView);
-	        System.out.println("title: '" + messageTitle + "' entity: '" + messageEntity + "'");
             return modelAndView;
         }
 
@@ -80,8 +82,6 @@ public class SystemManagement {
             messageTitle = "更新失败";
             messageEntity = "您的处理请求是非法的访问地址!";
         }
-
-        System.out.println("title: '"+messageTitle+"' entity: '"+messageEntity+"'");
 
         modelAndView.addObject("messageTitle", messageTitle);
         modelAndView.addObject("messageEntity", messageEntity);
