@@ -58,14 +58,22 @@
                         <td>${status.count}</td>
                         <td>${vo.expName}</td>
                         <td>${alreadyVote}/${limitVote}</td>
-                        <form method="post" action="<%=basePath%>voteman/provoteViewDetail">
+                        <form id="provote1" method="post">
                             <input type="hidden" name="expertId" value="${vo.expID}">
-                            <td><input type="submit" value="查看投票详情"></td>
+                            <td>
+                                <button class="am-btn am-btn-secondary" type="button"
+                                        onclick="post_form('<%=basePath%>voteman/provoteViewDetail','#provote1')">查看投票详情
+                                </button>
+                            </td>
                         </form>
-                        <form method="post" action="<%=basePath%>voteman/provoteVoteReset">
+                        <form id="provote2" method="post">
                             <input type="hidden" name="expertId" value="${vo.expID}">
                             <input type="hidden" name="group" value="${group}">
-                            <td><input type="submit" value="返回重投"></td>
+                            <td>
+                                <button class="am-btn am-btn-secondary" type="button"
+                                        onclick="post_form('<%=basePath%>voteman/provoteVoteReset','#provote2')">返回重投
+                                </button>
+                            </td>
                         </form>
                     </tr>
                 </c:forEach>

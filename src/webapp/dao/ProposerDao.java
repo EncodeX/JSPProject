@@ -24,6 +24,7 @@ public interface ProposerDao {
     void deleteProposerByGroupId(int id);
     boolean addProposer(Proposer proposer);
     boolean changeSubID(String userName,int subID);
+    ArrayList<String> getAllSubclass();
 
     //by zz
     ArrayList<Proposer> getProposerByExpertID(int expID);

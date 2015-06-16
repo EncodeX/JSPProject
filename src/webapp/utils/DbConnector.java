@@ -26,7 +26,7 @@ public class DbConnector {
 
                 connection =
                         DriverManager.getConnection("jdbc:mysql://"+dburl+"/"+dbname+"?" +
-                                "user="+dbusername+"&password="+dbpassword);
+                                "user="+dbusername+"&password="+dbpassword+"&useUnicode=true&characterEncoding=utf8");
             } catch (Exception ex) {
                 System.err.println("数据库连接失败。");
                 return null;

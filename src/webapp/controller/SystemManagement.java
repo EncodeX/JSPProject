@@ -29,9 +29,10 @@ public class SystemManagement {
         return modelAndView;
     }
 
-    @RequestMapping(value = "settime/{type}",method = RequestMethod.POST)
+    @RequestMapping(value = "settime/{type}",method =  {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView setOpenAndEndTime(ModelAndView modelAndView,@PathVariable("type")String type,
-                                          String startdate,String starttime,String enddate,String endtime){
+                                          String start,String end){
+//                                          String startdate,String starttime,String enddate,String endtime){
         modelAndView.setViewName("/sysman/main");
         modelAndView.addObject("ischange",true);
         String messageTitle="";
@@ -39,6 +40,10 @@ public class SystemManagement {
         Timestamp openTimestamp=new Timestamp(0);
         Timestamp endTimestamp=new Timestamp(0);
         try{
+            String startdate=start.trim().split(" ")[0];
+            String starttime=start.trim().split(" ")[1];
+            String enddate=end.trim().split(" ")[0];
+            String endtime=end.trim().split(" ")[1];
             openTimestamp.setYear(Integer.parseInt(startdate.split("-")[0])-1900);
             openTimestamp.setMonth(Integer.parseInt(startdate.split("-")[1])-1);
             openTimestamp.setDate(Integer.parseInt(startdate.split("-")[2]));

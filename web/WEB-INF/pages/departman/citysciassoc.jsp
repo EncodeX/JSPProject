@@ -32,14 +32,18 @@
 
         <tr>
 
-            <form id="citysci" method="post" action="">
+            <form id="citysci" method="post">
                 <input type="hidden" name="username" value="2">
-                <td><input type="text" name="recID" value="2">
-                    <button class="am-btn am-btn-secondary am-btn-sm" type="button"
-                            onclick="post_form('<%=basePath%>departman/searchUnits','#citysci')">查询
-                    </button>
+                <td>
+                    <div class="am-g">
+                        <div class="am-u-sm-3"><input type="text" name="recID" value="2" class="am-form-field"></div>
+                        <div class="am-u-sm-3 am-u-end">
+                            <button class="am-btn am-btn-secondary am-btn-sm" type="button"
+                                    onclick="post_form('<%=basePath%>departman/searchUnits','#citysci')">查询
+                            </button>
+                        </div>
+                    </div>
                 </td>
-
             </form>
         </tr>
 

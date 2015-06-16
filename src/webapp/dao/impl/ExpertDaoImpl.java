@@ -262,4 +262,22 @@ public class ExpertDaoImpl implements ExpertDao{
             return null;
         }
     }
+
+    @Override
+    public void fkDeleteVoteReset(int expId) {
+        Expert expert=getExpertByExpertID(expId);
+
+        PreparedStatement ps;
+        String sql="select DISTINCT * from expert where expID=?";
+        try {
+            ps=connection.prepareStatement("update proposer set recResult=0 where subID=?");
+
+            ps.setInt(1,expert.getGroupID());
+            ps.execute();
+        }
+        catch (Exception ex){
+            System.err.println("[DB ERROR]SubjectGroup getSubjectGroupByName ERROR.");
+        }
+
+    }
 }

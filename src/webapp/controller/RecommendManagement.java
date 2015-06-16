@@ -31,7 +31,6 @@ public class RecommendManagement {
     public ModelAndView getMainPage(ModelAndView modelAndView,String page){
     ResUnitsDao ResUnitsDao=new ResUnitsDaoImpl();
         ProposerDao ProposerDao=new ProposerDaoImpl();
-        ProposerDao proposerDao=new ProposerDaoImpl();
 
             int pages;
             if(page==null){
@@ -54,27 +53,16 @@ public class RecommendManagement {
         return modelAndView;
     }
     @RequestMapping(value = "searchUnits",method = {RequestMethod.GET,RequestMethod.POST})
-     public ModelAndView getSearchPage(ModelAndView modelAndView,int recID){
-
+     public ModelAndView getSearchPage(ModelAndView modelAndView,String recID){
         ProposerDao proposerDao=new ProposerDaoImpl();
         modelAndView.setViewName("departman/searchUnits");
-        ArrayList<Proposer> proposers=proposerDao.getProposerByRecID(recID);
+        ArrayList<Proposer> proposers=proposerDao.getProposerByRecID(Integer.parseInt(recID));
         modelAndView.addObject("proposers",proposers);
         return modelAndView;
     }
     @RequestMapping(value = "/citysciassoc",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView citysciassoc (ModelAndView modelAndView){
         modelAndView.setViewName("/departman/citysciassoc");
-      //  ProposerDao proposerDao=new ProposerDaoImpl();
-       // ,String recID
-       // ArrayList<Proposer> proposers=proposerDao.getProposerByRecID(Integer.parseInt(recID));
-      //  System.out.println(proposers.size());
-       // modelAndView.addObject("proposers",proposers);
-
-
-
-
-
         return modelAndView;
 
     }
@@ -83,19 +71,6 @@ public class RecommendManagement {
     @RequestMapping(value = "/sciassoc",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView sciassoc (ModelAndView modelAndView){
         modelAndView.setViewName("/departman/sciassoc");
-//        ProposerDao proposerDao=new ProposerDaoImpl();
-//
-//
-//        modelAndView.setViewName("departman/sciassoc");
-//        ArrayList<Proposer> proposers=proposerDao.getProposerByRecID(recID);
-//
-//
-//        modelAndView.addObject("proposers",proposers);
-
-
-
-
-
         return modelAndView;
     }
 
@@ -103,19 +78,6 @@ public class RecommendManagement {
     @RequestMapping(value = "/engassoc",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView engassoc (ModelAndView modelAndView){
         modelAndView.setViewName("/departman/engassoc");
-//        ProposerDao proposerDao=new ProposerDaoImpl();
-//
-//
-//        modelAndView.setViewName("departman/engassoc");
-//        ArrayList<Proposer> proposers=proposerDao.getProposerByRecID(recID);
-//
-//
-//        modelAndView.addObject("proposers",proposers);
-//
-
-
-
-
         return modelAndView;
     }
 
@@ -123,59 +85,18 @@ public class RecommendManagement {
     @RequestMapping(value = "/agriassoc",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView agriassoc (ModelAndView modelAndView){
         modelAndView.setViewName("/departman/agriassoc");
-//        ProposerDao proposerDao=new ProposerDaoImpl();
-//
-//
-//        modelAndView.setViewName("departman/agriassoc");
-//        ArrayList<Proposer> proposers=proposerDao.getProposerByRecID(recID);
-//
-//
-//        modelAndView.addObject("proposers",proposers);
-
-
-
-
-
         return modelAndView;
     }
 
 
     @RequestMapping(value = "/mediassoc",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView mediassoc (ModelAndView modelAndView){
-//        modelAndView.setViewName("/departman/mediassoc");
-//        ProposerDao proposerDao=new ProposerDaoImpl();
-//
-//
-//        modelAndView.setViewName("departman/mediassoc");
-//        ArrayList<Proposer> proposers=proposerDao.getProposerByRecID(recID);
-//
-//
-//        modelAndView.addObject("proposers",proposers);
-
-
-
-
-
         return modelAndView;
     }
 
 
     @RequestMapping(value = "/crossassoc",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView crossassoc (ModelAndView modelAndView){
-//        modelAndView.setViewName("/departman/crossassoc");
-//        ProposerDao proposerDao=new ProposerDaoImpl();
-//
-//
-//        modelAndView.setViewName("departman/crossassoc");
-//        ArrayList<Proposer> proposers=proposerDao.getProposerByRecID(recID);
-//
-//
-//        modelAndView.addObject("proposers",proposers);
-
-
-
-
-
         return modelAndView;
     }
     @RequestMapping(value = "/searchUnit",method = {RequestMethod.POST})

@@ -35,7 +35,7 @@ public class CandidateManagement {
             pages=Integer.parseInt(page);
         }
         modelAndView.setViewName("/candman/sbjman");
-        ArrayList<Proposer> allproposers=ProposerDao.getAllProposer();
+        ArrayList<String> allproposers=ProposerDao.getAllSubclass();
         ArrayList<Proposer> subproposers=ProposerDao.getProposersBySubClass(pages, 10, subClass);
         ArrayList<SubjectGroup> subjectGroups=GroupDao.getAllSubjectGroup();
         modelAndView.addObject("subjectGroups",subjectGroups);
@@ -60,7 +60,7 @@ public class CandidateManagement {
             url="sbjman";
         }
         modelAndView.setViewName("/candman/sbjman");
-        ArrayList<Proposer> allproposers=ProposerDao.getAllProposer();
+        ArrayList<String> allproposers=ProposerDao.getAllSubclass();
         ArrayList<Proposer> subproposers=ProposerDao.getAllProposer(pages, 10);
         ArrayList<SubjectGroup> subjectGroups=GroupDao.getAllSubjectGroup();
         modelAndView.addObject("subjectGroups",subjectGroups);

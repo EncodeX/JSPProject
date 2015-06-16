@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page import="webapp.model.Proposer" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -21,21 +22,23 @@
     </div>
 </div>
 <div class="am-cf am-padding">
-    <form id="sbjman1" method="post">
+    <form id="sbjman" method="post">
         <select data-am-selected name="subClass">
             <option class="am-dropdown-header">请选择学科类别</option>
-            <% String subClass=(String)request.getAttribute("subClass"); %>
+            <% String subClass = (String) request.getAttribute("subClass"); %>
             <c:forEach items="${allproposers}" var="proposer" varStatus="status">
-                <c:if test="${subClass==proposer.subClass}">
-                    <option value="${proposer.subClass}" selected>${proposer.subClass}</option>
+                <c:if test="${subClass==proposer}">
+                    <option value="${proposer}" selected>${proposer}</option>
                 </c:if>
-                <c:if test="${subClass!=proposer.subClass}">
-                    <option value="${proposer.subClass}">${proposer.subClass}</option>
+                <c:if test="${subClass!=proposer}">
+                    <option value="${proposer}">${proposer}</option>
                 </c:if>
             </c:forEach>
 
         </select>
-        <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>candman/subclass','#sbjman1')">确认</button>
+        <button class="am-btn am-btn-secondary" type="button"
+                onclick="post_form('<%=basePath%>candman/subclass','#sbjman')">确认
+        </button>
     </form>
 </div>
 <div class="am-cf am-padding">
@@ -58,34 +61,40 @@
         </tr>
         </thead>
         <tbody>
+        <% int z=0;%>
         <c:forEach items="${proposers}" var="proposer" varStatus="status">
-            <form id="sbjman2" method="post">
-                <input type="hidden" name="userName" value="${proposer.userName}">
-                <tr>
-                    <td>${status.count+(pages-1)*10}</td>
-                    <td>${proposer.userName}</td>
-                    <td>${proposer.userID}</td>
-                    <td>${proposer.name}</td>
-                    <td>${proposer.subClass}</td>
-                    <td><select  data-am-selected name="groName">
-                        <c:forEach items="${subjectGroups}" var="SubjectGroup" varStatus="status">
-                            <c:if test="${SubjectGroup.groID==proposer.subID}">
-                                <option value="${SubjectGroup.groName}" selected>${SubjectGroup.groName}</option>
-                            </c:if>
-                            <c:if test="${SubjectGroup.groID!=proposer.subID}">
-                                <option value="${SubjectGroup.groName}">${SubjectGroup.groName}</option>
-                            </c:if>
-                        </c:forEach>
-                    </select>
-                    </td>
-                    <td>${proposer.recID}</td>
-                    <td>${proposer.recResult}</td>
-                    <td>${proposer.firCount}</td>
-                    <td>${proposer.firResult}</td>
-                    <td>${proposer.lasResult}</td>
-                    <td><button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>candman/changeSubject','#sbjman2')">确认</button></td>
-                </tr>
+            <form id="sbjman<%=z%>" method="post">
+                    <input type="hidden" name="userName" value="${proposer.userName}">
+                    <tr>
+                        <td>${status.count+(pages-1)*10}</td>
+                        <td>${proposer.userName}</td>
+                        <td>${proposer.userID}</td>
+                        <td>${proposer.name}</td>
+                        <td>${proposer.subClass}</td>
+                        <td><select data-am-selected name="groName">
+                            <c:forEach items="${subjectGroups}" var="SubjectGroup" varStatus="status">
+                                <c:if test="${SubjectGroup.groID==proposer.subID}">
+                                    <option value="${SubjectGroup.groName}" selected>${SubjectGroup.groName}</option>
+                                </c:if>
+                                <c:if test="${SubjectGroup.groID!=proposer.subID}">
+                                    <option value="${SubjectGroup.groName}">${SubjectGroup.groName}</option>
+                                </c:if>
+                            </c:forEach>
+                        </select>
+                        </td>
+                        <td>${proposer.recID}</td>
+                        <td>${proposer.recResult}</td>
+                        <td>${proposer.firCount}</td>
+                        <td>${proposer.firResult}</td>
+                        <td>${proposer.lasResult}</td>
+                        <td>
+                            <button class="am-btn am-btn-secondary" type="button"
+                                    onclick="post_form('<%=basePath%>candman/changeSubject','#sbjman<%=z%>')">确认
+                            </button>
+                        </td>
+                    </tr>
             </form>
+            <%z++;%>
         </c:forEach>
         </tbody>
 
@@ -93,56 +102,88 @@
     <%--分页--%>
     <ul class="am-pagination am-pagination-right">
         <%
-            int amount=(Integer)request.getAttribute("amount");
-            int pageAmount=(amount%10==0)?amount/10:amount/10+1;
-            int pages=(Integer)request.getAttribute("pages");
-            String url=(String)request.getAttribute("url");
+            int amount = (Integer) request.getAttribute("amount");
+            int pageAmount = (amount % 10 == 0) ? amount / 10 : amount / 10 + 1;
+            int pages = (Integer) request.getAttribute("pages");
+            String url = (String) request.getAttribute("url");
 
-            if(url==null){
-                url="sbjman";
+            if (url == null) {
+                url = "sbjman";
             }
-            if(pages==1){
-        %><li class="am-disabled"><a href="#">&laquo;</a></li><%
-    }else{
-    %><li><a onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=pages-1%>&subClass=<%=subClass%>')" href="#">&laquo;</a></li>
+            if (pages == 1) {
+        %>
+        <li class="am-disabled"><a href="#">&laquo;</a></li>
         <%
-        }
-        if(pageAmount<=5||pages<3){
-            int temp=0;
-            if(pageAmount<=5)
-                temp=pageAmount;
-            else if(pages<3)
-                temp=5;
-            for (int i = 1; i <= temp; i++) {
-                if(i==pages){
-    %><li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>')" href="#"><%=i%></a></li>
+        } else {
+        %>
+        <li><a onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=pages-1%>&subClass=<%=subClass%>')"
+               href="#">&laquo;</a></li>
         <%
-    }else{
-    %><li>< onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>')" href="#"><%=i%></a></li><%
             }
-        }
-    }else if(pageAmount>5&&pages>pageAmount-2){
-        for (int i = pageAmount-4; i <= pageAmount; i++) {
-            if(i==pages){
-    %><li class="am-active"><a href="<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>"><%=i%></a></li><%
-    }else{
-    %><li><a onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>')" href="#"><%=i%></a></li><%
-            }
-        }
-    }else{
-        for (int i = pages-2; i <= pages+2; i++) {
-            if(i==pages){
-    %><li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>')" href="#"><%=i%></a></li><%
-    }else{
-    %><li><a onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>')" href="#"><%=i%></a></li><%
+            if (pageAmount <= 5 || pages < 3) {
+                int temp = 0;
+                if (pageAmount <= 5)
+                    temp = pageAmount;
+                else if (pages < 3)
+                    temp = 5;
+                for (int i = 1; i <= temp; i++) {
+                    if (i == pages) {
+        %>
+        <li class="am-active"><a
+                onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>')"
+                href="#"><%=i%>
+        </a></li>
+        <%
+        } else {
+        %>
+        <li>< onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>')"
+            href="#"><%=i%></a></li>
+        <%
                 }
             }
-        }
-        if (pages<pageAmount){
-    %><li><a onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=pages+1%>&subClass=<%=subClass%>')" href="#">&raquo;</a></li><%
-    }else{
-    %><li class="am-disabled"><a href="#">&raquo;</a></li><%
-        }
-    %>
+        } else if (pageAmount > 5 && pages > pageAmount - 2) {
+            for (int i = pageAmount - 4; i <= pageAmount; i++) {
+                if (i == pages) {
+        %>
+        <li class="am-active"><a href="<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>"><%=i%>
+        </a></li>
+        <%
+        } else {
+        %>
+        <li><a onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>')"
+               href="#"><%=i%>
+        </a></li>
+        <%
+                }
+            }
+        } else {
+            for (int i = pages - 2; i <= pages + 2; i++) {
+                if (i == pages) {
+        %>
+        <li class="am-active"><a
+                onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>')"
+                href="#"><%=i%>
+        </a></li>
+        <%
+        } else {
+        %>
+        <li><a onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>')"
+               href="#"><%=i%>
+        </a></li>
+        <%
+                    }
+                }
+            }
+            if (pages < pageAmount) {
+        %>
+        <li><a onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=pages+1%>&subClass=<%=subClass%>')"
+               href="#">&raquo;</a></li>
+        <%
+        } else {
+        %>
+        <li class="am-disabled"><a href="#">&raquo;</a></li>
+        <%
+            }
+        %>
     </ul>
 </div>
