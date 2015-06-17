@@ -17,11 +17,15 @@
 
 <!-- content start -->
 
+<hr/>
+
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">名额分配管理</strong> /
         <small>初评名额管理</small>
     </div>
 </div>
+
+<hr/>
 
 <div class="am-cf am-padding">
     <table class="am-table">

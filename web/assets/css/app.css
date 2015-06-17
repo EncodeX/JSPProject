@@ -1,9 +1,12 @@
 /* Write your styles */
 
 .admin-content{
-    margin-top: 51px;
-    margin-left: 260px;
-    overflow: visible;
+    overflow: scroll;
+    top: 51px;
+    bottom: 0px;
+    left: 260px;
+    right: 0px;
+    position: fixed;
 }
 
 label{

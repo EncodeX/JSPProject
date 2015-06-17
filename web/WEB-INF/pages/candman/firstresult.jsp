@@ -15,11 +15,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<hr/>
+
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">候选人初评结果管理</strong> /
         <small>候选人通过学科组分类</small>
     </div>
 </div>
+
+<hr/>
 
 <div class="am-cf am-padding">
     <form id="firstresult1">
@@ -49,6 +53,8 @@
         </button>
     </form>
 </div>
+
+<hr/>
 
 <div class="am-tabs" id="doc-my-tabs">
     <ul class="am-tabs-nav am-nav am-nav-tabs">
@@ -92,6 +98,8 @@
             </li>
         </c:if>
     </ul>
+
+    <hr/>
 
     <div class="am-cf am-padding">
 

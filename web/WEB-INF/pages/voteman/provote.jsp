@@ -15,11 +15,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<hr/>
+
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">投票管理</strong> /
         <small>专家组投票管理</small>
     </div>
 </div>
+
+<hr/>
+
 <div class="am-cf am-padding">
     <c:if test="${subjectGroups!=null&&subjectGroups.size()!=0}">
         <form id="provote" method="post">
@@ -39,7 +44,11 @@
         </form>
     </c:if>
 
+</div>
 
+<hr/>
+
+<div class="am-cf am-padding">
     <c:if test="${experts!=null&&experts.size()!=0}">
         <div class="am-cf am-padding">
             <table class="am-table">
@@ -83,5 +92,4 @@
         </div>
 
     </c:if>
-
 </div>

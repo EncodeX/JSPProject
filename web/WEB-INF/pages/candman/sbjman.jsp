@@ -16,11 +16,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<hr/>
+
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">候选人学科管理</strong> /
         <small>候选人通过所属学科组分类</small>
     </div>
 </div>
+
+<hr/>
+
 <div class="am-cf am-padding">
     <form id="sbjman" method="post">
         <select data-am-selected name="subClass">
@@ -41,6 +46,9 @@
         </button>
     </form>
 </div>
+
+<hr/>
+
 <div class="am-cf am-padding">
 
     <table class="am-table">

@@ -15,12 +15,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<hr/>
+
 <!-- content start -->
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学科管理</strong>/
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学科管理</strong> /
         <small>增加学科组</small>
     </div>
 </div>
+
+<hr/>
 
 <div class="am-cf am-padding">
     <form id="addsbjgup" method="get">

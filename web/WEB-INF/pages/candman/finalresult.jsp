@@ -16,14 +16,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
+<hr/>
+
 <div class="am-cf am-padding">
   <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">候选人终评结果管理</strong> /
     <small>候选人通过所属学科组分类</small>
   </div>
 </div>
+
+<hr/>
+
 <div class="am-cf am-padding">
   <label>目前共有：${amount} 人</label>
 </div>
+
+<hr/>
+
 <div class="am-cf am-padding">
 
   <table class="am-table">

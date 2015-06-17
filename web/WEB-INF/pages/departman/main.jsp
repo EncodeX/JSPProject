@@ -14,13 +14,17 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!doctype html>
+
+<hr/>
 
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">推荐单位管理</strong> /
-        <small>显示全省申报人数</small>
+        <small>主页</small>
     </div>
 </div>
+
+<hr/>
+
 <div class="am-cf am-padding">
     <label>
     全省申报人数:
@@ -28,12 +32,30 @@
     </label>
 </div>
 
+<hr/>
 
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">推荐单位管理</strong> /
-        <small>显示推荐单位信息</small>
-    </div>
+    <form id="submit_form" name="submit_form" method="post">
+        分类搜索
+        <select name="bigclass" onchange="changeselect1(this.value)">
+            <option value="所有单位" selected>所有单位</option>
+            <option value="市科协">市科协</option>
+            <li></li>
+            <option value="理科学会">理科学会</option>
+            <option value="工科学会">工科学会</option>
+            <option value="农林学会">农林学会</option>
+            <option value="医药学会">医药学会</option>
+            <option value="交叉学科学会">交叉学科学会</option>
+        </select>
+        <select name="unitName">
+            <option value="所有小类" selected>所有小类</OPTION>
+        </select>
+        <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>departman/searchUnit','#submit_form')">提交</button>
+    </form>
 </div>
+
+<hr/>
+
 <div class="am-cf am-padding">
     <table class="am-table">
         <thead>
@@ -57,8 +79,9 @@
     </table>
 
 </div>
+
 <%--分页--%>
-<ul class="am-pagination am-pagination-right">
+<ul class="am-pagination am-pagination-right am-padding">
     <%
         int amount = (Integer) request.getAttribute("amount");
         int pageAmount = (amount % 10 == 0) ? amount / 10 : amount / 10 + 1;
@@ -131,28 +154,3 @@
         }
     %>
 </ul>
-
-<div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">推荐单位管理</strong> /
-        <small>搜索推荐单位信息</small>
-    </div>
-</div>
-<div class="am-cf am-padding">
-    <form id="submit_form" name="submit_form" method="post">
-        网站分类
-        <select name="bigclass" onchange="changeselect1(this.value)">
-            <option value="所有单位" selected>所有单位</option>
-            <option value="市科协">市科协</option>
-            <li></li>
-            <option value="理科学会">理科学会</option>
-            <option value="工科学会">工科学会</option>
-            <option value="农林学会">农林学会</option>
-            <option value="医药学会">医药学会</option>
-            <option value="交叉学科学会">交叉学科学会</option>
-        </select>
-        <select name="unitName">
-            <option value="所有小类" selected>所有小类</OPTION>
-        </select>
-        <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>departman/searchUnit','#submit_form')">提交</button>
-    </form>
-</div>

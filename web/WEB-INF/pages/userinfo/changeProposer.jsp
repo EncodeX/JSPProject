@@ -15,12 +15,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<hr/>
+
 <!-- content start -->
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong>/
         <small>修改申请者账号</small>
     </div>
 </div>
+
+<hr/>
 
 <div class="am-cf am-padding">
     <form id="changeProposer" method="post">

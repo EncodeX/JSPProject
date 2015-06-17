@@ -15,11 +15,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<hr/>
+
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong> /
         <small>管理推荐单位、评审专家、申报者账号</small>
     </div>
 </div>
+
+<hr/>
+
 <div class="am-cf am-padding">
     <a class="am-btn am-btn am-btn-secondary" href="#" onclick="refresh_Content('<%=basePath%>userinfo/addExpert')"><i
             class="am-icon-plus"></i>增加专家组账号</a>
@@ -28,6 +33,8 @@
     <a class="am-btn am-btn am-btn-secondary" href="#" onclick="refresh_Content('<%=basePath%>userinfo/addUnits')"><i
             class="am-icon-plus"></i>增加推荐单位账号</a>
 </div>
+
+<hr/>
 
 <div class="am-cf am-padding">
     <a class="am-btn am-btn am-btn-secondary" href="#"
@@ -40,6 +47,8 @@
        onclick="refresh_Content('<%=basePath%>userinfo/proposerMain')"><i
             class=" am-icon-eye"></i>查看申请者账号</a>
 </div>
+
+<hr/>
 
 <div class="am-cf am-padding">
     <table class="am-table">

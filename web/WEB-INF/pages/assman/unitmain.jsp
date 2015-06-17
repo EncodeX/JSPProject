@@ -15,11 +15,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<hr/>
+
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">名额分配管理</strong> /
         <small>推荐单位提交名额管理</small>
     </div>
 </div>
+
+<hr/>
 
 <div class="am-cf am-padding">
     <table class="am-table">

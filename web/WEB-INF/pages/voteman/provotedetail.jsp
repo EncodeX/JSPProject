@@ -15,6 +15,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<hr/>
 
 <!-- content start -->
 <div class="am-cf am-padding">
@@ -23,11 +24,14 @@
     </div>
 </div>
 
+<hr/>
+
 <div class="am-cf am-padding">
     <label>专家Id:</label>${expert.expID}
     <label>专家姓名:</label>${expert.expName}
 </div>
 
+<hr/>
 
 <c:if test="${proposers!=null&&proposers.size()!=0}">
     <div class="am-cf am-padding">

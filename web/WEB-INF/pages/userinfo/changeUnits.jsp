@@ -16,11 +16,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- content start -->
 
+<hr/>
+
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息管理</strong>
         <small>修改推荐单位账号</small>
     </div>
 </div>
+
+<hr/>
+
 <div class="am-cf am-padding">
     <form id="changeUnits" method="post">
         <fieldset>

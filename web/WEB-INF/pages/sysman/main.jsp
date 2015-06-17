@@ -15,12 +15,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<hr/>
 
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统管理</strong> /
         <small>管理本平台的开放、关闭时间</small>
     </div>
 </div>
+
+<hr/>
 
 <%--更新状态提示框|||在主页时不显示 仅在更新提交后变化--%>
 <c:if test="${ischange==true}">

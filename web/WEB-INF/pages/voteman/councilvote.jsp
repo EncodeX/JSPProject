@@ -15,23 +15,29 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<hr/>
+
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">投票管理</strong> /
         <small>评审委员会投票管理</small>
     </div>
 </div>
 
+<hr/>
+
 <div class="am-cf am-padding">
 
-    <form id="councilvote1" action="" method="post">
+    <form id="councilvote1" action="" method="post" class="am-form am-form-horizontal">
         <div class="am-g">
-            <div class="am-u-sm-3"><input type="text" value="${search}" name="search" class="am-form-field"></div>
-            <div class="am-u-sm-3">
-                <button class="am-btn am-btn-secondary" type="button"
-                        onclick="post_form('<%=basePath%>voteman/councilvote','#councilvote1')">搜索
-                </button>
+            <div class="am-form-group">
+                <div class="am-u-sm-3"><input type="text" value="${search}" name="search" class="am-form-field"></div>
+                <div class="am-u-sm-3">
+                    <button class="am-btn am-btn-secondary" type="button"
+                            onclick="post_form('<%=basePath%>voteman/councilvote','#councilvote1')">搜索
+                    </button>
+                </div>
+                <label class="am-u-sm-3 am-u-end am-form-label">已投${alreadVote}人 限制${limitVote}人</label>
             </div>
-            <div class="am-u-sm-3 am-u-end"><h2>已投${alreadVote}人 限制${limitVote}人</h2></div>
         </div>
     </form>
 </div>
