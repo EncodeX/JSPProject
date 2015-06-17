@@ -24,9 +24,6 @@
 </div>
 
 <div class="am-cf am-padding">
-</div>
-
-<div class="am-cf am-padding">
     <table class="am-table">
         <thead>
         <tr>

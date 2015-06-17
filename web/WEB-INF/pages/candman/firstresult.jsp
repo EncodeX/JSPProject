@@ -16,7 +16,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="am-cf am-padding">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">候选人学科管理</strong> /
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">候选人初评结果管理</strong> /
         <small>候选人通过学科组分类</small>
     </div>
 </div>
@@ -43,16 +43,17 @@
         <button class="am-btn am-btn-secondary" type="button"
                 onclick="post_form('<%=basePath%>candman/firstresultsubclass','#firstresult1')">确认
         </button>
-    </form>
-</div>
 
-<div class="am-cf am-padding">
-    <a class="am-btn am-btn am-btn-secondary" onclick="refresh_Content('<%=basePath%>candman/addProposer')" href="#"><i
-            class="am-icon-plus"></i>增加候选人账号</a>
+        <button class="am-btn am-btn am-btn-secondary" onclick="refresh_Content('<%=basePath%>candman/addProposer')" href="#">
+            <i class="am-icon-plus"></i>增加候选人账号
+        </button>
+    </form>
 </div>
 
 <div class="am-tabs" id="doc-my-tabs">
     <ul class="am-tabs-nav am-nav am-nav-tabs">
+        <li class="am-disabled"><a>排序方式:  </a></li>
+
         <c:if test="${order=='userID'}">
             <li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/userIDOrder?subID=<%=subID%>')"
                                      href="#">用户ID</a></li>

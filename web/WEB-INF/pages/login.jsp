@@ -27,6 +27,8 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/app.css">
     <style>
         .header {
             text-align: center;
@@ -82,17 +84,11 @@
                 <option value="b">推荐单位</option>
                 <option value="o">评审专家</option>
             </select>
-
-
-
             <label for="email">用户名</label>
             <input type="text" name="username" id="email" value="">
-            <br>
             <label for="password">密码:</label>
             <input type="password" name="password" id="password" value="">
-            <br>
-
-            <br />
+            <br/>
             <div class="am-cf">
                 <input type="submit" name="" value="登录" class="am-btn am-btn-primary am-btn-sm am-fl">
                 <input type="submit" name="" value="注册" class="am-btn am-btn-default am-btn-sm am-fr">

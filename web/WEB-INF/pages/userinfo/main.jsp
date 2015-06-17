@@ -70,9 +70,9 @@
                         评审委员会
                     </c:if>
                 </td>
-                <td><a class="am-btn am-btn-link am-btn-sm"
+                <td><a class="am-btn am-btn-secondary am-btn-sm"
                        onclick="refresh_Content('<%=basePath%>userinfo/changeExpert?name=${expert.expName}')">修改</a>
-                    <a class="am-btn am-btn-link am-btn-sm"
+                    <a class="am-btn am-btn-danger am-btn-sm"
                        onclick="refresh_Content('<%=basePath%>userinfo/deleteExpert?name=${expert.expName}')">删除</a>
                 </td>
             </tr>

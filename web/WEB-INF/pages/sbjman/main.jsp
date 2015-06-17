@@ -20,7 +20,7 @@
 </div>
 
 <div class="am-cf am-padding">
-    <a class="am-btn am-btn am-btn-primary" onclick="refresh_Content('<%=basePath%>sbjman/toAddSubjectGroup')" href="#"><i class="am-icon-plus"></i>增加学科组</a>
+    <a class="am-btn am-btn am-btn-secondary" onclick="refresh_Content('<%=basePath%>sbjman/toAddSubjectGroup')" href="#"><i class="am-icon-plus"></i>增加学科组</a>
 </div>
 
 <div class="am-cf am-padding">
@@ -37,9 +37,9 @@
             <tr>
                 <td>${status.count+(pages-1)*10}</td>
                 <td>${subjectGroup.groName}</td>
-                <td><a class="am-btn am-btn-link am-btn-sm"
+                <td><a class="am-btn am-btn-secondary am-btn-sm"
                        onclick="refresh_Content('<%=basePath%>sbjman/toChangeSubjectGroup?name=${subjectGroup.groName}')">修改</a>
-                    <a class="am-btn am-btn-link am-btn-sm"
+                    <a class="am-btn am-btn-danger am-btn-sm"
                        onclick="refresh_Content('<%=basePath%>sbjman/deleteSubjectGroup?name=${subjectGroup.groName}')">删除</a>
                 </td>
             </tr>

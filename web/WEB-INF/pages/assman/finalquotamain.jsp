@@ -23,9 +23,6 @@
 <div class="am-cf am-padding">
     <form id="finalquotamain" method="post">
         <legend>评审委员会最终名额:${subjectGroup.subNum}</legend>
-        <br>
-
-
         <div class="am-g">
             <div class="am-u-sm-1"><h2>修改:</h2></div>
             <div class="am-u-sm-3"><input type="text" name="number" value="${subjectGroup.subNum}"

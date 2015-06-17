@@ -77,12 +77,7 @@
                         <td>
                             <div class="am-dropdown" data-am-dropdown>
                                 <button onclick="post_form('<%=basePath%>sysman/settime/proposer','#sysmanmain_proposer')"
-                                        class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
-                                    <span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
-                                <ul class="am-dropdown-content">
-                                    <li><a href="#">确定</a></li>
-                                    <li><a href="#">取消</a></li>
-                                </ul>
+                                        class="am-btn am-btn-primary" data-am-dropdown-toggle>更新</button>
                             </div>
                         </td>
                         </tr>
@@ -110,12 +105,8 @@
                         </td>
                         <td>
                             <div class="am-dropdown" data-am-dropdown>
-                                <button onclick="post_form('<%=basePath%>sysman/settime/recunits','#sysmanmain_units')" class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
-                                    <span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
-                                <ul class="am-dropdown-content">
-                                    <li><a href="#">确定</a></li>
-                                    <li><a href="#">取消</a></li>
-                                </ul>
+                                <button onclick="post_form('<%=basePath%>sysman/settime/recunits','#sysmanmain_units')"
+                                        class="am-btn am-btn-primary" data-am-dropdown-toggle>更新</button>
                             </div>
                         </td>
                     </tr>
@@ -145,12 +136,8 @@
                         </td>
                         <td>
                             <div class="am-dropdown" data-am-dropdown>
-                                <button onclick="post_form('<%=basePath%>sysman/settime/expert','#sysmanmain_expert')" class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
-                                    <span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
-                                <ul class="am-dropdown-content">
-                                    <li><a href="#">确定</a></li>
-                                    <li><a href="#">取消</a></li>
-                                </ul>
+                                <button onclick="post_form('<%=basePath%>sysman/settime/expert','#sysmanmain_expert')"
+                                        class="am-btn am-btn-primary" data-am-dropdown-toggle>更新</button>
                             </div>
                         </td>
                     </tr>

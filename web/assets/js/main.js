@@ -137,9 +137,10 @@ function refreshselect() {
         maxHeight: '100px'
     });
 }
+
 $(function() {
     refreshselect();
-});
+})(jQuery);
 
 //////Time Picker
 function refreshTimePicker(){

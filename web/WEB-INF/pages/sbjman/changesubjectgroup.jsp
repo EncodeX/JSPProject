@@ -31,7 +31,7 @@
                 <label>学科组名称</label>
                 <input type="text" name="groName" value="${subjectGroup.groName}" class="am-form-field" required/>
                 <label>学科组提交名额</label>
-                <input type="text" name="subNum" value="${subjectGroup.groID}" class="am-form-field" required/>
+                <input type="text" name="subNum" value="${subjectGroup.subNum}" class="am-form-field" required/>
 
             </div>
             <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>sbjman/changeSubjectGroup','#changesbjgrp')">提交</button>

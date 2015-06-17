@@ -5,3 +5,39 @@
     margin-left: 260px;
     overflow: visible;
 }
+
+label{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.am-table>tbody>tr>td{
+    vertical-align: middle;
+}
+
+.am-form-group{
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+[class*="am-icon-"]::before{
+    margin-right: 0.5rem;
+}
+
+.am-selected-btn{
+    width: 100%;
+}
+
+.am-nav-tabs{
+    border: 0;
+}
+
+.am-nav-tabs>li.am-active>a,.am-nav-tabs>li.am-active>a:hover{
+    border:0;
+}
+
+.am-nav>li.am-disabled>a,.am-nav>li.am-disabled>a:hover{
+    border:0;
+    cursor: auto;
+    color: #111;
+}
