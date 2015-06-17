@@ -52,17 +52,24 @@ public class RecommendManagement {
 
         return modelAndView;
     }
-    @RequestMapping(value = "searchUnits",method = {RequestMethod.GET,RequestMethod.POST})
+    @RequestMapping(value = "/searchUnits",method = {RequestMethod.GET,RequestMethod.POST})
      public ModelAndView getSearchPage(ModelAndView modelAndView,String recID){
+        System.out.println("\nin\n");
         ProposerDao proposerDao=new ProposerDaoImpl();
+        System.out.println(recID);
         modelAndView.setViewName("departman/searchUnits");
+        System.out.println(recID);
         ArrayList<Proposer> proposers=proposerDao.getProposerByRecID(Integer.parseInt(recID));
         modelAndView.addObject("proposers",proposers);
         return modelAndView;
     }
     @RequestMapping(value = "/citysciassoc",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView citysciassoc (ModelAndView modelAndView){
+        ResUnitsDao resUnitsDao=new ResUnitsDaoImpl();
         modelAndView.setViewName("/departman/citysciassoc");
+        ArrayList<Units> unitses=resUnitsDao.getAllUnitsName();
+        //    System.out.println(unitses.toString());
+        modelAndView.addObject("unitses", unitses);
         return modelAndView;
 
     }
@@ -70,33 +77,57 @@ public class RecommendManagement {
 
     @RequestMapping(value = "/sciassoc",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView sciassoc (ModelAndView modelAndView){
+        ResUnitsDao resUnitsDao=new ResUnitsDaoImpl();
         modelAndView.setViewName("/departman/sciassoc");
+        ArrayList<Units> unitses=resUnitsDao.getAllUnitsName();
+        //    System.out.println(unitses.toString());
+        modelAndView.addObject("unitses", unitses);
         return modelAndView;
     }
 
 
     @RequestMapping(value = "/engassoc",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView engassoc (ModelAndView modelAndView){
+
+        ResUnitsDao resUnitsDao=new ResUnitsDaoImpl();
         modelAndView.setViewName("/departman/engassoc");
+        ArrayList<Units> unitses=resUnitsDao.getAllUnitsName();
+        //    System.out.println(unitses.toString());
+        modelAndView.addObject("unitses", unitses);
         return modelAndView;
     }
 
 
     @RequestMapping(value = "/agriassoc",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView agriassoc (ModelAndView modelAndView){
+        ResUnitsDao resUnitsDao=new ResUnitsDaoImpl();
         modelAndView.setViewName("/departman/agriassoc");
+        ArrayList<Units> unitses=resUnitsDao.getAllUnitsName();
+    //    System.out.println(unitses.toString());
+        modelAndView.addObject("unitses", unitses);
         return modelAndView;
+
     }
 
 
     @RequestMapping(value = "/mediassoc",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView mediassoc (ModelAndView modelAndView){
+        ResUnitsDao resUnitsDao=new ResUnitsDaoImpl();
+        modelAndView.setViewName("/departman/mediassoc");
+        ArrayList<Units> unitses=resUnitsDao.getAllUnitsName();
+        //    System.out.println(unitses.toString());
+        modelAndView.addObject("unitses", unitses);
         return modelAndView;
     }
 
 
     @RequestMapping(value = "/crossassoc",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView crossassoc (ModelAndView modelAndView){
+        ResUnitsDao resUnitsDao=new ResUnitsDaoImpl();
+        modelAndView.setViewName("/departman/crossassoc");
+        ArrayList<Units> unitses=resUnitsDao.getAllUnitsName();
+        //    System.out.println(unitses.toString());
+        modelAndView.addObject("unitses", unitses);
         return modelAndView;
     }
     @RequestMapping(value = "/searchUnit",method = {RequestMethod.POST})
