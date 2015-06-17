@@ -22,7 +22,7 @@
 </div>
 
 <div class="am-cf am-padding">
-    <form id="firstresult1" method="post">
+    <form id="firstresult1">
         <select data-am-selected name="groID">
             <option class="am-dropdown-header">请选择您要查看的学科组</option>
             <%
@@ -44,7 +44,7 @@
                 onclick="post_form('<%=basePath%>candman/firstresultsubclass','#firstresult1')">确认
         </button>
 
-        <button class="am-btn am-btn am-btn-secondary" onclick="refresh_Content('<%=basePath%>candman/addProposer')" href="#">
+        <button class="am-btn am-btn am-btn-secondary" type="button" onclick="refresh_Content('<%=basePath%>candman/addProposer')">
             <i class="am-icon-plus"></i>增加候选人账号
         </button>
     </form>

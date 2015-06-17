@@ -77,7 +77,7 @@
                         <td>
                             <div class="am-dropdown" data-am-dropdown>
                                 <button onclick="post_form('<%=basePath%>sysman/settime/proposer','#sysmanmain_proposer')"
-                                        class="am-btn am-btn-primary" data-am-dropdown-toggle>更新</button>
+                                        class="am-btn am-btn-primary" type="button" data-am-dropdown-toggle>更新</button>
                             </div>
                         </td>
                         </tr>
@@ -106,7 +106,7 @@
                         <td>
                             <div class="am-dropdown" data-am-dropdown>
                                 <button onclick="post_form('<%=basePath%>sysman/settime/recunits','#sysmanmain_units')"
-                                        class="am-btn am-btn-primary" data-am-dropdown-toggle>更新</button>
+                                        class="am-btn am-btn-primary" type="button" data-am-dropdown-toggle>更新</button>
                             </div>
                         </td>
                     </tr>
@@ -137,7 +137,7 @@
                         <td>
                             <div class="am-dropdown" data-am-dropdown>
                                 <button onclick="post_form('<%=basePath%>sysman/settime/expert','#sysmanmain_expert')"
-                                        class="am-btn am-btn-primary" data-am-dropdown-toggle>更新</button>
+                                        class="am-btn am-btn-primary" type="button" data-am-dropdown-toggle>更新</button>
                             </div>
                         </td>
                     </tr>
