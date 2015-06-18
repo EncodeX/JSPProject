@@ -59,6 +59,27 @@ public class ResUnitsDaoImpl implements ResUnitsDao{
     }
 
     @Override
+    public ArrayList<Units> getPartUnits(int limit1, int limit2) {
+        PreparedStatement ps;
+        ArrayList<Units> Units=new ArrayList<Units>();
+        String sql="select * from rec_units where rec_units.unitsID>0 limit ?,?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setInt(1,limit1);
+            ps.setInt(2,limit2);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Units units=new Units(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4));
+                Units.add(units);
+            }
+            return Units;
+        }
+        catch (Exception e){
+            System.err.println("从数据库获取信息失败"+sql+e);
+            return null;
+        }
+    }
+    @Override
     public ArrayList<Units> getAllUnitsName() {
         PreparedStatement ps;
         ArrayList<Units> unitses=new ArrayList<Units>();

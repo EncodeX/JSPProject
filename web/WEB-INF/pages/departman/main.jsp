@@ -38,9 +38,8 @@
     <form id="submit_form" name="submit_form" method="post">
         分类搜索
         <select name="bigclass" onchange="changeselect1(this.value)">
-            <option value="所有单位" selected>所有单位</option>
+            <option value="所有单位" >所有单位</option>
             <option value="市科协">市科协</option>
-            <li></li>
             <option value="理科学会">理科学会</option>
             <option value="工科学会">工科学会</option>
             <option value="农林学会">农林学会</option>

@@ -23,41 +23,28 @@
 </div>
 <div class="am-cf am-padding">
     <table class="am-table">
-        <thead>
-        <tr>
-            <th></th>
-        </tr>
-        </thead>
         <tbody>
-
-        <form method="post" action="<%=basePath%>departman/mediassoc">
+        <%int z=86;%>
+        <c:forEach items="${unitses}" var="unit"  varStatus="status">
             <tr>
-                <c:forEach items="${unitses}" var="unit"  varStatus="status">
-                <%int z=86;%>
-
                 <c:if test="${unit.unitsID>85}">
-                <c:if test="${unit.unitsID<112}">
-                <form id="citysci<%=z%>" method="post">
-
-                    <td>
-                        <div class="am-g">
-                            <div class="am-u-sm-3"><input type="text" name="recID" value="<%=z%>" class="am-form-field"style="display: none"></div>
-                            <div class="am-u-sm-3 am-u-end">
+                    <c:if test="${unit.unitsID<112}">
+                        <form action="<%=basePath%>departman/agriassoc" id="citysci<%=z%>" method="post">
+                            <td>
+                                <input type="hidden" name="recID" value="<%=z%>" class="am-form-field">
                                 <button class="am-btn am-btn-secondary am-btn-sm" type="button"
                                         onclick="post_form('<%=basePath%>departman/searchUnits','#citysci<%=z%>')">${unit.unitsName}
                                 </button>
-                            </div>
-                        </div>
-                    </td>
-                    <%z++;%>
+                            </td>
+                        </form>
+                        <%z++;%>
                     </c:if>
-                    </c:if>
-                    </c:forEach>
-                </form>
-        </tr>
-
-
+                </c:if>
+            </tr>
+        </c:forEach>
         </tbody>
+
+
     </table>
 
 </div>

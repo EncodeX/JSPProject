@@ -14,6 +14,7 @@ public interface ResUnitsDao {
 
     ArrayList<Units> getAllUnits(int page,int numPerPage);
     ArrayList<Units> getAllUnitsName();
+    ArrayList<Units> getPartUnits(int limit1, int limit2);
     ArrayList<Units> getAllUnits();
     int getUnitsAmount();
     boolean isExist(String name);
