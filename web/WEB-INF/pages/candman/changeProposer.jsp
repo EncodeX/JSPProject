@@ -34,34 +34,62 @@
                 <label>用户名：</label>
                 <input type="text" name="userName" value="${proposer.userName}" class="am-form-field">
 
-                <label>ID：</label>
-                <input type="text" name="userID" value="${proposer.userID}" class="am-form-field">
                 <label>账号密码：</label>
                 <input type="text" name="userPwd" value="${proposer.userPwd}" class="am-form-field">
 
                 <label>真实姓名：</label>
                 <input type="text" name="name" value="${proposer.name}" class="am-form-field">
 
-                <label>所在学科组：</label>
-                <input type="text" name="subClass" value="${proposer.subClass}" class="am-form-field">
+                <label>所在学科：</label>
+                <select data-am-selected name="subClass">
+                    <option class="am-dropdown-header">请选择学科</option>
+                    <c:forEach items="${subClass}" var="subclass" varStatus="status">
+                        <option value="${subclass}">${subclass}</option>
+                    </c:forEach>
+
+                </select><br>
 
                 <label>学科组ID：</label>
-                <input type="text" name="subID" value="${proposer.subID}" class="am-form-field">
+                <select data-am-selected name="subID">
+                    <option class="am-dropdown-header">请选择学科组</option>
+                    <c:forEach items="${subjectGroups}" var="group" varStatus="status">
+                        <option value="${group.groID}">${group.groName}</option>
+                    </c:forEach>
+
+                </select><br>
 
                 <label>推荐单位ID：</label>
-                <input type="text" name="recID" value="${proposer.recID}" class="am-form-field">
+                <select data-am-selected name="recID">
+                    <option class="am-dropdown-header">请选择推荐单位</option>
+                    <c:forEach items="${recUnits}" var="unit" varStatus="status">
+                        <option value="${unit.unitsID}">${unit.unitsName}</option>
+                    </c:forEach>
+
+                </select><br>
 
                 <label>推荐结果：</label>
-                <input type="text" name="recResult" value="${proposer.recResult}" class="am-form-field">
+                <select data-am-selected name="recResult">
+                    <option class="am-dropdown-header">请选择</option>
+                    <option value="1">成功</option>
+                    <option value="0">失败</option>
+                </select><br>
 
                 <label>初评票数：</label>
                 <input type="text" name="firCount" value="${proposer.firCount}" class="am-form-field">
 
                 <label>初评结果：</label>
-                <input type="text" name="firResult" value="${proposer.firResult}" class="am-form-field">
+                <select data-am-selected name="firResult">
+                    <option class="am-dropdown-header">请选择</option>
+                    <option value="1">成功</option>
+                    <option value="0">失败</option>
+                </select><br>
 
                 <label>终评结果：</label>
-                <input type="text" name="lasResult" value="${proposer.lasResult}" class="am-form-field">
+                <select data-am-selected name="lasResult">
+                    <option class="am-dropdown-header">请选择</option>
+                    <option value="1">成功</option>
+                    <option value="0">失败</option>
+                </select><br>
 
             </div>
             <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>candman/updateProposerToDB','#changeProposer')">提交</button>

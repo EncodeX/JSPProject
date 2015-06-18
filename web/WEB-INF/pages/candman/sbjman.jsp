@@ -30,6 +30,7 @@
     <form id="sbjman" method="post">
         <select data-am-selected name="subClass">
             <option class="am-dropdown-header">请选择学科类别</option>
+            <option value="all">all</option>
             <% String subClass = (String) request.getAttribute("subClass"); %>
             <c:forEach items="${allproposers}" var="proposer" varStatus="status">
                 <c:if test="${subClass==proposer}">
@@ -91,10 +92,36 @@
                         </select>
                         </td>
                         <td>${proposer.recID}</td>
-                        <td>${proposer.recResult}</td>
+
+                        <td>
+                            <c:if test="${proposer.recResult==1}">
+                                成功
+                            </c:if>
+                            <c:if test="${proposer.recResult==0}">
+                                失败
+                            </c:if>
+                        </td>
+
                         <td>${proposer.firCount}</td>
-                        <td>${proposer.firResult}</td>
-                        <td>${proposer.lasResult}</td>
+
+                        <td>
+                            <c:if test="${proposer.firResult==1}">
+                                成功
+                            </c:if>
+                            <c:if test="${proposer.firResult==0}">
+                                失败
+                            </c:if>
+                        </td>
+
+                        <td>
+                            <c:if test="${proposer.lasResult==1}">
+                                成功
+                            </c:if>
+                            <c:if test="${proposer.lasResult==0}">
+                                失败
+                            </c:if>
+                        </td>
+
                         <td>
                             <button class="am-btn am-btn-secondary" type="button"
                                     onclick="post_form('<%=basePath%>candman/changeSubject','#sbjman<%=z%>')">确认
@@ -144,7 +171,7 @@
         <%
         } else {
         %>
-        <li>< onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>')"
+        <li><a onclick="refresh_Content('<%=basePath%>candman/<%=url%>?page=<%=i%>&subClass=<%=subClass%>')"
             href="#"><%=i%></a></li>
         <%
                 }

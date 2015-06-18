@@ -61,10 +61,31 @@
         <td>${proposer.subClass}</td>
         <td>${proposer.subID}</td>
         <td>${proposer.recID}</td>
-        <td>${proposer.recResult}</td>
+        <td>
+          <c:if test="${proposer.recResult==1}">
+            成功
+          </c:if>
+          <c:if test="${proposer.recResult==0}">
+            失败
+          </c:if>
+        </td>
         <td>${proposer.firCount}</td>
-        <td>${proposer.firResult}</td>
-        <td>${proposer.lasResult}</td>
+        <td>
+          <c:if test="${proposer.firResult==1}">
+            成功
+          </c:if>
+          <c:if test="${proposer.firResult==0}">
+            失败
+          </c:if>
+        </td>
+        <td>
+          <c:if test="${proposer.lasResult==1}">
+            成功
+          </c:if>
+          <c:if test="${proposer.lasResult==0}">
+            失败
+          </c:if>
+        </td>
         <td>
           <button class="am-btn am-btn-secondary" type="button"
                   onclick="refresh_Content('<%=basePath%>candman/changeProposer?username=${proposer.userName}')">
@@ -84,7 +105,7 @@
       if(pages==1){
     %><li class="am-disabled"><a href="#">&laquo;</a></li><%
   }else{
-  %><li><a onclick="refresh_Content('<%=basePath%>candman/finalresult?page=<%=pages-1%>')" href="">&laquo;</a></li><%
+  %><li><a onclick="refresh_Content('<%=basePath%>candman/finalresult?page=<%=pages-1%>')" href="#">&laquo;</a></li><%
     }
     if(pageAmount<=5||pages<3){
       int temp=0;
@@ -96,7 +117,7 @@
         if(i==pages){
   %><li class="am-active"><a href="<%=basePath%>candman/finalresult?page=<%=i%>"><%=i%></a></li><%
   }else{
-  %><li><a onclick="refresh_Content('<%=basePath%>candman/finalresult?page=<%=i%>')" href=""><%=i%></a></li><%
+  %><li><a onclick="refresh_Content('<%=basePath%>candman/finalresult?page=<%=i%>')" href="#"><%=i%></a></li><%
       }
     }
   }else if(pageAmount>5&&pages>pageAmount-2){
@@ -104,20 +125,20 @@
       if(i==pages){
   %><li class="am-active"><a href="<%=basePath%>candman/finalresult?page=<%=i%>"><%=i%></a></li><%
   }else{
-  %><li><a onclick="refresh_Content('<%=basePath%>candman/finalresult?page=<%=i%>')" href=""><%=i%></a></li><%
+  %><li><a onclick="refresh_Content('<%=basePath%>candman/finalresult?page=<%=i%>')" href="#"><%=i%></a></li><%
       }
     }
   }else{
     for (int i = pages-2; i <= pages+2; i++) {
       if(i==pages){
-  %><li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/finalresult?page=<%=i%>')" href=""><%=i%></a></li><%
+  %><li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/finalresult?page=<%=i%>')" href="#"><%=i%></a></li><%
   }else{
   %><li><a href="<%=basePath%>candman/finalresult?page=<%=i%>"><%=i%></a></li><%
         }
       }
     }
     if (pages<pageAmount){
-  %><li><a onclick="refresh_Content('<%=basePath%>candman/finalresult?page=<%=pages+1%>')" href="">&raquo;</a></li><%
+  %><li><a onclick="refresh_Content('<%=basePath%>candman/finalresult?page=<%=pages+1%>')" href="#">&raquo;</a></li><%
   }else{
   %><li class="am-disabled"><a href="#">&raquo;</a></li><%
     }
