@@ -135,7 +135,7 @@
                     <td>${proposer.firResult}</td>
                     <td>${proposer.lasResult}</td>
                     <td>
-                        <button class="am-btn am-btn-secondary" type="button"
+                        <button class="am-btn am-btn-warning" type="button"
                                 onclick="refresh_Content('<%=basePath%>candman/deleteProposer?name=${proposer.userName}&subID=${proposer.subID}')">
                             删除
                         </button>
