@@ -57,6 +57,7 @@ public class ResUnitsDaoImpl implements ResUnitsDao{
             return null;
         }
     }
+
     @Override
     public ArrayList<Units> getAllUnitsName() {
         PreparedStatement ps;
@@ -76,6 +77,7 @@ public class ResUnitsDaoImpl implements ResUnitsDao{
             return null;
         }
     }
+
     @Override
     public int getUnitsAmount() {
         PreparedStatement ps;
