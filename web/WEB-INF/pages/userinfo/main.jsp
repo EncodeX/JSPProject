@@ -38,7 +38,7 @@
 <hr/>
 
 <div class="am-cf am-padding">
-    <a class="am-btn am-btn am-btn-secondary" href="#"
+    <a class="am-btn am-btn am-btn-primary" href="#"
        onclick="refresh_Content('<%=basePath%>userinfo/main')"><i
             class="am-icon-eye"></i>查看评审专家账号</a>
     <a class="am-btn am-btn am-btn-secondary" href="#"

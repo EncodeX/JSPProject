@@ -20,5 +20,6 @@
     <div class="am-vertical-align-middle" style="text-align: center;width: 100%;">
         <h1 style="color: #095f8a">辽宁省优秀科技工作者评选系统</h1>
         <h2 style="color: #0b76ac;">后台管理中心</h2>
+        <div style="color: #CCCCCC;">（到底该放点儿啥呢）</div>
     </div>
 </div>

@@ -43,7 +43,7 @@
     <a class="am-btn am-btn am-btn-secondary" href="#"
        onclick="refresh_Content('<%=basePath%>userinfo/resUnitsMain')"><i
             class="am-icon-eye"></i>查看推荐单位账号</a>
-    <a class="am-btn am-btn am-btn-secondary" href="#"
+    <a class="am-btn am-btn am-btn-primary" href="#"
        onclick="refresh_Content('<%=basePath%>userinfo/proposerMain')"><i
             class=" am-icon-eye"></i>查看申请者账号</a>
 </div>
