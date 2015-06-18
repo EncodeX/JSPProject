@@ -23,39 +23,32 @@
 </div>
 <div class="am-cf am-padding">
     <table class="am-table">
-        <thead>
-        <tr>
-            <th></th>
-        </tr>
-        </thead>
         <tbody>
 
+
         <tr>
+            <c:forEach items="${unitses}" var="unit"  varStatus="status">
+            <%int z=1;%>
 
-            <form method="post" action="<%=basePath%>departman/agriassoc">
-                <tr>
-                    <c:forEach items="${unitses}" var="unit"  varStatus="status">
-                    <%int z=1;%>
+            <c:if test="${unit.unitsID>0}">
+            <c:if test="${unit.unitsID<15}">
+            <form action="<%=basePath%>departman/agriassoc" id="citysci<%=z%>" method="post">
 
-                    <c:if test="${unit.unitsID>0}">
-                    <c:if test="${unit.unitsID<15}">
-                    <form id="citysci<%=z%>" method="post">
-
-                        <td>
-                            <div class="am-g">
-                                <div class="am-u-sm-3"><input type="text" name="recID" value="<%=z%>" class="am-form-field"style="display: none"></div>
-                                <div class="am-u-sm-3 am-u-end">
-                                    <button class="am-btn am-btn-secondary am-btn-sm" type="button"
-                                            onclick="post_form('<%=basePath%>departman/searchUnits','#citysci<%=z%>')">${unit.unitsName}
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <%z++;%>
-                        </c:if>
-                        </c:if>
-                        </c:forEach>
-                    </form>
+                <td>
+                    <div class="am-g">
+                        <input type="hidden" name="recID" value="<%=z%>" class="am-form-field">
+                        <div class="am-u-sm-3 am-u-end">
+                            <button class="am-btn am-btn-secondary am-btn-sm" type="button"
+                                    onclick="post_form('<%=basePath%>departman/searchUnits','#citysci<%=z%>')">${unit.unitsName}
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </form>
+            <%z++;%>
+            </c:if>
+            </c:if>
+            </c:forEach>
         </tr>
         </tbody>
     </table>
