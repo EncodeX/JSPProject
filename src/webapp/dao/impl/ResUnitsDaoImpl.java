@@ -38,7 +38,25 @@ public class ResUnitsDaoImpl implements ResUnitsDao{
             return null;
         }
     }
-
+    @Override
+    public ArrayList<Units> getAllUnitsName() {
+        PreparedStatement ps;
+        ArrayList<Units> unitses=new ArrayList<Units>();
+        String sql="select * from rec_units where rec_units.unitsID>0 ";
+        try {
+            ps=connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Units units=new Units(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4));
+                unitses.add(units);
+            }
+            return unitses;
+        }
+        catch (Exception e){
+            System.err.println("从数据库获取信息失败"+sql+e);
+            return null;
+        }
+    }
     @Override
     public int getUnitsAmount() {
         PreparedStatement ps;
@@ -61,7 +79,7 @@ public class ResUnitsDaoImpl implements ResUnitsDao{
         String sql="select DISTINCT * from rec_units WHERE unitsName=?";
         try {
             ps=connection.prepareStatement(sql);
-            ps.setString(1,name);
+            ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
             return rs.next();
         }

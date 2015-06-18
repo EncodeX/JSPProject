@@ -25,27 +25,35 @@
     <table class="am-table">
         <thead>
         <tr>
-            <th>辽宁省医学会</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
 
-        <tr>
+        <form method="post" action="<%=basePath%>departman/mediassoc">
+            <tr>
+                <c:forEach items="${unitses}" var="unit"  varStatus="status">
+                <%int z=86;%>
 
-            <form method="post" id="mediassoc">
-                <input type="hidden" name="username" value="2">
-                <td>
-                    <div class="am-g">
-                        <div class="am-u-sm-3"><input type="text" name="recID" value="2" class="am-form-field"></div>
-                        <div class="am-u-sm-3 am-u-end">
-                            <button class="am-btn am-btn-secondary am-btn-sm" type="button"
-                                    onclick="post_form('<%=basePath%>departman/searchUnits','#mediassoc')">查询
-                            </button>
+                <c:if test="${unit.unitsID>85}">
+                <c:if test="${unit.unitsID<112}">
+                <form id="citysci<%=z%>" method="post">
+
+                    <td>
+                        <div class="am-g">
+                            <div class="am-u-sm-3"><input type="text" name="recID" value="<%=z%>" class="am-form-field"style="display: none"></div>
+                            <div class="am-u-sm-3 am-u-end">
+                                <button class="am-btn am-btn-secondary am-btn-sm" type="button"
+                                        onclick="post_form('<%=basePath%>departman/searchUnits','#citysci<%=z%>')">${unit.unitsName}
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </td>
-
-            </form>
+                    </td>
+                    <%z++;%>
+                    </c:if>
+                    </c:if>
+                    </c:forEach>
+                </form>
         </tr>
 
 

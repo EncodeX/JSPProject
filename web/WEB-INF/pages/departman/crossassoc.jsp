@@ -25,26 +25,37 @@
     <table class="am-table">
         <thead>
         <tr>
-            <th>辽宁省卫生法学会</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
 
         <tr>
 
-            <form method="post" id="crossassoc">
-                <input type="hidden" name="username" value="2">
-                <td>
-                    <div class="am-g">
-                        <div class="am-u-sm-3"><input type="text" name="recID" value="2" class="am-form-field"></div>
-                        <div class="am-u-sm-3 am-u-end">
-                            <button class="am-btn am-btn-secondary am-btn-sm" type="button"
-                                    onclick="post_form('<%=basePath%>departman/searchUnits','#crossassoc')">查询
-                            </button>
-                        </div>
-                    </div>
-                </td>
-            </form>
+            <form method="post" action="<%=basePath%>departman/crossassoc">
+                <tr>
+                    <c:forEach items="${unitses}" var="unit"  varStatus="status">
+                    <%int z=112;%>
+
+                    <c:if test="${unit.unitsID>111}">
+                    <c:if test="${unit.unitsID<142}">
+                    <form id="citysci<%=z%>" method="post">
+
+                        <td>
+                            <div class="am-g">
+                                <div class="am-u-sm-3"><input type="text" name="recID" value="<%=z%>" class="am-form-field"style="display: none"></div>
+                                <div class="am-u-sm-3 am-u-end">
+                                    <button class="am-btn am-btn-secondary am-btn-sm" type="button"
+                                            onclick="post_form('<%=basePath%>departman/searchUnits','#citysci<%=z%>')">${unit.unitsName}
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <%z++;%>
+                        </c:if>
+                        </c:if>
+                        </c:forEach>
+                    </form>
         </tr>
 
 

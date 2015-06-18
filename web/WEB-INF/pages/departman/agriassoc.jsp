@@ -25,29 +25,37 @@
     <table class="am-table">
         <thead>
         <tr>
-            <th>辽宁省农学会</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
-
+        <form method="post" action="<%=basePath%>departman/agriassoc">
         <tr>
+            <c:forEach items="${unitses}" var="unit"  varStatus="status">
+                <%int z=72;%>
 
-            <form method="post" id="agriassoc">
-                <input type="hidden" name="username" value="2">
+                <c:if test="${unit.unitsID>71}">
+                <c:if test="${unit.unitsID<86}">
+            <form id="citysci<%=z%>" method="post">
+
                 <td>
                     <div class="am-g">
-                        <div class="am-u-sm-3"><input type="text" name="recID" value="2" class="am-form-field"></div>
+                        <div class="am-u-sm-3"><input type="text" name="recID" value="<%=z%>" class="am-form-field"style="display: none"></div>
                         <div class="am-u-sm-3 am-u-end">
                             <button class="am-btn am-btn-secondary am-btn-sm" type="button"
-                                    onclick="post_form('<%=basePath%>departman/searchUnits','#agriassoc')">查询
+                                    onclick="post_form('<%=basePath%>departman/searchUnits','#citysci<%=z%>')">${unit.unitsName}
                             </button>
                         </div>
                     </div>
                 </td>
-
+                <%z++;%>
+                </c:if>
+                </c:if>
+                </c:forEach>
             </form>
         </tr>
+
         </tbody>
     </table>
-
+</form>
 </div>
