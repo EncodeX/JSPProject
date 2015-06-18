@@ -81,7 +81,7 @@ CREATE TABLE `opentime` (
 -- ----------------------------
 INSERT INTO `opentime` VALUES('proposer','2011-11-11 21:12:21',"2012-12-12 12:12");
 INSERT INTO `opentime` VALUES('expert','2011-11-11 21:12:21',"2012-12-12 12:12");
-INSERT INTO `opentime` valVALUESues('recunits','2011-11-11 21:12:21',"2012-12-12 12:12");
+INSERT INTO `opentime` VALUES('recunits','2011-11-11 21:12:21',"2012-12-12 12:12");
 
 -- ----------------------------
 -- Table structure for paper
