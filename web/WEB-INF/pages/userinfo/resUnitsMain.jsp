@@ -68,8 +68,8 @@
                 <td>${unit.unitsName}</td>
                 <td>${unit.unitsID}</td>
                 <td>${unit.recTotal}</td>
-                <td><a class="am-btn am-btn-link am-btn-sm" href="#" onclick="refresh_Content('<%=basePath%>userinfo/changeUnits?name=${unit.unitsName}')">修改</a>
-                    <a class="am-btn am-btn-link am-btn-sm" href="#" onclick="refresh_Content('<%=basePath%>userinfo/deleteUnits?name=${unit.unitsName}')">删除</a>
+                <td><a class="am-btn am-btn-secondary am-btn-sm" href="#" onclick="refresh_Content('<%=basePath%>userinfo/changeUnits?name=${unit.unitsName}')">修改</a>
+                    <a class="am-btn am-btn-warning am-btn-sm" href="#" onclick="refresh_Content('<%=basePath%>userinfo/deleteUnits?name=${unit.unitsName}')">删除</a>
                 </td>
             </tr>
         </c:forEach>

@@ -84,8 +84,8 @@
                 <td>${proposer.firCount}</td>
                 <td>${proposer.firResult}</td>
                 <td>${proposer.lasResult}</td>
-                <td><a class="am-btn am-btn-link am-btn-sm" href="#" onclick="refresh_Content('<%=basePath%>userinfo/changeProposer?name=${proposer.userName}')">修改</a>
-                    <a class="am-btn am-btn-link am-btn-sm" href="#" onclick="refresh_Content('<%=basePath%>userinfo/deleteProposer?name=${proposer.userName}')">删除</a>
+                <td><a class="am-btn am-btn-secondary am-btn-sm" href="#" onclick="refresh_Content('<%=basePath%>userinfo/changeProposer?name=${proposer.userName}')">修改</a>
+                    <a class="am-btn am-btn-warning am-btn-sm" href="#" onclick="refresh_Content('<%=basePath%>userinfo/deleteProposer?name=${proposer.userName}')">删除</a>
                 </td>
             </tr>
         </c:forEach>
