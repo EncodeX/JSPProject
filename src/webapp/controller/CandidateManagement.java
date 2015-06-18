@@ -7,10 +7,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import webapp.dao.GroupDao;
 import webapp.dao.ProposerDao;
+import webapp.dao.ResUnitsDao;
 import webapp.dao.impl.GroupDaoImpl;
 import webapp.dao.impl.ProposerDaoImpl;
+import webapp.dao.impl.ResUnitsDaoImpl;
 import webapp.model.Proposer;
 import webapp.model.SubjectGroup;
+import webapp.model.Units;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -25,6 +28,7 @@ import java.util.Comparator;
 public class CandidateManagement {
     ProposerDao ProposerDao=new ProposerDaoImpl();
     GroupDao GroupDao=new GroupDaoImpl();
+    ResUnitsDao ResUnitsDao=new ResUnitsDaoImpl();
     //sbjman
     @RequestMapping(value = "subclass",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView getPage(ModelAndView modelAndView,String page,String subClass){
@@ -33,6 +37,9 @@ public class CandidateManagement {
             pages=1;
         }else{
             pages=Integer.parseInt(page);
+        }
+        if(subClass.equals("all")){
+            return getSbjmanPage(modelAndView,null,null);
         }
         modelAndView.setViewName("/candman/sbjman");
         ArrayList<String> allproposers=ProposerDao.getAllSubclass();
@@ -89,7 +96,7 @@ public class CandidateManagement {
             pages=Integer.parseInt(page);
         }
         modelAndView.setViewName("/candman/firstresult");
-        ArrayList<Proposer> subproposers=ProposerDao.getAllProposer();
+        ArrayList<Proposer> subproposers=ProposerDao.getAllProposer(pages, 10);
         ArrayList<SubjectGroup> subjectGroups=GroupDao.getAllSubjectGroup();
         modelAndView.addObject("subjectGroups",subjectGroups);
         modelAndView.addObject("proposers", subproposers);
@@ -101,12 +108,18 @@ public class CandidateManagement {
 
     @RequestMapping(value = "/addProposer",method = RequestMethod.GET)
     public ModelAndView addProposer (ModelAndView modelAndView){
+        ArrayList<Units> recUnits=ResUnitsDao.getAllUnits();
+        ArrayList<String> subClass=ProposerDao.getAllSubclass();
+        ArrayList<SubjectGroup> subjectGroups=GroupDao.getAllSubjectGroup();
+        modelAndView.addObject("recUnits", recUnits);
+        modelAndView.addObject("subClass", subClass);
+        modelAndView.addObject("subjectGroups", subjectGroups);
         modelAndView.setViewName("/candman/addProposer");
         return modelAndView;
     }
 
     @RequestMapping(value = "/addProposerToDB",method = RequestMethod.POST)
-    public ModelAndView addProposerToDB(ModelAndView modelAndView,String userName,String userID,
+    public ModelAndView addProposerToDB(ModelAndView modelAndView,String userName,
                                            String name,String subClass,String subID,String recID,String recResult,
                                            String firCount,String firResult,String lasResult,String userPwd) {
         modelAndView.setViewName("candman/firstresult");
@@ -146,6 +159,9 @@ public class CandidateManagement {
         }else{
             pages=Integer.parseInt(page);
         }
+        if (groID.equals("all")){
+            return getFirstResult ( modelAndView,null);
+        }
         modelAndView.setViewName("/candman/firstresult");
         ArrayList<Proposer> subproposers=ProposerDao.getProposersBySubID(pages, 10, Integer.parseInt(groID));
         ArrayList<SubjectGroup> subjectGroups=GroupDao.getAllSubjectGroup();
@@ -173,11 +189,15 @@ public class CandidateManagement {
         else{
             subproposers = ProposerDao.getAllProposer(pages,10);
         }
+        if(Integer.parseInt(subID)==0){
+            modelAndView.addObject("amount", ProposerDao.getProposerAmount());
+        }else{
+            modelAndView.addObject("amount", ProposerDao.getProposerAmountBySubID(Integer.parseInt(subID)));
+        }
         ArrayList<SubjectGroup> subjectGroups=GroupDao.getAllSubjectGroup();
         modelAndView.addObject("subjectGroups",subjectGroups);
         modelAndView.addObject("proposers", subproposers);
         modelAndView.addObject("pages", pages);
-        modelAndView.addObject("amount", ProposerDao.getProposerAmountBySubID(Integer.parseInt(subID)));
         //modelAndView.addObject("url", "subclass");
         modelAndView.addObject("subID",subID);
         modelAndView.addObject("order", "userID");
@@ -247,17 +267,12 @@ public class CandidateManagement {
     @RequestMapping(value = "nextPage",method = {RequestMethod.GET})
     public ModelAndView getNextPage(ModelAndView modelAndView,String page,String subID,String order){
         modelAndView.setViewName("/candman/firstresult");
-        if(Integer.parseInt(subID)==0){
-            return getFirstResult(modelAndView,page);
-        }
-        else {
             if (order == null) {order = "userID";}
-            if (order.equals("userID")) {return getProposerByUserIDOrder(modelAndView,page,subID,order);}
-            if (order.equals("username")) {return getProposerByUsernameOrder(modelAndView,page,subID,order);}
-            if (order.equals("name")) {return getProposerByNameOrder(modelAndView,page,subID,order);}
-            if (order.equals("rec")) {return getProposerByRecOrder(modelAndView, page, subID,order);}
+            if (order.equals("userID")) {return getProposerByUserIDOrder(modelAndView, page, subID, order);}
+            if (order.equals("username")) {return getProposerByUsernameOrder(modelAndView, page, subID, order);}
+            if (order.equals("name")) {return getProposerByNameOrder(modelAndView, page, subID, order);}
+            if (order.equals("rec")) {return getProposerByRecOrder(modelAndView, page, subID, order);}
             if (order.equals("fircount")) {return getProposerByFircountOrder(modelAndView, page, subID,order);}
-        }
         return getFirstResult(modelAndView, page);
     }
     //finalresult
@@ -283,6 +298,12 @@ public class CandidateManagement {
         modelAndView.setViewName("/candman/changeProposer");
         Proposer proposer=ProposerDao.getProposerByName(username);
         modelAndView.addObject("proposer",proposer);
+        ArrayList<Units> recUnits=ResUnitsDao.getAllUnits();
+        ArrayList<String> subClass=ProposerDao.getAllSubclass();
+        ArrayList<SubjectGroup> subjectGroups=GroupDao.getAllSubjectGroup();
+        modelAndView.addObject("recUnits", recUnits);
+        modelAndView.addObject("subClass", subClass);
+        modelAndView.addObject("subjectGroups", subjectGroups);
         return modelAndView;
     }
     @RequestMapping(value = "updateProposerToDB",method = {RequestMethod.GET,RequestMethod.POST})
@@ -316,20 +337,24 @@ public class CandidateManagement {
         }
         modelAndView.setViewName("/candman/firstresult");
         ArrayList<Proposer> subProposers=new ArrayList<Proposer>();
-        if(subproposers.size()<10){
-            max=subproposers.size();
+        if(subproposers.size()-(pages-1)*10<10){
+            max=subproposers.size()-(pages-1)*10;
         }else{
             max=10;
         }
-        for(int i=(pages-1)*10;i<max;i++){
+        for(int i=0;i<max;i++){
             Proposer  proposer=subproposers.get(i);
             subProposers.add(proposer);
+        }
+        if(Integer.parseInt(subID)==0){
+            modelAndView.addObject("amount", ProposerDao.getProposerAmount());
+        }else{
+            modelAndView.addObject("amount", ProposerDao.getProposerAmountBySubID(Integer.parseInt(subID)));
         }
         ArrayList<SubjectGroup> subjectGroups=GroupDao.getAllSubjectGroup();
         modelAndView.addObject("subjectGroups",subjectGroups);
         modelAndView.addObject("proposers", subProposers);
         modelAndView.addObject("pages", pages);
-        modelAndView.addObject("amount", ProposerDao.getProposerAmountBySubID(Integer.parseInt(subID)));
         modelAndView.addObject("subID", subID);
         modelAndView.addObject("order",order);
         return modelAndView;

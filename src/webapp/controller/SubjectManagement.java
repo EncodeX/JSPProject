@@ -61,6 +61,7 @@ public class SubjectManagement {
 
     @RequestMapping(value = "toChangeSubjectGroup",method = {RequestMethod.GET})
     public ModelAndView toChangeSubjectGroup(ModelAndView modelAndView,String name){
+                System.out.println(name);
         if(!groupDao.isExist(name)){
             modelAndView.setViewName("sbjman/msg");
             modelAndView.addObject("message","Failed: No name exist :"+name);

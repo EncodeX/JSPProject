@@ -17,6 +17,25 @@ public class ResUnitsDaoImpl implements ResUnitsDao{
 
     Connection connection= DbConnector.getConnection();
 
+    @Override
+    public ArrayList<Units> getAllUnits() {
+        PreparedStatement ps;
+        ArrayList<Units> Units=new ArrayList<Units>();
+        String sql="select * from rec_units where rec_units.unitsID>0 ";
+        try {
+            ps=connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Units units=new Units(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4));
+                Units.add(units);
+            }
+            return Units;
+        }
+        catch (Exception e){
+            System.err.println("从数据库获取信息失败"+sql+e);
+            return null;
+        }
+    }
 
     public ArrayList<Units> getAllUnits(int page, int numPerPage) {
         PreparedStatement ps;

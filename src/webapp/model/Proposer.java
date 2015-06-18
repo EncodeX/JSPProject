@@ -15,7 +15,7 @@ public class Proposer { private int userID;
     private int firResult;
     private int lasResult;
 
-    public Proposer(int userID, String userName, String userPwd, String name, String subClass, int subID, int recID, int firCount, int recResult, int firResult, int lasResult) {
+    public Proposer(int userID, String userName, String userPwd, String name, String subClass, int subID, int recID,int recResult, int firCount,  int firResult, int lasResult) {
         this.userID = userID;
         this.userName = userName;
         this.userPwd = userPwd;

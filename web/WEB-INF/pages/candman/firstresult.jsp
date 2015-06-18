@@ -29,6 +29,7 @@
     <form id="firstresult1">
         <select data-am-selected name="groID">
             <option class="am-dropdown-header">请选择您要查看的学科组</option>
+            <option value="all">all</option>
             <%
                 String subID = (String) request.getAttribute("subID");
 
@@ -130,10 +131,31 @@
                     <td>${proposer.subClass}</td>
                     <td>${proposer.subID}</td>
                     <td>${proposer.recID}</td>
-                    <td>${proposer.recResult}</td>
+                    <td>
+                        <c:if test="${proposer.recResult==1}">
+                            成功
+                        </c:if>
+                        <c:if test="${proposer.recResult==0}">
+                            失败
+                        </c:if>
+                    </td>
                     <td>${proposer.firCount}</td>
-                    <td>${proposer.firResult}</td>
-                    <td>${proposer.lasResult}</td>
+                    <td>
+                        <c:if test="${proposer.firResult==1}">
+                            成功
+                        </c:if>
+                        <c:if test="${proposer.firResult==0}">
+                            失败
+                        </c:if>
+                    </td>
+                    <td>
+                        <c:if test="${proposer.lasResult==1}">
+                            成功
+                        </c:if>
+                        <c:if test="${proposer.lasResult==0}">
+                            失败
+                        </c:if>
+                    </td>
                     <td>
                         <button class="am-btn am-btn-warning" type="button"
                                 onclick="refresh_Content('<%=basePath%>candman/deleteProposer?name=${proposer.userName}&subID=${proposer.subID}')">
@@ -153,10 +175,8 @@
                 int pageAmount = (amount % 10 == 0) ? amount / 10 : amount / 10 + 1;
                 int pages = (Integer) request.getAttribute("pages");
                 String order = (String) request.getAttribute("order");
-                if (subID == null) {
-
-                }
                 if (order == null) {
+                    order="userID";
                 }
                 if (pages == 1) {
             %>
@@ -184,15 +204,15 @@
                     href="#"><%=i%>
             </a></li>
             <%
-            } else {
+                        } else {
             %>
             <li><a
                     onclick="refresh_Content('<%=basePath%>candman/nextPage?page=<%=i%>&subID=<%=subID%>&order=<%=order%>')"
                     href="#"><%=i%>
             </a></li>
             <%
+                        }
                     }
-                }
             } else if (pageAmount > 5 && pages > pageAmount - 2) {
                 for (int i = pageAmount - 4; i <= pageAmount; i++) {
                     if (i == pages) {
