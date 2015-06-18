@@ -39,7 +39,14 @@
                 <label>再次输入密码：</label>
                 <input type="text" name="expPwd2" placeholder="请再次输入以上面相同的密码" class="am-form-field" required/>
                 <label>所属学科组ID：</label>
-                <input type="text" name="groID" placeholder="输入专家所属学科组ID" class="am-form-field" required/>
+                <select data-am-selected name="groID">
+                    <option class="am-dropdown-header">请选择学科组</option>
+                    <c:forEach items="${subjectGroups}" var="group" varStatus="status">
+                        <option value="${group.groID}">${group.groName}</option>
+                    </c:forEach>
+
+                </select><br>
+
                 <input type="hidden" name="status" value="<%=status%>">
             </div>
             <button id="addExpertBtn" class="am-btn am-btn-secondary" type="button"

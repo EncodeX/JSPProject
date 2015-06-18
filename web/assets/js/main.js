@@ -1,14 +1,15 @@
 /**
  * Created by Encode_X on 15/6/16.
  */
-
 var xmlhttp;
 function refresh_Content(url) {
     xmlhttp = new XMLHttpRequest();
     if (xmlhttp != null) {
         //console.log("事件发生");
+        console.log(url);
         xmlhttp.onreadystatechange = state_Change;
-        xmlhttp.open("GET", url, true);
+        xmlhttp.open("GET", url, false);
+        xmlhttp.setRequestHeader('Content-Type', 'application/x-javascript; charset=UTF-8');
         xmlhttp.send(null);
     }
 }
@@ -25,7 +26,7 @@ function state_Change() {
     }
 }
 function post_form(url,div_id) {
-    //console.log("事件发生");
+    console.log("事件发生");
     $.ajax({
         cache: true,
         type: "POST",
@@ -33,11 +34,11 @@ function post_form(url,div_id) {
         data: $(div_id).serialize(),// 你的formid
         async: false,
         error: function (request) {
-            //alert("操作失败！");
+            alert("操作失败！");
         },
         success: function (data) {
-            //alert("操作成功！");
-            //console.log("success");
+            alert("操作成功！");
+            console.log("success");
             $("#main-content").empty().append(data);
             refreshselect();
             refreshTimePicker();
