@@ -25,6 +25,28 @@ function state_Change() {
         }
     }
 }
+
+function refresh_list(url,div_id) {
+    //console.log("事件发生");
+    $.ajax({
+        cache: true,
+        type: "POST",
+        url: url,
+        data: $(div_id).serialize(),// 你的formid
+        async: false,
+        error: function (request) {
+            //alert("操作失败！");
+        },
+        success: function (data) {
+            //alert("操作成功！");
+            //console.log("success");
+            $("#show_form").empty().append(data);
+            refreshselect();
+            refreshTimePicker();
+        }
+    });
+}
+
 function post_form(url,div_id) {
     //console.log("事件发生");
     $.ajax({

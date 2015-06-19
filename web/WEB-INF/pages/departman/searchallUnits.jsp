@@ -18,17 +18,11 @@
 <!doctype html>
 
 <div class="am-cf am-padding">
-  <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">推荐单位信息查询结果</strong> /
-    <small>信息</small>
-  </div>
-</div>
-
-<div class="am-cf am-padding">
   <table class="am-table">
     <thead>
     <tr>
       <th>序号</th>
-      <th>单位ID号</th>
+      <th>单位ID</th>
       <th>单位名</th>
       <th>推荐人数</th>
     </tr>

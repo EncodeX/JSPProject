@@ -49,109 +49,112 @@
         <select name="unitName">
             <option value="所有小类" selected>所有小类</OPTION>
         </select>
-        <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>departman/searchUnit','#submit_form')">提交</button>
+        <button class="am-btn am-btn-secondary" type="button" onclick="refresh_list('<%=basePath%>departman/searchUnit','#submit_form')">提交</button>
     </form>
 </div>
 
 <hr/>
 
-<div class="am-cf am-padding">
-    <table class="am-table">
-        <thead>
-        <tr>
-            <th>序号</th>
-            <th>Id</th>
-            <th>单位名</th>
-            <th>推荐人数</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${units}" var="unit" varStatus="status">
+<div id="show_form">
+
+    <div class="am-cf am-padding">
+        <table class="am-table">
+            <thead>
             <tr>
-                <td>${status.count+(pages-1)*10}</td>
-                <td>${unit.unitsID}</td>
-                <td>${unit.unitsName}</td>
-                <td>${unit.recTotal}</td>
+                <th>序号</th>
+                <th>单位ID</th>
+                <th>单位名</th>
+                <th>推荐人数</th>
             </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <c:forEach items="${units}" var="unit" varStatus="status">
+                <tr>
+                    <td>${status.count+(pages-1)*10}</td>
+                    <td>${unit.unitsID}</td>
+                    <td>${unit.unitsName}</td>
+                    <td>${unit.recTotal}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
 
-</div>
+    </div>
 
-<%--分页--%>
-<ul class="am-pagination am-pagination-right am-padding">
-    <%
-        int amount = (Integer) request.getAttribute("amount");
-        int pageAmount = (amount % 10 == 0) ? amount / 10 : amount / 10 + 1;
-        int pages = (Integer) request.getAttribute("pages");
-        if (pages == 1) {
-    %>
-    <li class="am-disabled"><a href="#">&laquo;</a></li>
-    <%
-    } else {
-    %>
-    <li><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=pages-1%>')" href="#">&laquo;</a></li>
-    <%
-        }
-        if (pageAmount <= 5 || pages < 3) {
-            int temp = 0;
-            if (pageAmount <= 5)
-                temp = pageAmount;
-            else if (pages < 3)
-                temp = 5;
-            for (int i = 1; i <= temp; i++) {
-                if (i == pages) {
-    %>
-    <li class="am-active"><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=i%>')" href="#"><%=i%>
-    </a></li>
-    <%
-    } else {
-    %>
-    <li><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=i%>')" href="#"><%=i%>
-    </a></li>
-    <%
+    <%--分页--%>
+    <ul class="am-pagination am-pagination-right am-padding">
+        <%
+            int amount = (Integer) request.getAttribute("amount");
+            int pageAmount = (amount % 10 == 0) ? amount / 10 : amount / 10 + 1;
+            int pages = (Integer) request.getAttribute("pages");
+            if (pages == 1) {
+        %>
+        <li class="am-disabled"><a href="#">&laquo;</a></li>
+        <%
+        } else {
+        %>
+        <li><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=pages-1%>')" href="#">&laquo;</a></li>
+        <%
             }
-        }
-    } else if (pageAmount > 5 && pages > pageAmount - 2) {
-        for (int i = pageAmount - 4; i <= pageAmount; i++) {
-            if (i == pages) {
-    %>
-    <li class="am-active"><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=i%>')" href="#"><%=i%>
-    </a></li>
-    <%
-    } else {
-    %>
-    <li><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=i%>')" href="#"><%=i%>
-    </a></li>
-    <%
-            }
-        }
-    } else {
-        for (int i = pages - 2; i <= pages + 2; i++) {
-            if (i == pages) {
-    %>
-    <li class="am-active"><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=i%>')" href="#"><%=i%>
-    </a></li>
-    <%
-    } else {
-    %>
-    <li><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=i%>')" href="#"><%=i%>
-    </a></li>
-    <%
+            if (pageAmount <= 5 || pages < 3) {
+                int temp = 0;
+                if (pageAmount <= 5)
+                    temp = pageAmount;
+                else if (pages < 3)
+                    temp = 5;
+                for (int i = 1; i <= temp; i++) {
+                    if (i == pages) {
+        %>
+        <li class="am-active"><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=i%>')" href="#"><%=i%>
+        </a></li>
+        <%
+        } else {
+        %>
+        <li><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=i%>')" href="#"><%=i%>
+        </a></li>
+        <%
                 }
             }
-        }
-        if (pages < pageAmount) {
-    %>
-    <li><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=pages+1%>')" href="#">&raquo;</a></li>
-    <%
-    } else {
-    %>
-    <li class="am-disabled"><a href="#">&raquo;</a></li>
-    <%
-        }
-    %>
-</ul>
+        } else if (pageAmount > 5 && pages > pageAmount - 2) {
+            for (int i = pageAmount - 4; i <= pageAmount; i++) {
+                if (i == pages) {
+        %>
+        <li class="am-active"><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=i%>')" href="#"><%=i%>
+        </a></li>
+        <%
+        } else {
+        %>
+        <li><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=i%>')" href="#"><%=i%>
+        </a></li>
+        <%
+                }
+            }
+        } else {
+            for (int i = pages - 2; i <= pages + 2; i++) {
+                if (i == pages) {
+        %>
+        <li class="am-active"><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=i%>')" href="#"><%=i%>
+        </a></li>
+        <%
+        } else {
+        %>
+        <li><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=i%>')" href="#"><%=i%>
+        </a></li>
+        <%
+                    }
+                }
+            }
+            if (pages < pageAmount) {
+        %>
+        <li><a onclick="refresh_Content('<%=basePath%>departman/main?page=<%=pages+1%>')" href="#">&raquo;</a></li>
+        <%
+        } else {
+        %>
+        <li class="am-disabled"><a href="#">&raquo;</a></li>
+        <%
+            }
+        %>
+    </ul>
+</div>
 <br/>
 <br/>

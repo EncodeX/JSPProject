@@ -29,8 +29,9 @@
       <thead>
       <tr>
         <th>序号</th>
-        <th>Id</th>
-        <th>人名</th>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>操作</th>
 
       </tr>
       </thead>
@@ -39,8 +40,11 @@
         <tr>
           <c:if test="${proposer.recResult==1}">
             <td>${status.count}</td>
-            <td>${proposer.name}</td>
             <td>${proposer.userID}</td>
+            <td>${proposer.name}</td>
+            <td>
+              <button class="am-btn am-btn-secondary am-btn-sm" type="button" onclick="">查看详细</button>
+            </td>
           </c:if>
         </tr>
 
@@ -53,8 +57,9 @@
       <thead>
       <tr>
         <th>序号</th>
-        <th>Id</th>
-        <th>人名</th>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>操作</th>
 
       </tr>
       </thead>
@@ -64,8 +69,11 @@
         <tr>
           <c:if test="${proposer.recResult==0}">
             <td>${status.count}</td>
-            <td>${proposer.name}</td>
             <td>${proposer.userID}</td>
+            <td>${proposer.name}</td>
+            <td>
+              <button class="am-btn am-btn-secondary am-btn-sm" type="button" onclick="">查看详细</button>
+            </td>
           </c:if>
         </tr>
       </c:forEach>
