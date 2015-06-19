@@ -26,73 +26,111 @@
 <hr/>
 
 <div class="am-cf am-padding">
-    <form id="addProposer" method="post">
+    <form id="addProposer" method="post" class="am-form am-form-horizontal">
         <fieldset>
             <legend>增加候选人：</legend>
             <div class="am-form-group">
 
-                <label>用户名：</label>
+                <label class="am-u-sm-2 am-form-label">用户名：</label>
+                <div class="am-u-sm-5">
                 <input type="text" name="userName" value="${proposer.userName}" class="am-form-field">
-
-                <label>账号密码：</label>
+                </div>
+                <br/>
+                <br/>
+                <label class="am-u-sm-2 am-form-label">账号密码：</label>
+                <div class="am-u-sm-5">
                 <input type="text" name="userPwd" value="${proposer.userPwd}" class="am-form-field">
-
-                <label>真实姓名：</label>
+                </div>
+                <br/>
+                <br/>
+                <label class="am-u-sm-2 am-form-label">真实姓名：</label>
+                <div class="am-u-sm-5">
                 <input type="text" name="name" value="${proposer.name}" class="am-form-field">
+                </div>
+                <br/>
+                <br/>
 
-                <label>所在学科：</label>
-                <select data-am-selected name="subClass">
+                <label class="am-u-sm-2 am-form-label">所在学科：</label>
+                <div class="am-u-sm-5">
+                <select data-am-selected="{maxHeight: 200}" name="subClass">
                     <option class="am-dropdown-header">请选择学科</option>
                     <c:forEach items="${subClass}" var="subclass" varStatus="status">
                         <option value="${subclass}">${subclass}</option>
                     </c:forEach>
 
-                </select><br>
+                </select>
+                </div>
+                <br/>
+                <br/>
 
-                <label>学科组ID：</label>
-                <select data-am-selected name="subID">
+                <label class="am-u-sm-2 am-form-label">学科组：</label>
+                <div class="am-u-sm-5">
+                <select data-am-selected="{maxHeight: 200}" name="subID">
                     <option class="am-dropdown-header">请选择学科组</option>
                     <c:forEach items="${subjectGroups}" var="group" varStatus="status">
                         <option value="${group.groID}">${group.groName}</option>
                     </c:forEach>
 
-                </select><br>
+                </select>
+                </div>
+                <br/>
+                <br/>
 
-                <label>推荐单位ID：</label>
-                <select data-am-selected name="recID">
+                <label class="am-u-sm-2 am-form-label">推荐单位：</label>
+                <div class="am-u-sm-5">
+                <select data-am-selected="{maxHeight: 200}" name="recID">
                     <option class="am-dropdown-header">请选择推荐单位</option>
                     <c:forEach items="${recUnits}" var="unit" varStatus="status">
                         <option value="${unit.unitsID}">${unit.unitsName}</option>
                     </c:forEach>
 
-                </select><br>
+                </select>
+                </div>
+                <br/>
+                <br/>
 
-                <label>推荐结果：</label>
+                <label class="am-u-sm-2 am-form-label">推荐结果：</label>
+                <div class="am-u-sm-5">
                 <select data-am-selected name="recResult">
                     <option class="am-dropdown-header">请选择</option>
                     <option value="1">成功</option>
                     <option value="0">失败</option>
-                </select><br>
+                </select>
+                </div>
+                <br/>
+                <br/>
 
-                <label>初评票数：</label>
+                <label class="am-u-sm-2 am-form-label">初评票数：</label>
+                <div class="am-u-sm-5">
                 <input type="text" name="firCount" value="${proposer.firCount}" class="am-form-field">
+                </div>
+                <br/>
+                <br/>
 
-                <label>初评结果：</label>
+                <label class="am-u-sm-2 am-form-label">初评结果：</label>
+                <div class="am-u-sm-5">
                 <select data-am-selected name="firResult">
                     <option class="am-dropdown-header">请选择</option>
                     <option value="1">成功</option>
                     <option value="0">失败</option>
-                </select><br>
+                </select>
+                </div>
+                <br/>
+                <br/>
 
-                <label>终评结果：</label>
+                <label class="am-u-sm-2 am-form-label">终评结果：</label>
+                <div class="am-u-sm-5">
                 <select data-am-selected name="lasResult">
                     <option class="am-dropdown-header">请选择</option>
                     <option value="1">成功</option>
                     <option value="0">失败</option>
-                </select><br>
+                </select>
+                </div>
+                <br/>
+                <br/>
 
             </div>
-            <button class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>candman/addProposerToDB','#addProposer')">提交</button>
+            <button class="am-u-sm-offset-1 am-u-sm-1 am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>candman/addProposerToDB','#addProposer')">提交</button>
         </fieldset>
     </form>
 </div>

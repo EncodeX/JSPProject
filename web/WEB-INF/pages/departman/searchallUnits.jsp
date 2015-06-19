@@ -24,28 +24,27 @@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><%@ taglib prefix="
 </div>
 
 <div class="am-cf am-padding">
-  <form method="post" action="<%=basePath%>departman/searchallUnit">
-    <table class="am-table">
-      <thead>
+  <table class="am-table">
+    <thead>
+    <tr>
+      <th>序号</th>
+      <th>单位ID号</th>
+      <th>单位名</th>
+      <th>推荐人数</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${unitses}" var="units" varStatus="status">
       <tr>
-        <th>序号</th>
-        <th>单位ID号</th>
-        <th>单位名</th>
-        <th>推荐人数</th>
-
+        <td>${status.count}</td>
+        <td>${units.unitsID}</td>
+        <td>${units.unitsName}</td>
+        <td>${units.recTotal}</td>
       </tr>
-      </thead>
-      <tbody>
-      <c:forEach items="${unitses}" var="units" varStatus="status">
-        <tr>
-          <td>${status.count}</td>
-          <td>${units.unitsID}</td>
-          <td>${units.unitsName}</td>
-          <td>${units.recTotal}</td>
-
-        </tr>
-      </c:forEach>
-      </tbody>
-    </table>
-  </form>
+    </c:forEach>
+    </tbody>
+  </table>
 </div>
+
+<br/>
+<br/>

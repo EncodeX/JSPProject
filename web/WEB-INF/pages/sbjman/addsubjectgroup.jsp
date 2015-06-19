@@ -27,18 +27,26 @@
 <hr/>
 
 <div class="am-cf am-padding">
-    <form id="addsbjgup" method="get">
+    <form id="addsbjgup" method="get" class="am-form am-form-horizontal">
         <fieldset>
             <legend>增加学科组</legend>
             <div class="am-form-group">
-                <label for="doc-vld-name">学科组名称：</label>
+                <label for="doc-vld-name" class="am-u-sm-2 am-form-label">学科组名称：</label>
+                <div class="am-u-sm-5">
                 <input type="text" name="groName" id="doc-vld-name" minlength="3" placeholder="输入学科组名称"
                        class="am-form-field" required/>
-                <label for="doc-vld-num">学科组提交名额：</label>
+                </div>
+                <br/>
+                <br/>
+                <label for="doc-vld-num" class="am-u-sm-2 am-form-label">提交名额：</label>
+                <div class="am-u-sm-5">
                 <input type="text" name="subNum" id="doc-vld-num" minlength="3" placeholder="输入名额"
                        class="am-form-field" required/>
+                </div>
+                <br/>
+                <br/>
             </div>
-            <button id="addExpertBtn" class="am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>sbjman/addSubjectGroup','#addsbjgup')">提交</button>
+            <button id="addExpertBtn" class="am-u-sm-offset-1 am-u-sm-1 am-btn am-btn-secondary" type="button" onclick="post_form('<%=basePath%>sbjman/addSubjectGroup','#addsbjgup')">提交</button>
         </fieldset>
     </form>
 </div>

@@ -28,28 +28,43 @@
 <hr/>
 
 <div class="am-cf am-padding">
-    <form id="addExpert" method="POST">
+    <form id="addExpert" method="POST" class="am-form am-form-horizontal">
         <fieldset>
             <legend>增加评审专家账号</legend>
             <div class="am-form-group">
-                <label>评审专家名称：</label>
-                <input type="text" name="expName" placeholder="输入评审专家" class="am-form-field" required/>
-                <label>评审专家密码：</label>
-                <input type="text" name="expPwd" placeholder="请输入评审专家密码" class="am-form-field" required/>
-                <label>再次输入密码：</label>
-                <input type="text" name="expPwd2" placeholder="请再次输入以上面相同的密码" class="am-form-field" required/>
-                <label>所属学科组ID：</label>
-                <select data-am-selected name="groID">
-                    <option class="am-dropdown-header">请选择学科组</option>
-                    <c:forEach items="${subjectGroups}" var="group" varStatus="status">
-                        <option value="${group.groID}">${group.groName}</option>
-                    </c:forEach>
+                <label class="am-u-sm-2 am-form-label">评审专家名称：</label>
+                <div class="am-u-sm-5">
+                    <input type="text" name="expName" placeholder="输入评审专家" class="am-form-field" required/>
+                </div>
+                <br/>
+                <br/>
+                <label class="am-u-sm-2 am-form-label">评审专家密码：</label>
+                <div class="am-u-sm-5">
+                    <input type="text" name="expPwd" placeholder="请输入评审专家密码" class="am-form-field" required/>
+                </div>
+                <br/>
+                <br/>
+                <label class="am-u-sm-2 am-form-label">再次输入密码：</label>
+                <div class="am-u-sm-5">
+                    <input type="text" name="expPwd2" placeholder="请再次输入以上面相同的密码" class="am-form-field" required/>
+                </div>
+                <br/>
+                <br/>
+                <label class="am-u-sm-2 am-form-label">所属学科组：</label>
+                <div class="am-u-sm-5">
+                    <select data-am-selected="{maxHeight: 200}" name="groID">
+                        <option class="am-dropdown-header">请选择学科组</option>
+                        <c:forEach items="${subjectGroups}" var="group" varStatus="status">
+                            <option value="${group.groID}">${group.groName}</option>
+                        </c:forEach>
 
-                </select><br>
-
+                    </select>
+                </div>
+                <br/>
+                <br/>
                 <input type="hidden" name="status" value="<%=status%>">
             </div>
-            <button id="addExpertBtn" class="am-btn am-btn-secondary" type="button"
+            <button id="addExpertBtn" class="am-u-sm-offset-1 am-u-sm-1 am-btn am-btn-secondary" type="button"
                     onclick="post_form('<%=basePath%>userinfo/addExpertToDB','#addExpert')">提交
             </button>
         </fieldset>

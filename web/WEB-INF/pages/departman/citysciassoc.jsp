@@ -29,7 +29,7 @@
                 <tr>
                     <c:if test="${unit.unitsID>0}">
                         <c:if test="${unit.unitsID<15}">
-                            <form action="<%=basePath%>departman/agriassoc" id="citysci<%=z%>" method="post">
+                            <form id="citysci<%=z%>" method="post">
                                 <td>
                                     <input type="hidden" name="recID" value="<%=z%>" class="am-form-field">
                                     <button class="am-btn am-btn-secondary am-btn-sm" type="button"
@@ -45,3 +45,6 @@
         </tbody>
     </table>
 </div>
+
+<br/>
+<br/>

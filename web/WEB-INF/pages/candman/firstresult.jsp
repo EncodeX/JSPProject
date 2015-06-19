@@ -27,9 +27,9 @@
 
 <div class="am-cf am-padding">
     <form id="firstresult1">
-        <select data-am-selected name="groID">
-            <option class="am-dropdown-header">请选择您要查看的学科组</option>
-            <option value="all">all</option>
+        <select data-am-selected="{maxHeight: 200}" name="groID">
+            <%--<option class="am-dropdown-header">请选择您要查看的学科组</option>--%>
+            <option value="all" selected>所有学科组</option>
             <%
                 String subID = (String) request.getAttribute("subID");
 

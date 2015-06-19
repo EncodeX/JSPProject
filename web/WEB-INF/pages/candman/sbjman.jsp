@@ -28,7 +28,7 @@
 
 <div class="am-cf am-padding">
     <form id="sbjman" method="post">
-        <select data-am-selected name="subClass">
+        <select data-am-selected="{maxHeight: 200}" name="subClass">
             <option class="am-dropdown-header">请选择学科类别</option>
             <option value="all">all</option>
             <% String subClass = (String) request.getAttribute("subClass"); %>
@@ -80,7 +80,7 @@
                         <td>${proposer.userID}</td>
                         <td>${proposer.name}</td>
                         <td>${proposer.subClass}</td>
-                        <td><select data-am-selected name="groName">
+                        <td><select data-am-selected="{maxHeight: 200}" name="groName">
                             <c:forEach items="${subjectGroups}" var="SubjectGroup" varStatus="status">
                                 <c:if test="${SubjectGroup.groID==proposer.subID}">
                                     <option value="${SubjectGroup.groName}" selected>${SubjectGroup.groName}</option>
