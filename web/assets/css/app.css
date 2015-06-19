@@ -45,7 +45,7 @@ label{
     color: #111;
 }
 
-/*.am-dimmer.am-active{*/
-    /*z-index: 1000;*/
-    /*opacity: 0;*/
-/*}*/
+/*临时补救方案*/
+.am-dimmer.am-active{
+    opacity: 0;
+}
