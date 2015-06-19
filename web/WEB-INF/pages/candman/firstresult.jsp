@@ -157,7 +157,7 @@
                         </c:if>
                     </td>
                     <td>
-                        <button class="am-btn am-btn-warning" type="button"
+                        <button class="am-btn am-btn-danger" type="button"
                                 onclick="refresh_Content('<%=basePath%>candman/deleteProposer?name=${proposer.userName}&subID=${proposer.subID}')">
                             删除
                         </button>
@@ -166,7 +166,6 @@
                 </tr>
             </c:forEach>
             </tbody>
-
         </table>
         <%--分页--%>
         <ul class="am-pagination am-pagination-right">
