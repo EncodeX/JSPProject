@@ -30,6 +30,7 @@ public class UserInfoManagement {
     ExpertDao ExpertDao=new ExpertDaoImpl();
     ResUnitsDao ResUnitsDao=new ResUnitsDaoImpl();
     ProposerDao ProposerDao=new ProposerDaoImpl();
+    GroupDao GroupDao=new GroupDaoImpl();
     //Expert
     @RequestMapping(value = "main",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView getMainPage(ModelAndView modelAndView,String page){
@@ -49,12 +50,16 @@ public class UserInfoManagement {
     @RequestMapping(value = "addExpert",method =RequestMethod.GET)
     public ModelAndView addExpert(ModelAndView modelAndView) {
         modelAndView.setViewName("/userinfo/addExpert");
+        ArrayList<SubjectGroup> subjectGroups=GroupDao.getAllSubjectGroup();
+        modelAndView.addObject("subjectGroups",subjectGroups);
         modelAndView.addObject("status","0");
         return modelAndView;
     }
     @RequestMapping(value = "addCouncil",method =RequestMethod.GET)
     public ModelAndView addCouncil(ModelAndView modelAndView) {
         modelAndView.setViewName("/userinfo/addExpert");
+        ArrayList<SubjectGroup> subjectGroups=GroupDao.getAllSubjectGroup();
+        modelAndView.addObject("subjectGroups",subjectGroups);
         modelAndView.addObject("status","1");
         return modelAndView;
     }
