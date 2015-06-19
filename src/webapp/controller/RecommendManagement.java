@@ -132,30 +132,37 @@ public class RecommendManagement {
     }
     @RequestMapping(value = "/searchUnit",method = {RequestMethod.POST})
     public ModelAndView  ResUnits(ModelAndView modelAndView,String unitName,String bigclass){
-        if(unitName.equals("所有小类")){
+       if(unitName.equals("所有小类")){
 
-            ResUnitsDao resUnitsDao=new ResUnitsDaoImpl();
-            modelAndView.setViewName("departman/searchallUnits");
-            ArrayList<Units> unitses=new ArrayList<Units>();
-            System.out.println(unitName+bigclass);
-            if(bigclass.equals("市科协")){unitses=resUnitsDao.getPartUnits(1,14);}
-            if(bigclass.equals("理科学会")){unitses=resUnitsDao.getPartUnits(15,30);}
-            if(bigclass.equals("工科学会")){unitses=resUnitsDao.getPartUnits(31,71);}
-            if(bigclass.equals("农林学会")){unitses=resUnitsDao.getPartUnits(72,85);}
-            if(bigclass.equals("医疗学会")){unitses=resUnitsDao.getPartUnits(86,111);}
-            if(bigclass.equals("交叉学科学会")){unitses=resUnitsDao.getPartUnits(112,141);}
+           ResUnitsDao resUnitsDao=new ResUnitsDaoImpl();
+           modelAndView.setViewName("departman/searchallUnits");
+           ArrayList<Units> unitses=new ArrayList<Units>();
+           System.out.println(unitName+bigclass);
+           if(bigclass.equals("市科协")){unitses=resUnitsDao.getPartUnits(0,14);}
+           if(bigclass.equals("理科学会")){unitses=resUnitsDao.getPartUnits(14,16);}
+           if(bigclass.equals("工科学会")){unitses=resUnitsDao.getPartUnits(30,40);}
+           if(bigclass.equals("农林学会")){unitses=resUnitsDao.getPartUnits(71,14);}
+           if(bigclass.equals("医疗学会")){unitses=resUnitsDao.getPartUnits(85,26);}
+           if(bigclass.equals("交叉学科学会")){unitses=resUnitsDao.getPartUnits(111,30);}
+System.out.println(unitses.size());
 
-            modelAndView.addObject("unitses",unitses);
-        }
+
+
+
+           modelAndView.addObject("unitses",unitses);
+
+       }
         else
         {
-            System.out.println(unitName);
-            ResUnitsDao resUnitsDao = new ResUnitsDaoImpl();
-            modelAndView.setViewName("departman/searchUnit");
-            Units units=resUnitsDao.getUnitsByName(unitName);
-            ArrayList<Units> unitses=new ArrayList<Units>();
-            unitses.add(units);
-            modelAndView.addObject("unitses",unitses);
+            System.out.println(bigclass+" "+unitName);
+        ResUnitsDao resUnitsDao = new ResUnitsDaoImpl();
+        modelAndView.setViewName("departman/searchUnit");
+        Units units=resUnitsDao.getUnitsByName(unitName);
+        ArrayList<Units> unitses=new ArrayList<Units>();
+        unitses.add(units);
+            System.out.println(unitses.size());
+        modelAndView.addObject("unitses",unitses);
+            return modelAndView;
         }
         return modelAndView;
     }

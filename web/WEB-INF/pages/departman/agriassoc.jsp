@@ -18,7 +18,7 @@
 
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">推荐单位管理</strong> /
-        <small>农林类学会</small>
+        <small>农林学会</small>
     </div>
 </div>
 
