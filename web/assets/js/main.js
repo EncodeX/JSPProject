@@ -16,7 +16,8 @@ function refresh_Content(url) {
 function state_Change() {
     if (xmlhttp.readyState == 4) {// 4 = "loaded"
         if (xmlhttp.status == 200) {// 200 = "OK"
-            document.getElementById('main-content').innerHTML = xmlhttp.responseText;
+            //document.getElementById('main-content').innerHTML = xmlhttp.responseText;
+            $("#main-content").empty().append(xmlhttp.responseText);
             refreshselect();
             refreshTimePicker();
         }
@@ -49,11 +50,53 @@ function refresh_list(url,div_id) {
 
 function post_form(url,div_id) {
     //console.log("事件发生");
+
+    $test = $("#asd123");
+    $form = $(div_id);
+    $form_serialized = $(div_id).serialize();
+
+    console.log("is div null: " + $(div_id)==null);
+    console.log($form);
+
     $.ajax({
         cache: true,
         type: "POST",
         url: url,
         data: $(div_id).serialize(),// 你的formid
+        async: false,
+        error: function (request) {
+            //alert("操作失败！");
+        },
+        success: function (data) {
+            //alert("操作成功！");
+            //console.log("success");
+            $("#main-content").empty().append(data);
+            refreshselect();
+            refreshTimePicker();
+        }
+    });
+}
+
+function post_form_by_input(url,element_1_id,element_2_id) {
+    //console.log("事件发生");
+
+    //$test = $("#asd123");
+    element_1 = document.getElementById(element_1_id);
+    element_2 = document.getElementById(element_2_id);
+    //$form_serialized = $(input_id).serialize();
+
+    //console.log("is div null: " + $(input_id)==null);
+    parts = [];
+    parts.push(serialize_single(element_1));
+    parts.push(serialize_single(element_2));
+    console.log(parts.join("&"));
+    //console.log(element_1.attr("value"));
+
+    $.ajax({
+        cache: true,
+        type: "POST",
+        url: url,
+        data: parts.join("&"),// 你的formid
         async: false,
         error: function (request) {
             //alert("操作失败！");
@@ -311,4 +354,58 @@ function refreshTimePicker(){
 function showTip(){
     var $modal = $('#my-alert');
     $modal.modal('open');
+}
+
+function serialize_single(field){
+    var j,
+        optLen,
+        option,
+        optValue;
+
+    switch(field.type){
+        case "select-one":
+        case "select-multiple":
+
+            if(field.name.length){
+                for(j = 0, optLen = field.options.length; j < optLen; j++){
+
+                    console.log(j);
+
+                    option= field.options[j];
+                    if(option.selected){
+                        optValue = "";
+                        if(option.hasAttribute){
+                            optValue = (option.hasAttribute("value") ?
+                                option.value : option.text);
+                        }else{
+                            optValue = (option.attributes["value"].specified ?
+                                option.value : option.text);
+                        }
+                        return encodeURIComponent(field.name) + "=" +
+                            encodeURIComponent(optValue);
+                    }
+                }
+            }
+
+        case undefined:
+        case "file":
+        case "submit":
+        case "reset":
+        case "button":
+            break;
+
+        case "radio":
+        case "checkbox":
+            if(!field.checked){
+                break;
+            }
+
+        default:
+            if(field.name.length){
+                return encodeURIComponent(field.name) + "=" +
+                encodeURIComponent(field.value);
+            }
+
+    }
+    return null;
 }

@@ -73,14 +73,14 @@
         <% int z=0;%>
         <c:forEach items="${proposers}" var="proposer" varStatus="status">
             <form id="sbjman<%=z%>" method="post">
-                    <input type="hidden" name="userName" value="${proposer.userName}">
+                    <input id="sbjmaninput<%=z%>" type="hidden" name="userName" value="${proposer.userName}">
                     <tr>
                         <td>${status.count+(pages-1)*10}</td>
                         <td>${proposer.userName}</td>
                         <td>${proposer.userID}</td>
                         <td>${proposer.name}</td>
                         <td>${proposer.subClass}</td>
-                        <td><select data-am-selected="{maxHeight: 200}" name="groName">
+                        <td><select id="sbjmanselect<%=z%>" data-am-selected="{maxHeight: 200}" name="groName">
                             <c:forEach items="${subjectGroups}" var="SubjectGroup" varStatus="status">
                                 <c:if test="${SubjectGroup.groID==proposer.subID}">
                                     <option value="${SubjectGroup.groName}" selected>${SubjectGroup.groName}</option>
@@ -124,7 +124,7 @@
 
                         <td>
                             <button class="am-btn am-btn-secondary" type="button"
-                                    onclick="post_form('<%=basePath%>candman/changeSubject','#sbjman<%=z%>')">确认
+                                    onclick="post_form_by_input('<%=basePath%>candman/changeSubject','sbjmanselect<%=z%>','sbjmaninput<%=z%>')">确认
                             </button>
                         </td>
                     </tr>
