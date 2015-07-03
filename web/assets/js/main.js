@@ -71,16 +71,12 @@ function post_form(url,div_id) {
 }
 
 function post_form_by_input(url,element_id_array) {
-    //console.log("事件发生");
-
-    //$test = $("#asd123");
     parts = [];
     for(var i=0;i<element_id_array.length;i++){
         e = document.getElementById(element_id_array[i]);
         parts.push(serialize_single(e));
     }
     console.log(parts.join("&"));
-    //console.log(element_1.attr("value"));
 
     $.ajax({
         cache: true,
