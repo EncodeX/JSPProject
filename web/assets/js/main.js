@@ -51,13 +51,6 @@ function refresh_list(url,div_id) {
 function post_form(url,div_id) {
     //console.log("事件发生");
 
-    $test = $("#asd123");
-    $form = $(div_id);
-    $form_serialized = $(div_id).serialize();
-
-    console.log("is div null: " + $(div_id)==null);
-    console.log($form);
-
     $.ajax({
         cache: true,
         type: "POST",
@@ -77,18 +70,15 @@ function post_form(url,div_id) {
     });
 }
 
-function post_form_by_input(url,element_1_id,element_2_id) {
+function post_form_by_input(url,element_id_array) {
     //console.log("事件发生");
 
     //$test = $("#asd123");
-    element_1 = document.getElementById(element_1_id);
-    element_2 = document.getElementById(element_2_id);
-    //$form_serialized = $(input_id).serialize();
-
-    //console.log("is div null: " + $(input_id)==null);
     parts = [];
-    parts.push(serialize_single(element_1));
-    parts.push(serialize_single(element_2));
+    for(var i=0;i<element_id_array.length;i++){
+        e = document.getElementById(element_id_array[i]);
+        parts.push(serialize_single(e));
+    }
     console.log(parts.join("&"));
     //console.log(element_1.attr("value"));
 
@@ -368,9 +358,6 @@ function serialize_single(field){
 
             if(field.name.length){
                 for(j = 0, optLen = field.options.length; j < optLen; j++){
-
-                    console.log(j);
-
                     option= field.options[j];
                     if(option.selected){
                         optValue = "";

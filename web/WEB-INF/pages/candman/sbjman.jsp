@@ -124,7 +124,7 @@
 
                         <td>
                             <button class="am-btn am-btn-secondary" type="button"
-                                    onclick="post_form_by_input('<%=basePath%>candman/changeSubject','sbjmanselect<%=z%>','sbjmaninput<%=z%>')">确认
+                                    onclick="post_form_by_input('<%=basePath%>candman/changeSubject',['sbjmanselect<%=z%>','sbjmaninput<%=z%>'])">确认
                             </button>
                         </td>
                     </tr>
