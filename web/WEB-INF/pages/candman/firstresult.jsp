@@ -61,42 +61,40 @@
     <ul class="am-tabs-nav am-nav am-nav-tabs">
         <li class="am-disabled"><a>排序方式:  </a></li>
 
-        <c:if test="${order=='userID'}">
-            <li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/userIDOrder?subID=<%=subID%>')"
-                                     href="#">用户ID</a></li>
+        <c:if test="${order=='userID' || order == null}">
+            <a class="am-btn am-btn am-btn-primary">用户ID</a>
         </c:if>
-        <c:if test="${order!='userID'}">
-            <li><a onclick="refresh_Content('<%=basePath%>candman/userIDOrder?subID=<%=subID%>')" href="#">用户ID</a></li>
+        <c:if test="${order!='userID' && order != null}">
+            <a class="am-btn am-btn am-btn-secondary" href="#"
+               onclick="refresh_Content('<%=basePath%>candman/userIDOrder?subID=<%=subID%>')"></i>用户ID</a>
         </c:if>
         <c:if test="${order=='username'}">
-            <li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/usernameOrder?subID=<%=subID%>')"
-                                     href="#">用户名</a></li>
+            <a class="am-btn am-btn am-btn-primary">用户名</a>
         </c:if>
         <c:if test="${order!='username'}">
-            <li><a onclick="refresh_Content('<%=basePath%>candman/usernameOrder?subID=<%=subID%>')" href="#">用户名</a>
-            </li>
+            <a class="am-btn am-btn am-btn-secondary" href="#"
+               onclick="refresh_Content('<%=basePath%>candman/usernameOrder?subID=<%=subID%>')"></i>用户名</a>
         </c:if>
         <c:if test="${order=='name'}">
-            <li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/nameOrder?subID=<%=subID%>')"
-                                     href="#">真实姓名</a></li>
+            <a class="am-btn am-btn am-btn-primary">真实姓名</a>
         </c:if>
         <c:if test="${order!='name'}">
-            <li><a onclick="refresh_Content('<%=basePath%>candman/nameOrder?subID=<%=subID%>')" href="#">真实姓名</a></li>
+            <a class="am-btn am-btn am-btn-secondary" href="#"
+               onclick="refresh_Content('<%=basePath%>candman/nameOrder?subID=<%=subID%>')"></i>真实姓名</a>
         </c:if>
         <c:if test="${order=='rec'}">
-            <li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/recOrder?subID=<%=subID%>')"
-                                     href="#">推荐单位ID</a></li>
+            <a class="am-btn am-btn am-btn-primary">推荐单位ID</a>
         </c:if>
         <c:if test="${order!='rec'}">
-            <li><a onclick="refresh_Content('<%=basePath%>candman/recOrder?subID=<%=subID%>')" href="#">推荐单位ID</a></li>
+            <a class="am-btn am-btn am-btn-secondary" href="#"
+               onclick="refresh_Content('<%=basePath%>candman/recOrder?subID=<%=subID%>')"></i>推荐单位ID</a>
         </c:if>
         <c:if test="${order=='fircount'}">
-            <li class="am-active"><a onclick="refresh_Content('<%=basePath%>candman/fircountOrder?subID=<%=subID%>')"
-                                     href="#">初选票数</a></li>
+            <a class="am-btn am-btn am-btn-primary">初选票数</a>
         </c:if>
         <c:if test="${order!='fircount'}">
-            <li><a onclick="refresh_Content('<%=basePath%>candman/fircountOrder?subID=<%=subID%>')" href="#">初选票数</a>
-            </li>
+            <a class="am-btn am-btn am-btn-secondary" href="#"
+               onclick="refresh_Content('<%=basePath%>candman/fircountOrder?subID=<%=subID%>')"></i>初选票数</a>
         </c:if>
     </ul>
 

@@ -36,16 +36,16 @@
 
 <hr/>
 
-<div class="am-cf am-padding">
-    <a class="am-btn am-btn am-btn-secondary" href="#"
-       onclick="refresh_Content('<%=basePath%>userinfo/main')"><i
-            class="am-icon-eye"></i>查看评审专家账号</a>
-    <a class="am-btn am-btn am-btn-secondary" href="#"
-       onclick="refresh_Content('<%=basePath%>userinfo/resUnitsMain')"><i
-            class="am-icon-eye"></i>查看推荐单位账号</a>
-    <a class="am-btn am-btn am-btn-primary" href="#"
-       onclick="refresh_Content('<%=basePath%>userinfo/proposerMain')"><i
-            class=" am-icon-eye"></i>查看申请者账号</a>
+<div class="am-tabs">
+    <ul class="am-tabs-nav am-nav am-nav-tabs">
+        <li class="am-disabled"><a>查看:  </a></li>
+        <a class="am-btn am-btn am-btn-secondary" href="#"
+           onclick="refresh_Content('<%=basePath%>userinfo/main')">评审专家账号</a>
+        <a class="am-btn am-btn am-btn-secondary" href="#"
+           onclick="refresh_Content('<%=basePath%>userinfo/resUnitsMain')"></i>推荐单位账号</a>
+        <a class="am-btn am-btn am-btn-primary" href="#"
+           onclick="refresh_Content('<%=basePath%>userinfo/proposerMain')"></i>申请者账号</a>
+    </ul>
 </div>
 
 <hr/>

@@ -46,7 +46,7 @@
             <option value="医药学会">医药学会</option>
             <option value="交叉学科学会">交叉学科学会</option>
         </select>
-        <select name="unitName">
+        <select data-am-selected="{maxHeight: 200}" name="unitName">
             <option value="所有小类" selected>所有小类</OPTION>
         </select>
         <button class="am-btn am-btn-secondary" type="button" onclick="refresh_list('<%=basePath%>departman/searchUnit','#submit_form')">提交</button>

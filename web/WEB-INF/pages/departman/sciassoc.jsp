@@ -26,21 +26,21 @@
         <tbody>
         <%int z=15;%>
         <c:forEach items="${unitses}" var="unit"  varStatus="status">
-            <tr>
-                <c:if test="${unit.unitsID>14}">
-                    <c:if test="${unit.unitsID<31}">
-                        <form action="<%=basePath%>departman/agriassoc" id="citysci<%=z%>" method="post">
-                            <td>
-                                <input id="input1<%=z%>" type="hidden" name="recID" value="<%=z%>" class="am-form-field">
-                                <button class="am-btn am-btn-secondary am-btn-sm" type="button"
-                                        onclick="post_form_by_input('<%=basePath%>departman/searchUnits',['input1<%=z%>'])">${unit.unitsName}
-                                </button>
-                            </td>
-                        </form>
-                        <%z++;%>
-                    </c:if>
+            <% if (z%2==1) { %>
+                <tr>
+            <%}%>
+                <c:if test="${unit.unitsID>14 && unit.unitsID<31}">
+                    <td style="border-top:0px;">
+                        <input id="input1<%=z%>" type="hidden" name="recID" value="<%=z%>" class="am-form-field">
+                        <button class="am-btn am-btn-secondary am-btn-sm" type="button" style="min-width: 100%;"
+                                onclick="post_form_by_input('<%=basePath%>departman/searchUnits',['input1<%=z%>'])">${unit.unitsName}
+                        </button>
+                    </td>
+                    <%z++;%>
                 </c:if>
-            </tr>
+            <% if (z%2==1) { %>
+                </tr>
+            <%}%>
         </c:forEach>
         </tbody>
 
