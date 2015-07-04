@@ -122,11 +122,18 @@ public class CandidateManagement {
     public ModelAndView addProposerToDB(ModelAndView modelAndView,String userName,
                                            String name,String subClass,String subID,String recID,String recResult,
                                            String firCount,String firResult,String lasResult,String userPwd) {
-        modelAndView.setViewName("candman/firstresult");
-        String message="";
+        String message;
         try{
-            Proposer proposer=new Proposer(0,userName,userPwd,name,subClass,Integer.parseInt(subID),Integer.parseInt(recID),Integer.parseInt(recResult),Integer.parseInt(firCount),Integer.parseInt(firResult),Integer.parseInt(lasResult));
-            ProposerDao.addProposer(proposer);
+            if(ProposerDao.isExist(userName)){
+                modelAndView.setViewName("candman/error");
+                message="该用户名已经被使用！";
+                modelAndView.addObject("message",message);
+                return modelAndView;
+            }else {
+                modelAndView.setViewName("candman/firstresult");
+                Proposer proposer = new Proposer(0, userName, userPwd, name, subClass, Integer.parseInt(subID), Integer.parseInt(recID), Integer.parseInt(recResult), Integer.parseInt(firCount), Integer.parseInt(firResult), Integer.parseInt(lasResult));
+                ProposerDao.addProposer(proposer);
+            }
         }catch (Exception e){
             modelAndView.setViewName("candman/error");
             message="添加失败： "+e.toString();

@@ -31,9 +31,9 @@
                         <c:if test="${unit.unitsID<15}">
                             <form id="citysci<%=z%>">
                                 <td>
-                                    <input type="hidden" name="recID" value="<%=z%>" class="am-form-field"/>
+                                    <input id="input1<%=z%>" type="hidden" name="recID" value="<%=z%>" class="am-form-field"/>
                                     <button class="am-btn am-btn-secondary am-btn-sm" type="button"
-                                            onclick="post_form('<%=basePath%>departman/searchUnits','#citysci<%=z%>')">${unit.unitsName}
+                                            onclick="post_form_by_input('<%=basePath%>departman/searchUnits',['input1<%=z%>'])">${unit.unitsName}
                                     </button>
                                 </td>
                             </form>

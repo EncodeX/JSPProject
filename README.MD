@@ -50,10 +50,10 @@ IntelliJ 13 以上
 
 <table>
     <tr>
-        <td>ID</td>  unitsID(int)
-        <td>用户名</td>  unitsName(varchar16)
-        <td>密码</td>   unitsPwd(varchar16)
-        <td>推荐名额</td> recTotal(int)
+        <td>ID  unitsID(int)</td>
+        <td>用户名 unitsName(varchar16)</td>
+        <td>密码 unitsPwd(varchar16)</td>
+        <td>推荐名额 recTotal(int)</td>
     </tr>
 </table>
 
@@ -61,10 +61,10 @@ IntelliJ 13 以上
 
 <table>
     <tr>
-        <td>用户名</td>  expName(varchar16)
-        <td>密码</td>   expPwd(varchar16)
-        <td>身份</td>  expID(varchar16)
-        <td>学科组ID</td>  groupID(int)
+        <td>用户名 expName(varchar16)</td>
+        <td>密码 expPwd(varchar16)</td>
+        <td>身份 expID(varchar16)</td>
+        <td>学科组ID groupID(int)</td>
     </tr>
 </table>
 
@@ -76,9 +76,9 @@ IntelliJ 13 以上
 
 <table>
     <tr>
-        <td>ID</td> groID(int)
-        <td>名称</td> groName(varchar16)
-        <td>提交名额</td> subNum(int)
+        <td>ID groID(int)</td>
+        <td>名称 groName(varchar16)</td>
+        <td>提交名额 subNum(int)</td>
     </tr>
 </table>
 
@@ -88,9 +88,9 @@ IntelliJ 13 以上
 
 <table>
     <tr>
-        <td>用户类型</td> type(varchar20)
-        <td>开放时间</td> openTime(DateTime)
-        <td>截止时间</td> endTime(DateTime)
+        <td>用户类型 type(varchar20)</td>
+        <td>开放时间 openTime(DateTime)</td>
+        <td>截止时间 endTime(DateTime)</td>
     </tr>
 </table>
 

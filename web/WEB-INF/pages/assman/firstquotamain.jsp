@@ -45,11 +45,11 @@
                 <td>${vo.groName}</td>
                 <td>${vo.subNum}</td>
                 <form id="firstquotamain<%=z%>" method="post">
-                        <input type="hidden" name="groupname" value="${vo.groName}">
-                        <td><input type="text" name="number" value="${vo.subNum}" class="am-form-field"></td>
+                        <input id="input1<%=z%>" type="hidden" name="groupname" value="${vo.groName}">
+                        <td><input id="input2<%=z%>" type="text" name="number" value="${vo.subNum}" class="am-form-field"></td>
                         <td>
                             <button class="am-btn am-btn-secondary am-btn-sm" type="button"
-                                    onclick="post_form('<%=basePath%>quotaman/changefirstquota','#firstquotamain<%=z%>')">修改
+                                    onclick="post_form_by_input('<%=basePath%>quotaman/changefirstquota',['input1<%=z%>','input2<%=z%>'])">修改
                             </button>
                         </td>
 
