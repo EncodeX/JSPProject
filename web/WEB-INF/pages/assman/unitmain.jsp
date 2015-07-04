@@ -43,13 +43,14 @@
                 <td>${vo.username}</td>
                 <td>${vo.quota}</td>
                 <form id="unitmain<%=z%>" method="post" action="">
-                    <input type="hidden" name="username" value="${vo.username}">
+                    <input id="input1<%=z%>" type="hidden" name="username" value="${vo.username}">
 
-                    <td><input type="text" name="quota" value="${vo.quota}" class="am-form-field">
+                    <td>
+                        <input id="input2<%=z%>" type="text" name="quota" value="${vo.quota}" class="am-form-field">
                     </td>
                     <td>
                         <button class="am-btn am-btn-secondary am-btn-sm" type="button"
-                                onclick="post_form('<%=basePath%>quotaman/changequota','#unitmain<%=z%>')">修改
+                                onclick="post_form_by_input('<%=basePath%>quotaman/changequota',['input1<%=z%>','input2<%=z%>'])">修改
                         </button>
                     </td>
 
